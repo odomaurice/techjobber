@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Header: 'Lato',
+        Header: 'Lora',
         Body: 'Hammersmith One',
         Default: 'Poppins'
       },
@@ -12,7 +12,7 @@ module.exports = {
         papayawhip: {
           light: '#00ff6c',
           DEFAULT: '#ffefd5',
-          dark: '#13005A'
+          dark: '#11101D'
         }
       },
       screens: {

@@ -16,176 +16,210 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
         integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- EXTERNAL FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Lato:wght@400;700&family=Poppins&display=swap"
-        rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet">
+    <script src="js/main.js"defer></script>
+
+<style>
+    .fixed-link {
+        position: fixed;
+        top: 10;
+        right: 0;
+        z-index: 100;
+    }
+
+    nav:hover i {
+        transform: translateX(5px);
+    }
+
+    body {
+        background-color: #ffffff;
+        background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+
+    }
+
+
+
+
+</style>
 
     
 </head>
 
 <body class="min-h-screen bg-slate-100 font-Default text-black dark:bg-black dark:text-slate-300">
 
-    <span class="fixed text-white dark:text-black text-4xl top-5 z-50  left-4 cursor-pointer" onclick="Open()">
-        <i class="bi bi-justify shadow-2xl px-2 bg-gray-900 dark:bg-gray-100 rounded-md"></i>
-    </span>
-    <div
-        class="sidebar fixed top-0 bottom-0 sm:left-0 left-[-300px] duration-1000 p-2 w-[300px]  overflow-y-auto bg-gray-200 dark:bg-slate-900 z-50 text-center shadow-2xl ">
-
-        <div class="text-xl text-gray-100">
-            <div class="mt-1 flex items-center p-2.5">
-                <h1 class="ml-3 text-3xl sm:text-[15px] font-bold text-gray-200"><img
-                        src="./images/TechJobber Horizontal@300x.png" alt="" class="font-bold w-full text-4xl" >
-                </h1>
-                <i class="bi bi-x text-4xl text-black dark:text-white ml-20 cursor-pointer lg:hidden"
-                    onclick="Open()"></i>
-            </div>
-            <hr class="my-2 text-black ">
-        </div>
-        <div
-            class="p-2.5 mt-3 text-xl flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-green-600">
-            <i class="bi bi-search text-sm"></i>
-            <input type="text" placeholder="Search" class="text-[15px] ml-4 w-full bg-transparent focus:outline-none">
-
-        </div>
-        <div
-            class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="#" target="_blank">
-                <i class="bi bi-house-door-fill"></i>
-                <span class="text-[15px]  ml-4 text-emerald-600"></span>Home</a>
-
-        </div>
-        <div
-            class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="http://" target="_blank">
-                <i class="bi bi-person-check-fill"></i>
-                <span class="text-[15px] ml-4 text-emerald-600"></span>About Us</a>
-
-        </div>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="http://" target="_blank">
-                <i class="bi bi-phone-vibrate-fill"></i>
-                <span class="text-[15px] ml-4 text-emerald-600"></span>Contact Us</a>
+<div class="sidebar min-h-screen duration-1000 overflow-y-auto">
+    <div class="logo-details">
         
-        </div>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="#services" target="_blank">
-                <i class="bi bi-tools"></i>
-                <span class="text-[15px] ml-4 text-emerald-600"></span>Our Services</a>
-        
-        </div>
-
-        <hr class="my-4 text-slate-900 ">
-
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600"
-            onclick="dropdown()">
-            <i class="bi bi-mortarboard-fill"></i>
-            <div class="flex justify-between w-full items-center">
-                <span class="text-[15px] ml-4 text-emerald-600">Our Alumni</span>
-                <span class="text-sm rotate-180" id="arrow">
-                    <i class="bi bi-chevron-down"></i>
-                </span>
-            </div>
-        </div>
-        <div class="text-left text-sm font-thin mt-2 w-4/5 mx-auto text-green-600" id="submenu">
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">January
-                    2023 Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">February
-                    2023 Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">March
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">April
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">May
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">June
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">July
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">August 2023
-                    Cohort</a></h1>
-                <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">September 2023
-                        Cohort</a></h1>
-                <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">October 2023
-                        Cohort</a></h1>
-                <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">November 2023
-                        Cohort</a></h1>
-                <h1 class="cursor-pointer p-2 hover:bg-slate-500 rounded-md mt-1"><a href="http://" target="_blank">December 2023
-                        Cohort</a></h1>
-
-        </div>
-
-        <div
-            class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="job_signup.html" target="_blank">
-                <i class="bi bi-person-workspace"></i>
-                <span class="text-[15px] ml-4 "></span>Job Seeker</a>
-
-        </div>
-        <div
-            class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="talent_signup.html" target="_blank">
-                <i class="bi bi-briefcase-fill"></i>
-                <span class="text-[15px] ml-4 "></span>Talent Seeker</a>
-
-        </div>
-
-        <div
-            class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-700 text-green-600">
-            <a href="http://" target="_blank">
-                <i class="bi bi-box-arrow-in-down-right"></i>
-                <span class="text-[15px] ml-4 "></span>Logout</a>
-
-        </div>
+        <div class="logo_name"><img src="./images/TechJobber Icon@300x.png" width="50px" alt=""></div>
+        <i class='bx bx-menu' id="btn"></i>
     </div>
+    <ul class="nav-list text-green-600">
+        <li>
+            <i class='bx bx-search text-green-600'></i>
+            <input type="text" placeholder="Search...">
+            <span class="tooltip text-green-600">Search</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-home-alt text-green-600'></i>
+                <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-user'></i>
+                <span class="links_name">About</span>
+            </a>
+            <span class="tooltip">About</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-phone-call'></i>
+                <span class="links_name">Contact Us</span>
+            </a>
+            <span class="tooltip">Contact Us</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-git-branch'></i>
+                <span class="links_name">Our Services</span>
+            </a>
+            <span class="tooltip">Our Services</span>
+        </li>
 
-    <main class="min-h-screen absolute top-0 my-14   sm:left-64">
+        <li class="" onclick="dropdown()">
+        
+            <a class="">
+                <i class="bi bi-mortarboard-fill"></i>
+                <span class="links_name">Our Alumni</span>
+        
+                <span class=" rotate-180 ml-2" id="arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </a>
+        
+        </li>
+        <li class="text-left text-sm font-thin mt-2 w-4/5 mx-auto text-green-600" id="submenu">
+            <h1 class="cursor-pointer p-2 mt-1"><a class="hover:p-2" href="http://" target="_blank">January
+                    2023 Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">February
+                    2023 Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">March
+                    2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">April
+                    2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">May
+                    2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">June
+                    2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">July
+                    2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">August 2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">September 2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">October 2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">November 2023
+                    Cohort</a></h1>
+            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">December 2023
+                    Cohort</a></h1>
+        
+        </li>
+
+        <li>
+            <a href="job_signup.html">
+                <i class='bx bx-briefcase'></i>
+                <span class="links_name">Land Tech Jobs Easily</span>
+            </a>
+            <span class="tooltip">Land Tech Jobs Easily</span>
+        </li>
+        <li>
+            <a href="talent_signup.html">
+                <i class='bx bx-layer'></i>
+                <span class="links_name">Recruit Top Tech Talents</span>
+            </a>
+            <span class="tooltip">Recruit Top Tech Talents</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bi bi-tags'></i>
+                <span class="links_name">Recent gigs</span>
+            </a>
+            <span class="tooltip">Recent gigs</span>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class='bx bxs-eyedropper'></i>
+                <span class="links_name">Recent Tech Jobs</span>
+            </a>
+            <span class="tooltip">Recent Tech Jobs</span>
+        </li>
+       
+    </ul>
+</div>
+
+    <main class="home-section min-h-screen w-full absolute top-0 my-3">
+<div class="text p-4  "><img src="./images/TechJobber Horizontal@300x.png" width="250px" alt=""></div>
 
         <section id="hero"
-            class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
-            <article class="sm:w-1/2">
+            class=" widescreen:section-min-height tallscreen:section-min-height mb-3 flex scroll-mt-40 flex-col-reverse items-center justify-center my-3 gap-6 p-6 sm:flex-row">
+            <article class="sm-1/2 w-full">
                 <h2
-                    class="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
-                    You Asked,
-                    <span class="text-green-600 ">We Delivered...</span>
+                    class="w-full text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    You Asked, 
+                    <span class="text-green-600 ">We Delivered</span>
 
                 </h2>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
-                    We're building a system for the next century today....
+                <p class="mt-4 w-full  text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                    Tech Jobber is an innovative digital marketplace that matches individual tech service providers in Africa to tech jobs
+                    <!-- from around the world. CareerEdu has secured partnerships with platforms across Europe to help provide skills for these
+                    tech jobs at very affordable rates, creating remote employment for tech experts in Africa and meeting the increasing
+                    global need for tech expertise. -->
                 </p>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
-                    Think <span class="text-2xl font-bold text-green-600">TechJobber.</span>
-                </p>
+                <button
+                    class="w-36 sm:w-48   sm:mx-0 shadow-lg shadow-black dark:shadow-white  rounded-xl my-6 border border-solid  bg-green-600 py-3 text-white hover:bg-green-500 active:bg-green-500 dark:border-none"><a href="#" target="_blank"> Register Now</a>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
             </article>
-            <img class="w-full sm:w-1/3  rounded-md shadow-black" src="./images/undraw_working_late_re_0c3y.svg"
+            <img class="w-full rounded-full   mr-14 sm:w-1/2  shadow-black" src="./images/person2.png"
                 alt="Rocket Dab" />
         </section>
 
         <section id="hero"
-            class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
-            <article class="sm:w-1/2">
+            class="widescreen:section-min-height tallscreen:section-min-height mb-4 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
+            <article class="sm:w-1/2 w-full">
                 <h2
-                    class="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    class="max-w-md text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     A
                     <span class="text-green-600 ">Flexible</span>
                     Working Experience
 
                 </h2>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
-                    Meet up with your Daily Tasks from Anywhere Around the World <i
-                        class="bi bi-globe text-green-600"></i>
+                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                    Meet up with your Daily Tasks from Anywhere Around the World 
                 </p>
 
             </article>
-            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/undraw_trip_re_f724.svg"
+            <img class="w-full sm:w-1/2  shadow-black rounded-xl" src="./images/person3.png"
                 alt="Rocket Dab" />
         </section>
 
@@ -193,60 +227,60 @@
             class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
             <article class="sm:w-1/2">
                 <h2
-                    class="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    class="max-w-md text-start text-3xl font-Header font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     Let's Help You Get That
                     <span class="text-green-600 "> Dream Job Today</span>
 
                 </h2>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     Perhaps You've Been Searching Effortlessly with Little or no Success. Reach Out to us Today
                 </p>
 
             </article>
-            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/undraw_location_search_re_ttoj (1).svg"
+            <img class="w-full sm:w-1/2  shadow-black rounded-xl" src="./images/person1.png"
                 alt="Rocket Dab" />
         </section>
         <section id="hero"
             class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
             <article class="sm:w-1/2">
-                <h2 class="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                <h2 class="max-w-md text-start text-3xl font-Header font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     Let's Match You With
                     <span class="text-green-600 "> Exceptional</span> Talents For Your Projects
         
                 </h2>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     We are your Trusted Channel in Scouting For Great Talents For Your Projects
                 </p>
         
             </article>
-            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/undraw_connected_world_wuay.svg"
+            <img class="w-full sm:w-1/2  shadow-black rounded-xl" src="./images/person7.png"
                 alt="Rocket Dab" />
         </section>
         <section id="hero"
             class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
             <article class="sm:w-1/2">
-                <h2 class="max-w-md text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-left sm:text-5xl"> Connect With Other Freelancers
+                <h2 class="max-w-md text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl"> Connect With Other Freelancers
                     
                     <span class="text-green-600 "> With Similar Goals</span>
         
                 </h2>
-                <p class="mt-4 max-w-md text-center text-2xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     We Can Link You Up With Other Like-minded Persons
                 </p>
         
             </article>
-            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/undraw_connection_re_lcud.svg"
+            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/person6.png"
                 alt="Rocket Dab" />
         </section>
 
         <hr class="mx-auto w-1/2 bg-black dark:bg-white" />
 
-        <section id="services" class="widescreen:section-min-height tallscreen:section-min-height  scroll-mt-16 p-6">
+        <section id="services" class="widescreen:section-min-height tallscreen:section-min-height  scroll-mt-16 p-3">
             <h2
-                class="mb-6 text-center text-4xl font-bold text-slate-900 hover:text-green-500  dark:text-white sm:text-5xl">
+                class="mb-6 text-center text-4xl font-bold font-Header text-slate-900 hover:text-green-500  dark:text-white sm:text-5xl">
                 <i class="bi bi-tools text-green-600"></i> SERVICES WE OFFER:
             </h2>
-            <ul class="mx-8  flex list-none flex-col items-center gap-8 sm:flex-row">
+            <ul class="flex list-none flex-col items-center gap-8 sm:flex-row">
                 <li
                     class="flex w-2/3 flex-col items-center rounded-3xl py-6 px-2   dark:bg-black dark:border-black sm:w-5/6">
                     <i class="bi bi-palette-fill text-4xl text-green-600"></i>
@@ -279,16 +313,18 @@
 
 
 
-                <li class="flex w-2/3 flex-col items-center  py-6 px-2   dark:bg-black dark:border-black sm:w-5/6">
-                    <i class="bi bi-pen-fill text-4xl text-green-600"></i>
+                
+
+                <li class="flex w-2/3 flex-col items-center py-6 px-2  dark:border-black dark:bg-black sm:w-5/6">
+                    <i class="bx bx-paint text-4xl text-green-600"></i>
                     <h3 class="text-center mt-2 text-xl text-slate-900 dark:text-white">
-                        Writing & Translation
+                        UI/UX Designing
                     </h3>
-
+                
                     <!-- <p class="mt-2 hidden text-center text-3xl text-slate-500 dark:text-slate-400 sm:block">
-                        $$$
-                    </p> -->
-
+                                                            $$
+                                                        </p> -->
+                
                 </li>
 
 
@@ -298,14 +334,14 @@
                 <li class="flex w-2/3 flex-col items-center py-6 px-2  dark:bg-black dark:border-black sm:w-5/6">
                     <i class="bi bi-camera-video-off-fill text-4xl text-green-600"></i>
                     <h3 class="text-center text-xl mt-2 text-slate-900 dark:text-white">
-                        Animation & Video
+                        Video Editing
                     </h3>
 
                 </li>
                 <li class="flex w-2/3 flex-col items-center  py-6 px-2   dark:bg-black dark:border-black sm:w-5/6">
                     <i class="bi bi-music-note-beamed text-4xl text-green-600"></i>
                     <h3 class="text-center mt-2 text-xl text-slate-900 dark:text-white">
-                        Music & Audio
+                        Music Production
                     </h3>
                     <!-- <p class="mt-2 hidden text-center text-2xl text-slate-500 dark:text-slate-400 sm:block">
                             $
@@ -315,7 +351,7 @@
                 <li class="flex w-2/3 flex-col items-center py-6 px-2  dark:border-black dark:bg-black sm:w-5/6">
                     <i class="bi bi-code-slash text-4xl text-green-600"></i>
                     <h3 class="text-center mt-2 text-xl text-slate-900 dark:text-white">
-                        Programming & Tech
+                        Web Development
                     </h3>
 
                     <!-- <p class="mt-2 hidden text-center text-3xl text-slate-500 dark:text-slate-400 sm:block">
@@ -324,20 +360,23 @@
 
                 </li>
 
-
-
-                <li class="flex w-2/3 flex-col items-center py-6 px-2  dark:bg-black dark:border-black sm:w-5/6">
-                    <i class="bi bi-building-check text-4xl text-green-600"></i>
+                <li class="flex w-2/3 flex-col items-center  py-6 px-2   dark:bg-black dark:border-black sm:w-5/6">
+                    <i class="bi bi-pen-fill text-4xl text-green-600"></i>
                     <h3 class="text-center mt-2 text-xl text-slate-900 dark:text-white">
-                        Business
+                        E-booking & Copyrighting
                     </h3>
-
+                
                     <!-- <p class="mt-2 hidden text-center text-3xl text-slate-500 dark:text-slate-400 sm:block">
-                            $$$
-                        </p> -->
-
+                                        $$$
+                                    </p> -->
+                
                 </li>
 
+                
+
+
+
+                
 
             </ul>
 
@@ -348,14 +387,14 @@
         </section>
 
         <section id="hero" data-aos="fade-up"
-            class="widescreen:section-min-height md:mt-3 tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col items-center justify-center  w-full rounded-xl bg-green-700 sm:mx-8 gap-6 p-6 sm:flex-row">
+            class="widescreen:section-min-height md:mt-3 tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col items-center justify-center  w-full rounded-xl bg-green-700  gap-6 p-6 sm:flex-row-reverse">
             <article class="sm:w-1/2 w-full">
                 <h2
-                    class="max-w-md text-start text-2xl font-extrabold  text-slate-50 sm:text-left sm:text-4xl">
-                    All Geared Towards Your Satisfaction...
+                    class="max-w-md text-start text-2xl font-Header font-extrabold  text-slate-50 sm:text-left sm:text-5xl">
+                    All Geared Towards Your Satisfaction
 
                 </h2>
-                <p class="mt-4 max-w-md text-start text-lg text-slate-50 sm:text-left"><i
+                <p class="mt-4 max-w-full text-start text-lg text-slate-50 sm:text-left"><i
                         class="bi bi-check-circle text-green-500"></i>
                     Connect to freelancers with proven business experience
                 </p>
@@ -369,17 +408,184 @@
                 </p>
 
             </article>
-            <img class="w-full sm:w-1/2" src="./images/hero.png" alt="hug" />
+            <img class="w-full sm:w-1/2" src="./images/person8.png" alt="hug" />
         </section>
 
         <!-- hero section ends -->
 
         <hr class="mx-auto w-1/2 bg-black dark:bg-white" />
 
+        <section id="hero"
+            class=" widescreen:section-min-height md:mt-3 tallscreen:section-min-height  flex scroll-mt-40 flex-col items-center justify-center  w-full  bg-green-900   gap-6 p-6 sm:flex-row">
+            <article class="sm:w-1/2 w-full">
+                <h2 class="max-w-md text-start text-2xl font-Header  font-extrabold  text-white sm:text-left sm:text-5xl">
+                    Recruit Top Tech Talents
+        
+                </h2>
+                <p class="mt-6 max-w-full text-start font-bold  text-xl text-white sm:text-left">
+                    We have a Community of Great Talents, Mostly Trained and Verified By Us.
+                </p>
+                
+                   
+                
+                
+        
+            </article>
+            <img class="sm:w-1/2 w-full" src="./images/bg-5.png" alt="">
+           </section>
+
+           
+<section class="left-48 sm:-mt-20 sm:mb-12 my-6 mx-auto">
+
+    <ul class="mx-auto   flex list-none flex-col items-center gap-6 sm:flex-row">
+        <li
+            class="flex w-2/3 flex-col items-center rounded-md border border-solid hover:bg-white text-white hover:text-green-600 bg-green-600 mx-3  py-6 px-2 shadow-xl sm:w-5/6">
+
+            <h3 class="text-center text-2xl ">
+
+                <a href="" target="_blank">Make Job Postings <i class="fas fa-chevron-right"></i></a>
+            </h3>
+            <!-- <p class="mt-2 hidden text-center text-2xl text-slate-500 dark:text-slate-400 sm:block">
+                                        $
+                                    </p> -->
+            <!-- <p class="mt-2 text-center text-xl text-slate-500 dark:text-slate-400">
+                        Data Analysis with Excel
+                    </p> -->
+        </li>
+
+        <li
+            class="flex w-2/3 flex-col items-center rounded-md border hover:bg-white hover:text-green-600 text-slate-50   bg-green-600 py-6 px-2 shadow-xl  sm:w-5/6">
+
+            <h3 class="text-center text-2xl ">
+                <a href="http://" target="_blank">Let's Help You Hire the Right Talent <i class="bx bx-bulb"></i></a>
+            </h3>
+            <!-- <p class="mt-2 hidden text-center text-3xl text-slate-500 dark:text-slate-400 sm:block">
+                                $$
+                            </p> -->
+            <p class="mt-2 text-center text-xl text-slate-500 dark:text-slate-400">
+
+            </p>
+        </li>
+        <li
+            class="flex w-2/3  flex-col items-center rounded-md border border-solid hover:text-green-600 text-white hover:bg-white  bg-green-600 py-6 px-2 shadow-xl mx-6  sm:w-5/6">
+
+            <h3 class="text-center text-2xl">
+                <a href="http://" target="_blank">Browse Through Projects <i class="fas fa-globe-africa"></i></a>
+            </h3>
+            <!-- <p class="mt-2 hidden text-center text-2xl text-slate-500 dark:text-slate-400 sm:block">
+                        $
+                    </p> -->
+
+        </li>
+
+
+
+    </ul>
+
+
+
+
+
+</section>
+        
 
 
 
     </main>
+
+
+
+    <!-- footer section starts -->
+    <section
+        class="home-section   footer justify-between items-start shadow-2xl  bg-slate-50 dark:bg-slate-900  text-blue ">
+    
+        <div class="box-container mx-3   flex md:flex-row flex-col justify-between justify-items-center items-center">
+            <div class="box  p-3 text-base  flex flex-col">
+                <h3 class="text-black dark:text-white"><img src="./images/TechJobber Horizontal@300x.png" width="250"></h3>
+                <!-- <p class="text-black dark:text-white">
+                    1<sup>st</sup> FLoor, <br>
+                    North Westgate House, Harlow<br>
+                    Essex, CM20 1YS <br><br> -->
+                    <!-- <strong>Phone:</strong> +44 786 9467 057<br>
+                    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                        data-cfemail="83eaede5ecc3e0e2f1e6e6f1e6e7f6ade0ecadf6e8">[email&#160;protected]</a><br>
+                </p> -->
+            </div>
+    
+            <div class="box flex p-4 mx-1  flex-col text-base">
+                <h3 class="text-black text-xl   mt-12 dark:text-white text-start">Useful links</h3>
+                <p class="py-2"><a class="text-base text-black py-2 dark:text-white" href="#home"><i class="fas fa-home px-1 text-green-700"></i>
+                    Home</a></p>
+                <p class="py-2"><a class="text-black py-2 dark:text-white" href="#about"><i class="fas fa-user-alt text-green-700 px-1"></i>
+                    About</a></p>
+               <p class="py-2"><a class="text-black py-2 dark:text-white" href="#services"><i class="fas fa-server text-green-700 px-1"></i>
+                    Services</a></p> 
+                <p class="py-2"><a class="text-black py-2 dark:text-white" href="#education"><i class="fas fa-clipboard text-green-700 px-1"></i>
+                    Terms of Service</a></p>
+               <p class="py-2"><a class="text-black py-2 dark:text-white" href="#work"><i class="fas fa-user-secret text-green-700 px-1"></i>
+                    Privacy Policy</a></p> 
+    
+            </div>
+    
+            <div class="box flex p-6   flex-col text-base  ">
+                <h3 class="text-xl mt-12 text-black dark:text-white text-start">More Services</h3>
+    
+                <p class="py-2"> <a class="text-black py-2 dark:text-white" href="/pricing/"><i class="fas fa-graduation-cap text-green-700 px-1"></i>IELTS
+                        Masterclasses</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href="/scholarship/"><i class="fas fa-user-plus text-green-700 px-1"></i>UK
+                        NARIC/ECCTIS Service</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-piggy-bank text-green-700 px-1"></i>Proof Of Fund
+                        Service</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-mosque text-green-700 px-1"></i>CareerEdu Oman
+                        Service</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-plane text-green-700 px-1"></i>Australian Study
+                        Service</a></p>
+    
+            </div>
+     
+    
+    
+    
+            <div class="box flex p-6    flex-col text-base">
+                <h3 class="text-xl mt-12  text-black dark:text-white text-start">Services</h3>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-building px-1 text-green-700"></i>Recruit Top Tech Talents</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href="/scholarship/"><i class="fas fa-search text-green-700 px-1"></i></a>Land Tech Jobs</p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-book px-1 text-green-700"></i>Make Job Postings</a>
+                </p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-clipboard-list px-1 text-green-700"></i>Hire Tech Talents</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-tags px-1 text-green-700"></i>Contact Us</a></p>
+               
+    
+                
+            </div>
+    
+    
+    
+        </div>
+    
+        <div class="text-blue flex m-3 justify-between sm:flex-row flex-col-reverse mb-4  text-center text-lg mt-3 py-3 mx-3">
+            <div class="copyright">
+              &copy; Copyright <strong><span>TechJobber</span></strong>.2023
+            </div>
+            <!-- <div class="credits">
+                Designed by <a href="https://www.linkedin.com/in/odo-maurice-b99197198/" target="_blank">Alphacodez.</a>
+            </div> -->
+
+
+            <div class="share sm:mr-8 text-base flex-nowrap">
+            
+                <a href="https://www.twitter.com/CareerEdu_" aria-label="Twitter" class="fab fa-twitter"></a>
+                <a href="https://www.facebook.com/careereduservices" class="facebook fab fa-facebook"><i
+                        class="fas fa-facebook"></i></a>
+                <a href="https://www.instagram.com/careereduservices" class="instagram fab fa-instagram"><i
+                        class="fas fa-instagram"></i></a>
+            
+                <a href="https://www.linkedin.com/company/careereduservices" class="linkedin fab fa-linkedin"><i
+                        class="fas fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
 
 
 
