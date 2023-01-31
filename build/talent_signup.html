@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SITE FAVICON -->
-    <link href="./images/TechJobber Icon@300x.png" rel="icon">
-    <link href="./images/TechJobber Icon@300x.png" rel="apple-touch-icon">
-    <title>TechJobber:Register</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/TechJobber Icon@300x.png" type="image/x-icon" />
+
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Font Awesome -->
@@ -19,40 +22,22 @@
     <!-- EXTERNAL FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Lato:wght@400;700&family=Poppins&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet">
 
 
-    <script src="js/main.js" defer></script>
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-    <style>
-        .fixed-link {
-            position: fixed;
-            top: 10;
-            right: 0;
-            z-index: 100;
-        }
-
-        nav:hover i {
-            transform: translateX(5px);
-        }
-
-        body {
-            background-color: #ffffff;
-            background-image: url("https://www.transparenttextures.com/patterns/xv.png");
-
-        }
-    </style>
-
+    <script src="js/main.js"></script>
 
 </head>
 
-<body class="min-h-screen bg-white text-black dark:bg-black    dark:text-white font-Default">
-    <header class="sticky top-0 z-10 bg-white dark:bg-black  mx-auto">
+<body class="bg-white text-black dark:bg-black dark:text-white font-Default">
+
+    <header class="sticky top-0 z-10 bg-white dark:bg-black font-Default mb-12 mx-auto">
         <section class="mx-auto flex max-w-full items-center justify-between p-4">
             <a class="navbar-brand" href="#"><img src="./images/TechJobber Horizontal@300x.png" alt="" class=""
-                    width="150px"></a>
+                    width="200px"></a>
             <div>
                 <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden ">
                     <!-- &#9776; -->
@@ -61,12 +46,11 @@
                     </div>
                 </button>
                 <nav class="hidden space-x-8 text-base md:block" aria-label="main">
-                    <a href="index.html" class="w-full  py-6 text-center hover:opacity-90">HOME <i
+                    <a href="index.html" class="w-full font-Default  py-6 text-center hover:opacity-90">HOME <i
                             class="fas fa-arrow-right text-green-600"></i> </a>
 
-                    <a href="faculty.html" class="w-full py-6 text-center hover:opacity-90">SIGNUP <i
-                            class="fas fa-arrow-right text-green-600"></i> </a>
-                    <a href="faculty.html" class="w-full py-6 text-center hover:opacity-90">SIGNIN <i
+                    
+                    <a href="landing.html" class="w-full py-6 text-center hover:opacity-90">REGISTER <i
                             class="fas fa-arrow-right text-green-600"></i> </a>
 
 
@@ -82,111 +66,162 @@
             <nav class="flex min-h-screen  flex-col items-center py-8" aria-label="mobile">
                 <a href="index.html" class="w-full py-6 text-center hover:opacity-90"><i
                         class="fas fa-home text-green-600"></i> HOME</a>
-                <a href="" class="w-full py-6 text-center hover:opacity-90"><i
-                        class="fas fa-sign-in-alt text-green-600"></i> SIGNUP</a>
-                <a href="faculty.html" class="w-full py-6 text-center hover:opacity-90"><i
+               
+                <a href="landing.html" class="w-full py-6 text-center hover:opacity-90"><i
                         class="fas fa-sign-out-alt text-green-600"></i>
-                    SIGNIN</a>
+                    REGISTER</a>
 
 
 
             </nav>
         </section>
     </header>
-
-    <section id="hero"
-        class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
-        <article class="sm:w-1/2">
-            <div id="contact" class="mt-16 w-full p-3">
-
-                <form action=""
-                    class="items-left mx-auto rounded-xl border border-solid shadow-black flex shadow-2xl p-6 flex-col gap-4 text-base sm:text-lg">
-                    <div class="w-full flex justify-between mr-2 gap-4">
-
-                        <input type="text" id="subject" name="subject" required minlength="3" maxlength="60"
-                            placeholder="Your Firstname"
-                            class="w-full  border border-solid rounded-md p-1 text-base text-black dark:border-none sm:text-lg" />
-
-
-                        <input type="text" id="subject" name="subject" required minlength="3" maxlength="60"
-                            placeholder="Your Lastname"
-                            class="w-full rounded-md border  p-2 text-base text-black dark:border-none sm:text-lg" />
+    <section class="container_3 bg-white dark:bg-black mt-36 sm:mt-28  forms">
+        <div class="form login">
+            <div class="form-content">
+                <div class="text-green-700 mt-3 header"> <i class="bx bx-log-out-circle"></i> Login as Tech Recruiter</div>
+                <form action="#">
+                    <div class="field input-field">
+                        <input type="email" placeholder="Email" class="input">
                     </div>
 
-                    <input type="email" id="subject" name="email" required minlength="3" maxlength="60"
-                        placeholder="Your Email"
-                        class="w-full rounded-md border active:bg-green-600 p-2 text-base text-black dark:border-none sm:text-lg" />
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
 
-                    <input type="password" id="" name="password" required minlength="3" maxlength="60"
-                        placeholder="Your Password"
-                        class="w-full rounded-md border active:bg-green-600 p-2 text-base text-black dark:border-none sm:text-lg" />
-                    <input type="password" id="" name="password-reset" required minlength="3" maxlength="60"
-                        placeholder="Confirm Your Password" />
+                    <div class="form-link">
+                        <a href="#" class="forgot-pass text-black dark:text-white">Forgot password?</a>
+                    </div>
 
-                    <input type="text" id="" name="description" required minlength="3" maxlength="60"
-                        placeholder="Seeking For?"
-                        class="w-full rounded-md border active:bg-green-600 p-2 text-base text-black dark:border-none sm:text-lg" />
-                    <input type="text" id="number" name="experience" required minlength="3" maxlength="60"
-                        placeholder="Name Of Establishment"
-                        class="w-full rounded-md border active:bg-green-600 p-2 text-base text-black dark:border-none sm:text-lg" />
-                    <input type="number" id="subject" name="charge" required minlength="3" maxlength="60"
-                        placeholder="Service Budget(USD)"
-                        class="w-full rounded-md border active:bg-green-600 p-2 text-base text-black dark:border-none sm:text-lg" />
-                    <a href="talent_signin.html" class="hover:text-green-500" target="_blank">Have a Membership?</a>
-
-
-
-                    <button
-                        class="w-48 rounded-xl border border-solid border-slate-900 bg-green-700 p-1 text-white hover:bg-green-500 active:bg-green-500 dark:border-none">
-                        Register
-                    </button>
+                    <div class="field button-field">
+                        <button>Login</button>
+                    </div>
                 </form>
+
+                <div class="form-link text-white">
+                    <span class="text-black dark:text-white">New Membership? <a href="#"
+                            class="link signup-link">Signup</a></span>
+                </div>
             </div>
 
-        </article>
-        <img class="w-full     sm:w-1/2  rounded-md shadow-black  " src="./images/signup3.png" alt="Rocket Dab" />
+            <div class="line"></div>
+
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class='bx bxl-facebook facebook-icon'></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <img src="./images/google.png" alt="" class="google-img">
+
+                    <span class="text-black dark:text-white">Login with Google</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Signup Form -->
+
+        <div class="form signup">
+            <div class="form-content ">
+                <div class="text-green-700 mt-32 header"> <i class="bx bx-log-in-circle"></i>Signup as Tech Recruiter</div>
+                <form action="#">
+                    <div class="field input-field">
+                        <input type="text" placeholder="Firstname" class="input">
+                    </div>
+                    <div class="field input-field">
+                        <input type="text" placeholder="Lastname" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="email" placeholder="Email" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" placeholder="Create password" class="password">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" placeholder="Confirm password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+                    <div class="field input-field">
+                        <input type="text" placeholder="Company Name(If any)" class="input">
+                    </div>
+                    <div class="field input-field">
+                        <input type="text" placeholder="Searching For?" class="input">
+                    </div>
+                    <div class="field input-field">
+                        <input type="number" placeholder="Service Budget" class="input">
+                    </div>
+
+                    <div class="field button-field">
+                        <button>Signup</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span class="text-black dark:text-white">Already have a Membership? <a href="#"
+                            class="link login-link">Login</a></span>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class='bx bxl-facebook facebook-icon'></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <img src="./images/google.png" alt="" class="google-img">
+                    <span class="text-black dark:text-white">Login with Google</span>
+                </a>
+            </div>
+
+        </div>
     </section>
 
+    <script>
+        const forms = document.querySelector(".forms"),
+            pwShowHide = document.querySelectorAll(".eye-icon"),
+            links = document.querySelectorAll(".link");
 
-    <!-- <section id=" max-h-screen"
-        class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
-        <article class="sm:w-1/2 w-full mb-16">
-            <img src="./images/signup1.png" alt="">
-    
-    
-        </article>
-        <div id="contact" class="mt-16 w-full">
-    
-            <form action="" class="items-left mx-auto flex  flex-col gap-4 text-base sm:text-lg">
-                <div class="w-full flex justify-between mr-2 gap-4">
-    
-                    <input type="text" id="subject" name="subject" required minlength="3" maxlength="60"
-                        placeholder="Your Name"
-                        class="w-1/2  border border-solid rounded-xl border-slate-900 p-1 text-base text-black dark:border-none sm:text-lg" />
-    
-    
-                    <input type="text" id="subject" name="subject" required minlength="3" maxlength="60"
-                        placeholder="Your Email"
-                        class="w-1/2 rounded-xl border border-solid border-slate-900 p-2 text-base text-black dark:border-none sm:text-lg" />
-                </div>
-    
-                <input type="text" id="subject" name="subject" required minlength="3" maxlength="60" placeholder="Subject"
-                    class="w-full rounded-xl border border-solid border-slate-900 p-2 text-base text-black dark:border-none sm:text-lg" />
-    
-    
-                <textarea name="message" id="message" cols="" rows="10" placeholder="Your Message" required
-                    class="w-full rounded-xl border border-solid border-slate-900 p-2 text-base text-black dark:border-none sm:text-lg"></textarea>
-                <button
-                    class="w-48 rounded-xl border border-solid border-slate-900 bg-green-700 p-1 text-white hover:bg-green-500 active:bg-green-500 dark:border-none">
-                    Submit
-                </button>
-            </form>
-        </div>
-    </section> -->
+        pwShowHide.forEach(eyeIcon => {
+            eyeIcon.addEventListener("click", () => {
+                let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
 
-    <hr class="mx-auto w-1/2 bg-black dark:bg-white" />
+                pwFields.forEach(password => {
+                    if (password.type === "password") {
+                        password.type = "text";
+                        eyeIcon.classList.replace("bx-hide", "bx-show");
+                        return;
+                    }
+                    password.type = "password";
+                    eyeIcon.classList.replace("bx-show", "bx-hide");
+                })
 
+            })
+        })
 
+        links.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault(); //preventing form submit
+                forms.classList.toggle("show-signup");
+            })
+        })
 
+    </script>
 
+    <!-- JavaScript -->
+    <!--<script src="js/script.js"></script>-->
 </body>
+
+</html>

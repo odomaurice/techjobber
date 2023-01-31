@@ -24,11 +24,14 @@
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
+<!-- Unicons CSS -->
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
     <!-- EXTERNAL FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet">
-    <script src="js/main.js"defer></script>
+    <script src="js/script.js"defer></script>
 
 <style>
     .fixed-link {
@@ -44,7 +47,7 @@
 
     body {
         background-color: #ffffff;
-        background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+        /* background-image: url("https://www.transparenttextures.com/patterns/xv.png"); */
 
     }
 
@@ -58,149 +61,140 @@
 
 <body class="min-h-screen bg-slate-100 font-Default text-black dark:bg-black dark:text-slate-300">
 
-<div class="sidebar min-h-screen duration-1000 overflow-y-auto">
-    <div class="logo-details">
+    <div class="container">
+        <nav class="nav z-50 mx-auto bg-white text-black dark:bg-black dark:text-white">
+            <i class="uil uil-bars navOpenBtn"></i>
+            <a href="#" class="logo"><img src="./images/TechJobber Horizontal@300x.png" alt="" width="200px"></a>
         
-        <div class="logo_name"><img src="./images/TechJobber Icon@300x.png" width="50px" alt=""></div>
-        <i class='bx bx-menu' id="btn"></i>
+            <ul class="nav-links mx-auto  bg-white text-black dark:bg-black dark:text-slate-100">
+                <i class="uil uil-times navCloseBtn"></i>
+                <li class=""><a class="hover:text-green-600" href="#">Home</a></li>
+                <li><a class="hover:text-green-600" href="#">About</a></li>
+                <li><a class="hover:text-green-600" href="#"> Contact</a></li>
+                <li class="" onclick="dropdown()">
+        
+                    <a class="">
+        
+                        <span class="links_name">Our Alumni</span>
+        
+                        <span class=" rotate-180 ml-2" id="arrow">
+                            <i class="fas fa-chevron-down text-green-700"></i>
+                        </span>
+                    </a>
+        
+                </li>
+        
+                <li class="text-justify lg:absolute lg:top-6 lg:right-5 lg:py-24 px-8 py-1 lg:shadow-xl lg:rounded-2xl  text-md font-thin mt-1 lg:mt-12 flex lg:flex-row flex-col justify-start  w-4/5  lg:text-slate-50 text-green-600 lg:bg-slate-900"
+                    id="submenu">
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank"> January <br> <span class="text-base text-slate-100 lg:visible hidden"> 2023</span> </a></h1> 
+                    </div>
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank">
+                                February <br> <span class="text-base text-slate-100 lg:visible hidden">2023</span> </a></h1>
+                    </div>
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank">
+                                March <br> <span class="text-base text-slate-100 lg:visible hidden"> 2023</span> </a></h1>
+                    </div>
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank">
+                                April <br> <span class="text-base text-slate-100 lg:visible hidden"> 2023</span> </a></h1>
+                    </div>
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank">
+                                May <br> <span class="text-base text-slate-100 lg:visible hidden"> 2023</span> </a></h1>
+                    </div>
+                    <div class="flex items-start  justify-start mx-2">
+                        <i class="fas fa-graduation-cap lg:text-2xl mb-2 bg-slate-100 text-green-400 rounded-xl p-2"></i>
+                        <h1 class="cursor-pointer lg:text-xl text-green-600 mx-2  p-1"><a class="hover:p-2" href="http://" target="_blank">
+                                June <br> <span class="text-base text-slate-100 lg:visible hidden"> 2023</span> </a></h1>
+                    </div>
+                   
+                    
+                   
+                </li>
+        
+        
+                <!-- <li>
+                        <a href="#">
+                            
+                        Recent gigs
+                        </a>
+                       
+                    </li> -->
+        
+                <li class="text-start">
+                    <a href="#">
+        
+                        Recent Tech Jobs
+                    </a>
+        
+                </li>
+                <!-- <li>
+                    <a href="job_signup.html">
+        
+                        Register
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="talent_signup.html">
+        
+                        Recruit Top Tech Talents
+                    </a>
+        
+                </li>
+        
+         -->
+        
+            </ul>
+
+            <button class="mx-4 border border-solid border-green-600 p-2 rounded-md hover:bg-green-600" type="submit"><a href="landing.html" target="_blank">Register</a></button>
+        
+            <i class="uil uil-search search-icon" id="searchIcon"></i>
+            <div class="search-box">
+                <i class="uil uil-search search-icon"></i>
+                <input type="text" placeholder="Search here..." />
+            </div>
+        
+        
+        </nav>
+
+
     </div>
-    <ul class="nav-list text-green-600">
-        <li class="">
-            <i class='bx bx-search text-green-600'></i>
-            <input type="text" placeholder="Search...">
-            <span class="tooltip text-green-600">Search</span>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-home-alt text-green-600'></i>
-                <span class="links_name">Home</span>
-            </a>
-            <span class="tooltip">Home</span>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-user'></i>
-                <span class="links_name">About</span>
-            </a>
-            <span class="tooltip">About</span>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-phone-call'></i>
-                <span class="links_name">Contact Us</span>
-            </a>
-            <span class="tooltip">Contact Us</span>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-git-branch'></i>
-                <span class="links_name">Our Services</span>
-            </a>
-            <span class="tooltip">Our Services</span>
-        </li>
 
-        <li class="" onclick="dropdown()">
-        
-            <a class="">
-                <i class="bi bi-mortarboard-fill"></i>
-                <span class="links_name">Our Alumni</span>
-        
-                <span class=" rotate-180 ml-2" id="arrow">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-            </a>
-        
-        </li>
-        <li class="text-left text-sm font-thin mt-2 w-4/5 mx-auto text-green-600" id="submenu">
-            <h1 class="cursor-pointer p-2 mt-1"><a class="hover:p-2" href="http://" target="_blank">January
-                    2023 Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">February
-                    2023 Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">March
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">April
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">May
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">June
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">July
-                    2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">August 2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">September 2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">October 2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">November 2023
-                    Cohort</a></h1>
-            <h1 class="cursor-pointer p-2  mt-1"><a class="hover:p-2" href="http://" target="_blank">December 2023
-                    Cohort</a></h1>
-        
-        </li>
+    
 
-        <li>
-            <a href="job_signup.html">
-                <i class='bx bx-briefcase'></i>
-                <span class="links_name">Land Tech Jobs Easily</span>
-            </a>
-            <span class="tooltip">Land Tech Jobs Easily</span>
-        </li>
-        <li>
-            <a href="talent_signup.html">
-                <i class='bx bx-layer'></i>
-                <span class="links_name">Recruit Top Tech Talents</span>
-            </a>
-            <span class="tooltip">Recruit Top Tech Talents</span>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bi bi-tags'></i>
-                <span class="links_name">Recent gigs</span>
-            </a>
-            <span class="tooltip">Recent gigs</span>
-        </li>
 
-        <li>
-            <a href="#">
-                <i class='bx bxs-eyedropper'></i>
-                <span class="links_name">Recent Tech Jobs</span>
-            </a>
-            <span class="tooltip">Recent Tech Jobs</span>
-        </li>
-       
-    </ul>
-</div>
-
-    <main class="home-section min-h-screen w-full absolute top-0 my-3">
-<div class="text p-4  "><img src="./images/TechJobber Horizontal@300x.png" width="250px" alt=""></div>
+    <main class="home-section min-h-screen w-full absolute top-0 my-12">
 
         <section id="hero"
-            class=" widescreen:section-min-height  mb-3 w-full flex scroll-mt-40 flex-col-reverse items-center justify-center my-3 gap-6 p-6 sm:flex-row">
+            class=" widescreen:section-min-height  mb-3 w-full flex scroll-mt-40 flex-col-reverse items-center justify-center mt-12  gap-6 p-6 sm:flex-row">
             <article class="sm-1/2 w-full">
                 <h2
-                    class="w-full text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    class="w-full text-center text-3xl font-extrabold  text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     You Asked, 
                     <span class="text-green-600 ">We Delivered</span>
 
                 </h2>
-                <p class="mt-4 w-full  text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 text-center text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     Tech Jobber is an innovative digital marketplace that matches individual tech service providers in Africa to tech jobs
                     <!-- from around the world. CareerEdu has secured partnerships with platforms across Europe to help provide skills for these
                     tech jobs at very affordable rates, creating remote employment for tech experts in Africa and meeting the increasing
                     global need for tech expertise. -->
                 </p>
                 <button
-                    class="w-36 sm:w-48   sm:mx-0 shadow-lg shadow-black dark:shadow-white  rounded-xl my-6 border border-solid  bg-green-600 py-3 text-white hover:bg-green-500 active:bg-green-500 dark:border-none"><a href="#" target="_blank"> Register Now</a>
+                    class="button my-6 mx-12 ml-20  sm:ml-0 sm:mx-0"><a href="#" target="_blank"> Register Now</a>
                     <i class="fas fa-sign-in-alt"></i>
                 </button>
             </article>
-            <img class="w-full rounded-full   mr-14 sm:w-1/2  shadow-black" src="./images/person2.png"
+            <img class="w-full rounded-full    sm:w-1/2  shadow-black" src="./images/person2.png"
                 alt="Rocket Dab" />
         </section>
 
@@ -208,13 +202,13 @@
             class="w-full widescreen:section-min-height  mb-4 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
             <article class="sm:w-1/2 w-full">
                 <h2
-                    class="max-w-md text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    class="max-w-md text-center text-3xl font-extrabold  text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     A
                     <span class="text-green-600 ">Flexible</span>
                     Working Experience
 
                 </h2>
-                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-center text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     Meet up with your Daily Tasks from Anywhere Around the World 
                 </p>
 
@@ -227,12 +221,12 @@
             class="widescreen:section-min-height  mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
             <article class="sm:w-1/2">
                 <h2
-                    class="max-w-md text-start text-3xl font-Header font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                    class="max-w-md text-center text-3xl  font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     Let's Help You Get That
                     <span class="text-green-600 "> Dream Job Today</span>
 
                 </h2>
-                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-center text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     Perhaps You've Been Searching Effortlessly with Little or no Success. Reach Out to us Today
                 </p>
 
@@ -241,35 +235,35 @@
                 alt="Rocket Dab" />
         </section>
         <section id="hero"
-            class="widescreen:section-min-height  mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
+            class="widescreen:section-min-height w-full  mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row-reverse">
             <article class="sm:w-1/2">
-                <h2 class="max-w-md text-start text-3xl font-Header font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
+                <h2 class="max-w-md text-center text-3xl  font-extrabold text-slate-900 dark:text-white sm:text-left sm:text-5xl">
                     Let's Match You With
                     <span class="text-green-600 "> Exceptional</span> Talents For Your Projects
         
                 </h2>
-                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-center text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     We are your Trusted Channel in Scouting For Great Talents For Your Projects
                 </p>
         
             </article>
-            <img class="w-full sm:w-1/2  shadow-black rounded-xl" src="./images/person7.png"
+            <img class="w-full sm:w-1/2  shadow-black rounded-xl" src="./images/person7.png" width="500px"
                 alt="Rocket Dab" />
         </section>
         <section id="hero"
             class="widescreen:section-min-height  mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-6 p-6 sm:flex-row">
             <article class="sm:w-1/2">
-                <h2 class="max-w-md text-start text-3xl font-extrabold font-Header text-slate-900 dark:text-white sm:text-left sm:text-5xl"> Connect With Other Freelancers
+                <h2 class="max-w-md text-center text-3xl font-extrabold  text-slate-900 dark:text-white sm:text-left sm:text-5xl"> Connect With Other Freelancers
                     
                     <span class="text-green-600 "> With Similar Goals</span>
         
                 </h2>
-                <p class="mt-4 max-w-md text-start text-xl text-slate-700 dark:text-slate-400 sm:text-left">
+                <p class="mt-4 max-w-md text-center text-xl text-slate-700 dark:text-slate-400 sm:text-left">
                     We Can Link You Up With Other Like-minded Persons
                 </p>
         
             </article>
-            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/person6.png"
+            <img class="w-full sm:w-1/3  shadow-black rounded-xl" src="./images/person6.png" width="500px"
                 alt="Rocket Dab" />
         </section>
 
@@ -415,6 +409,43 @@
 
         <hr class="mx-auto w-1/2 bg-black dark:bg-white" />
 
+        <section class="container_2 text-green-700  bg-black">
+            <!-- <img src="#" alt="" class="image" /> -->
+            <header>Coming Soon Page</header>
+            <p>
+                Our website is under construction. We're working hard to improve our
+                website and we'll ready to launch after.
+            </p>
+            <div class="time-content">
+                <div class="time days">
+                    <span class="number"></span>
+                    <span class="text">days</span>
+                </div>
+                <div class="time hours">
+                    <span class="number"></span>
+                    <span class="text">hours</span>
+                </div>
+                <div class="time minutes">
+                    <span class="number"></span>
+                    <span class="text">minutes</span>
+                </div>
+                <div class="time seconds">
+                    <span class="number"></span>
+                    <span class="text">seconds</span>
+                </div>
+            </div>
+        
+            <!-- <div class="email-content">
+                        <p>Subscribe now to get the latest updates!</p>
+                
+                        <div class="input-box">
+                            <input type="email" placeholder="Enter your email" />
+                            <button>Notify Me</button>
+                        </div>
+                    </div> -->
+        </section>
+
+
         <section id="hero"
             class=" widescreen:section-min-height md:mt-3 tallscreen:section-min-height  flex scroll-mt-40 flex-col items-center justify-center  w-full  bg-green-900   gap-6 p-6 sm:flex-row">
             <article class="sm:w-1/2 w-full">
@@ -433,6 +464,7 @@
             </article>
             <img class="sm:w-1/2 w-full" src="./images/bg-5.png" alt="">
            </section>
+
 
            
 <section class="left-48 sm:-mt-20 sm:mb-12 my-6 mx-auto">
@@ -487,32 +519,23 @@
 
 
 </section>
-        
 
 
 
-    </main>
+<section
+    class="home-section   footer justify-between items-start   bg-slate-50 dark:bg-slate-900  ">
 
-
-
-    <!-- footer section starts -->
-    <section
-        class="home-section   footer justify-between items-start shadow-2xl  bg-slate-50 dark:bg-slate-900  text-blue ">
+    <div class="box-container mx-3   flex md:flex-row flex-col justify-between justify-items-center items-center">
+        <div class="box  p-3 text-base  flex flex-col">
+            <h3 class="text-black dark:text-white"><img src="./images/TechJobber Horizontal@300x.png" width="250"></h3>
+            <p class="text-black dark:text-white">
+                1<sup>st</sup> FLoor, <br>
+                North Westgate House, Harlow<br>
+                Essex, CM20 1YS <br><br> 
+               
+                 </div>
     
-        <div class="box-container mx-3   flex md:flex-row flex-col justify-between justify-items-center items-center">
-            <div class="box  p-3 text-base  flex flex-col">
-                <h3 class="text-black dark:text-white"><img src="./images/TechJobber Horizontal@300x.png" width="250"></h3>
-                <!-- <p class="text-black dark:text-white">
-                    1<sup>st</sup> FLoor, <br>
-                    North Westgate House, Harlow<br>
-                    Essex, CM20 1YS <br><br> -->
-                    <!-- <strong>Phone:</strong> +44 786 9467 057<br>
-                    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                        data-cfemail="83eaede5ecc3e0e2f1e6e6f1e6e7f6ade0ecadf6e8">[email&#160;protected]</a><br>
-                </p> -->
-            </div>
-    
-            <div class="box flex p-4 mx-1  flex-col text-base">
+            <!-- <div class="box flex p-4 mx-1  flex-col text-base">
                 <h3 class="text-black text-xl   mt-12 dark:text-white text-start">Useful links</h3>
                 <p class="py-2"><a class="text-base text-black py-2 dark:text-white" href="#home"><i class="fas fa-home px-1 text-green-700"></i>
                     Home</a></p>
@@ -525,21 +548,16 @@
                <p class="py-2"><a class="text-black py-2 dark:text-white" href="#work"><i class="fas fa-user-secret text-green-700 px-1"></i>
                     Privacy Policy</a></p> 
     
-            </div>
+            </div> -->
     
             <div class="box flex p-6   flex-col text-base  ">
-                <h3 class="text-xl mt-12 text-black dark:text-white text-start">More Services</h3>
+                <h3 class="text-xl mt-12 text-black dark:text-white text-start">Useful Links</h3>
     
-                <p class="py-2"> <a class="text-black py-2 dark:text-white" href="/pricing/"><i class="fas fa-graduation-cap text-green-700 px-1"></i>IELTS
-                        Masterclasses</a></p>
-                <p class="py-2"><a class="text-black dark:text-white" href="/scholarship/"><i class="fas fa-user-plus text-green-700 px-1"></i>UK
-                        NARIC/ECCTIS Service</a></p>
-                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-piggy-bank text-green-700 px-1"></i>Proof Of Fund
-                        Service</a></p>
-                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-mosque text-green-700 px-1"></i>CareerEdu Oman
-                        Service</a></p>
-                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-plane text-green-700 px-1"></i>Australian Study
-                        Service</a></p>
+                <p class="py-2 mr-20 sm:mr-0"> <a class="text-black py-2 dark:text-white" href="/pricing/"><i class="fas fa-graduation-cap text-green-700 px-1"></i>Home Page</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href="/scholarship/"><i class="fas fa-user-plus text-green-700 px-1"></i>About Us</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-piggy-bank text-green-700 px-1"></i>Our Services</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-mosque text-green-700 px-1"></i>Terms Of Service</a></p>
+                <p class="py-2"><a class="text-black dark:text-white" href=""><i class="fas fa-plane text-green-700 px-1"></i>Privacy Policy</a></p>
     
             </div>
      
@@ -566,13 +584,13 @@
         <div class="text-blue flex m-3 justify-between sm:flex-row flex-col-reverse mb-4  text-center text-lg mt-3 py-3 mx-3">
             <div class="copyright">
               &copy; Copyright <strong><span>TechJobber</span></strong>.2023
-            </div>
-            <!-- <div class="credits">
+            </div> 
+                <!-- <div class="credits">
                 Designed by <a href="https://www.linkedin.com/in/odo-maurice-b99197198/" target="_blank">Alphacodez.</a>
             </div> -->
 
 
-            <div class="share sm:mr-8 text-base flex-nowrap">
+                <!-- <div class="share sm:mr-8 text-base flex-nowrap">
             
                 <a href="https://www.twitter.com/CareerEdu_" aria-label="Twitter" class="fab fa-twitter"></a>
                 <a href="https://www.facebook.com/careereduservices" class="facebook fab fa-facebook"><i
@@ -584,10 +602,17 @@
                         class="fas fa-linkedin"></i></a>
             </div>
         </div>
-    </section>
+    </section> -->
+
+        
 
 
+</section>
+    </main>
 
+    <!-- footer section starts -->
+    
+    
 
 
     <script type="text/javascript">
@@ -601,6 +626,55 @@
 
         }
     </script>
+
+    <script>
+        const button = document.querySelector(".button");
+
+        button.addEventListener("click", (e) => {
+            e.preventDefault;
+            button.classList.add("animate");
+            setTimeout(() => {
+                button.classList.remove("animate");
+            }, 600);
+        });
+    </script>
+
+    <script>
+
+const seconds = document.querySelector(".seconds .number"),
+minutes = document.querySelector(".minutes .number"),
+hours = document.querySelector(".hours .number"),
+days = document.querySelector(".days .number");
+
+let secValue = 11,
+minValue = 2,
+hourValue = 2,
+dayValue = 9;
+
+const timeFunction = setInterval(() => {
+secValue--;
+
+if (secValue === 0) {
+minValue--;
+secValue = 60;
+}
+if (minValue === 0) {
+hourValue--;
+minValue = 60;
+}
+if (hourValue === 0) {
+dayValue--;
+hourValue = 24;
+}
+
+if (dayValue === 0) {
+clearInterval(timeFunction);
+}
+seconds.textContent = secValue < 10 ? `0${secValue}` : secValue; minutes.textContent=minValue < 10 ? `0${minValue}` :
+    minValue; hours.textContent=hourValue < 10 ? `0${hourValue}` : hourValue; days.textContent=dayValue < 10 ?
+    `0${dayValue}` : dayValue; }, 1000); //1000ms=1s
+
+</script>
 </body>
 
 </html>
