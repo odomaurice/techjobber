@@ -159,9 +159,10 @@ a {
 
 .search-box .search-icon {
     position: absolute;
-    left: 15px;
+    left: 10px;
     top: 50%;
-    left: 15px;
+    left: 10px;
+    /* margin: 0 1.5rem 0; */
     color: green;
     transform: translateY(-50%);
 }
@@ -172,6 +173,7 @@ a {
     border: none;
     outline: none;
     border-radius: 6px;
+    color: #000;
     background-color: #fff;
     padding: 0 15px 0 45px;
 }
@@ -236,8 +238,10 @@ a {
 
     .nav .navOpenBtn {
         color: green;
-        font-size: 20px;
+        font-size: 40px;
         cursor: pointer;
+        margin: 0 1rem 0.5rem 0;
+
     }
 
     .nav .navCloseBtn {
@@ -369,8 +373,8 @@ a {
     z-index: -1;
 }
 
-.container_2 header {
-    font-size: 60px;
+.container_2 .aside {
+    
     
     font-weight: 600;
     text-align: center;

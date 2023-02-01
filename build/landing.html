@@ -29,6 +29,8 @@
    
 </head>
 <body class="bg-white text-black dark:bg-black font-Default dark:text-white">
+
+    <!-- Navigation starts -->
     <header class="sticky top-0 z-10 bg-white dark:bg-black font-Default mb-12 mx-auto">
         <section class="mx-auto flex max-w-full items-center justify-between p-4">
             <a class="navbar-brand" href="#"><img src="./images/TechJobber Horizontal@300x.png" alt="" class=""
@@ -40,6 +42,8 @@
                         class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-black dark:bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-black before:dark:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-black after:dark:bg-white after:transition-all after:duration-500 after:content-['']">
                     </div>
                 </button>
+
+                <!-- Desktop view -->
                 <nav class="hidden space-x-8 text-base md:block" aria-label="main">
                     <a href="index.html" class="w-full font-Default  py-6 text-center hover:opacity-90">HOME <i
                             class="fas fa-arrow-right text-green-600"></i> </a>
@@ -53,6 +57,7 @@
                 </nav>
             </div>
         </section>
+        <!-- Mobile view -->
         <section id="mobile-menu"
             class="top-68 justify-content-center absolute hidden w-full origin-top animate-open-menu flex-col bg-white text-black dark:bg-black dark:text-slate-50 text-3xl">
             <!-- <button class="text-8xl self-end px-6">
@@ -70,7 +75,11 @@
             </nav>
         </section>
     </header>
-    <section data-aos="flip-down" data-aos-delay="300"
+
+    <!-- Navigation ends -->
+
+    <!-- Main section starts -->
+    <section 
         class="widescreen:section-min-height tallscreen:section-min-height my-4 scroll-mt-12 p-4 w-full sm:text-base"
         data-aos="fade-left" data-aos-delay="200">
         <h2 class="mb-6 text-center text-4xl font-bold text-green-600 sm:text-3xl">
@@ -135,5 +144,7 @@
     
         </ul>
     </section>
+
+    <!-- Main section ends -->
 </body>
 </html>
