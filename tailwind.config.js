@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         papayawhip: {
           light: '#00ff6c',
-          DEFAULT: '#ffefd5',
+          DEFAULT: '#001e00',
           dark: '#11101D'
         }
       },
