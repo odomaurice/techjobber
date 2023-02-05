@@ -1,7 +1,9 @@
-
+require('dotenv').config() 
+const config = require('config') 
+const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const Schema  = mongoose.Schema 
-
+const crypto = require('crypto') 
 
 
 const UserSchema = new Schema 
@@ -11,6 +13,7 @@ const UserSchema = new Schema
             {
                 type: String, 
                 required: true, 
+                unique: true, 
                 trim: true 
             },
             firstname:
@@ -39,7 +42,8 @@ const UserSchema = new Schema
             emailVerificationCode:
             {
                 type: String, 
-                trim: true 
+                trim: true,
+                required: true
             },
             isVerified:
             {
@@ -50,13 +54,26 @@ const UserSchema = new Schema
             isAdmin:
             {
                 type: Boolean, 
-                required: true 
+                required: true,
+                default: false 
             }
         },
         {
             timestamps: true 
         }
     )
+
+
+UserSchema.pre("save",async function(next){
+
+    const user = this 
+    var plainTextPassword = user.password 
+    const saltWorkFactor = await bcrypt.genSalt(config.get('BCRYPT_SALT_WORK_FACTOR') )
+    const hashPassword = await bcrypt.hash(plainTextPassword, saltWorkFactor)
+    user.password = hashPassword 
+    next() 
+})
+
 
 
 const User = mongoose.model('user', UserSchema )

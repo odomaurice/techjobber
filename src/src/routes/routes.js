@@ -1,7 +1,4 @@
-
-
 const userRoutes = require('./user/user.route') 
-
 
 
 module.exports = function(app)

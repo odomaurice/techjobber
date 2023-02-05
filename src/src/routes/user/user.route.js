@@ -10,7 +10,7 @@ module.exports = function(app)
             console.log(' Building User routes ') 
 
             router.post('/signup', user.SignupHandler )
-
+            router.get('/signup', user.getSignupPage )
             app.use('/api/v1', router )
             
             console.log(' User Routes Built ')

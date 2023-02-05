@@ -2,6 +2,9 @@
 const mongoose = require('mongoose') 
 const config = require('config')
 
+mongoose.set('strictQuery', true )
+
+
 // Vars 
 const MONGOOSE_DEFAULT_CONNECTION_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true }
 const DB_URI = config.get('DB_URI') || ''
@@ -17,7 +20,7 @@ function start()
     try 
     {
         console.log(' Starting Database ')
-
+        
         mongoose.connect(DB_URI,MONGOOSE_CONNECTION_OPTIONS)
 
         const db = mongoose.connection 
