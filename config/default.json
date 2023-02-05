@@ -1,5 +1,5 @@
 {
-    "DB_URI":"mongodb://localhost:27017/techjobber",
+    "DB_URI":"mongodb://0.0.0.0:27017/techjobber",
     "MONGOOSE_CONNECTION_OPTIONS":
     {
         "useNewUrlParser": true, 

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./images/TechJobber Icon@300x.png"
+      type="image/x-icon"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- EXTERNAL FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+  </head>
+
+  <body class="bg-white font-Default text-black dark:bg-black dark:text-white">
+
+
+    <!-- ////////////////////TEMPLATING//////////////////////////////////////////////-->
+
+    <!-- SIGN UP ERROR DISPLAYED AT TOP OF PAGE IF ANY -->
+    <% if( error ) { %>
+        <p id="error">  <%= error %> </p>
+    <% } %> 
+
+
+    <!-- TEMPORARY STYLING FOR ABOVE ERROR -->
+    <style>
+        #error 
+        {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            z-index: 20;
+            width: 100%; 
+            height: auto;
+            padding: 20px;
+            background-color: crimson;
+            color: white;
+        }
+    </style>
+
+<!----///////////////////////TEMPLATING//////////////////////////////////////////////////-->
+
+
+   
+  
+  
+    <section class="container_3 forms mt-36 bg-white dark:bg-black sm:mt-28">
+  
+  
+      <!-- Signup Section -->
+  
+      <div class="form signup">
+        <div class="form-content">
+          <div class="header mt-20 text-green-700">
+            <i class="bx bx-log-in-circle"></i>Signup as Tech Talent
+          </div>
+          <form action="#">
+            <div class="field input-field">
+              <input type="text" placeholder="Firstname" class="input text-black" />
+            </div>
+            <div class="field input-field">
+              <input type="text" placeholder="Lastname" class="input text-black" />
+            </div>
+  
+            <div class="field input-field">
+              <input type="email" placeholder="Email" class="input text-black" />
+            </div>
+  
+            <div class="field input-field">
+              <input type="password" placeholder="Create password" class="password text-black" />
+            </div>
+  
+            <div class="field input-field">
+              <input type="password" placeholder="Confirm password" class="password text-black" />
+              <i class="bx bx-hide eye-icon"></i>
+            </div>
+            <div class="field input-field">
+              <input type="text" placeholder="Area of Specialization" class="input text-black" />
+            </div>
+            <div class="field input-field">
+              <input type="NUMBER" placeholder="Years of Experience" class="input text-black" />
+            </div>
+            <div class="field input-field">
+              <input type="number" placeholder="Service Charge(USD)" class="input text-black" />
+            </div>
+  
+            <div class="field button-field">
+              <button>Signup</button>
+            </div>
+          </form>
+  
+          <div class="form-link">
+            <span class="text-black dark:text-white">Already have a Membership?
+              <a href="job_signin.html" class="link ">Login</a></span>
+          </div>
+        </div>
+  
+        <div class="line"></div>
+  
+        <div class="media-options">
+          <a href="#" class="field facebook">
+            <i class="bx bxl-facebook facebook-icon"></i>
+            <span>Login with Facebook</span>
+          </a>
+        </div>
+  
+        <div class="media-options">
+          <a href="#" class="field google">
+            <img src="./images/google.png" alt="" class="google-img" />
+            <span class="text-black dark:text-white">Login with Google</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      const forms = document.querySelector(".forms"),
+        pwShowHide = document.querySelectorAll(".eye-icon");
+
+
+      pwShowHide.forEach((eyeIcon) => {
+        eyeIcon.addEventListener("click", () => {
+          let pwFields =
+            eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+
+          pwFields.forEach((password) => {
+            if (password.type === "password") {
+              password.type = "text";
+              eyeIcon.classList.replace("bx-hide", "bx-show");
+              return;
+            }
+            password.type = "password";
+            eyeIcon.classList.replace("bx-show", "bx-hide");
+          });
+        });
+      });
+
+
+    </script>
+  
+    <!-- JavaScript -->
+    <!--<script src="js/script.js"></script>-->
+  </body>
+  
+  </html>

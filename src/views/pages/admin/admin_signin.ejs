@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Signin||TechJobber</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/TechJobber Icon@300x.png" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- EXTERNAL FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet" />
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</head>
+
+<body class="bg-white font-Default text-black dark:bg-black dark:text-white">
+
+    <!-- Navigation starts -->
+    <header class="sticky top-0 z-10 mx-auto mb-12 bg-white font-Default dark:bg-black">
+        <section class="mx-auto flex max-w-full items-center justify-between p-4">
+            <a class="navbar-brand" href="#"><img src="./images/TechJobber Horizontal@300x.png" alt="" class=""
+                    width="200px" /></a>
+            <div>
+                <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+                    <!-- &#9776; -->
+                    <div
+                        class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-black transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-black before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-black after:transition-all after:duration-500 after:content-[''] dark:bg-white before:dark:bg-white after:dark:bg-white">
+                    </div>
+                </button>
+                <nav class="hidden space-x-8 text-base md:block" aria-label="main">
+                    <a href="index.ejs" class="w-full py-6 text-center font-Default hover:opacity-90">HOME <i
+                            class="fas fa-arrow-right text-green-600"></i>
+                    </a>
+
+                    <a href="landing.ejs" class="w-full py-6 text-center hover:opacity-90">REGISTER <i
+                            class="fas fa-arrow-right text-green-600"></i>
+                    </a>
+                </nav>
+            </div>
+        </section>
+        <section id="mobile-menu"
+            class="top-68 justify-content-center absolute hidden w-full origin-top animate-open-menu flex-col bg-white text-3xl text-black dark:bg-black dark:text-slate-50">
+            <!-- <button class="text-8xl self-end px-6">
+                    &times;
+                </button> -->
+            <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
+                <a href="index.ejs" class="w-full py-6 text-center hover:opacity-90"><i
+                        class="fas fa-home text-green-600"></i>
+                    HOME</a>
+
+                <a href="landing.ejs" class="w-full py-6 text-center hover:opacity-90"><i
+                        class="fas fa-sign-out-alt text-green-600"></i> REGISTER</a>
+            </nav>
+        </section>
+    </header>
+
+    <!-- Navigation ends -->
+    <section class="container_3 forms mt-36 bg-white dark:bg-black sm:mt-28">
+        <!-- Login section starts -->
+        <div class="form login">
+            <div class="form-content">
+                <div class="header mt-3 text-green-700">
+                    <i class="bx bx-log-out-circle"></i> Login as an Admin
+                </div>
+                <form action="#">
+                    <div class="field input-field">
+                        <input type="email" placeholder="Email" class="input text-black" />
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password text-black" />
+                        <i class="bx bx-hide eye-icon"></i>
+                    </div>
+
+                    <div class="form-link">
+                        <a href="#" class="forgot-pass text-black dark:text-white">Forgot password?</a>
+                    </div>
+
+                    <div class="field button-field">
+                        <button>Login</button>
+                    </div>
+                </form>
+
+                <div class="form-link text-white">
+                    <span class="text-black dark:text-white">New Membership?
+                        <a href="admin_signup.ejs" class="link signup-link">Signup</a></span>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class="bx bxl-facebook facebook-icon"></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <img src="./images/google.png" alt="" class="google-img" />
+
+                    <span class="text-black dark:text-white">Login with Google</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Login section ends -->
+
+    </section>
+
+    <script>
+        const forms = document.querySelector(".forms"),
+            pwShowHide = document.querySelectorAll(".eye-icon");
+
+
+        pwShowHide.forEach((eyeIcon) => {
+            eyeIcon.addEventListener("click", () => {
+                let pwFields =
+                    eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+
+                pwFields.forEach((password) => {
+                    if (password.type === "password") {
+                        password.type = "text";
+                        eyeIcon.classList.replace("bx-hide", "bx-show");
+                        return;
+                    }
+                    password.type = "password";
+                    eyeIcon.classList.replace("bx-show", "bx-hide");
+                });
+            });
+        });
+
+
+    </script>
+
+    <!-- JavaScript -->
+    <!--<script src="js/script.js"></script>-->
+</body>
+
+</html>
