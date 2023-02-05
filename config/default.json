@@ -1,0 +1,9 @@
+{
+    "DB_URI":"mongodb://localhost:27017/techjobber",
+    "MONGOOSE_CONNECTION_OPTIONS":
+    {
+        "useNewUrlParser": true, 
+        "useUnifiedTopology": true 
+    },
+    "BCRYPT_SALT_WORK_FACTOR": 10 
+}
