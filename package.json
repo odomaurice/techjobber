@@ -4,8 +4,8 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "start": "node ./src/src/bin/www",
-    "start:dev": "nodemon ./src/src/bin/www",
+    "start": "node ./src/bin/www",
+    "start:dev": "nodemon ./src/bin/www",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch",
     "prettier": "npx prettier --write **/*.html"
   },

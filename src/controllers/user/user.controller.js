@@ -1,7 +1,8 @@
-const validateSignupSchema = require('../src/services/user/validateSignupSchema')
-const { checkEmailExists, signupUser } = require('../src/services/user/user.service')
-const { sendMail }  = require('../src/Utils/mail/sendMail')
+const validateSignupSchema = require('../../services/user/validateSignupSchema')
+const { checkEmailExists, signupUser } = require('../../services/user/user.service') 
+const { sendMail }  = require('../../Utils/mail/sendMail')
 const crypto = require('crypto')
+
 
 const SignupHandler = async function(req, res, next)
     {
@@ -31,6 +32,8 @@ const SignupHandler = async function(req, res, next)
                text:' Welcome to tech Jobber, please verify your email to continue ',
                html: null 
            }
+
+
            const mailVariables = 
            { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/api/v1/verifyEmail/${emailVerificationCode}`}
            await sendMail('verifyEmail', mailDoc,mailVariables)
