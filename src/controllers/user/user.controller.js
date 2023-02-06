@@ -75,7 +75,7 @@ const getSignupPage = function(req, res, next)
     try 
     {
         var error = req.flash('error')
-        res.render('pages/user/signup',{ error })
+        res.render('pages/user/user_signup',{ error })
     }
     catch(e)
     {
@@ -87,4 +87,20 @@ const getSignupPage = function(req, res, next)
 
 
 
-module.exports = { SignupHandler, getSignupPage  }
+const getSigninPage = function(req, res, next)
+{
+    try 
+    {
+        res.render('pages/user/user_signin') 
+    }
+    catch(e)
+    {
+        console.log(' Error occured while getting signin page ')
+        console.log(e)
+        res.render('pages/serverError',{ error: ' Ops Server encountered error '})
+    }
+}
+
+
+
+module.exports = { SignupHandler, getSignupPage, getSigninPage  }
