@@ -18,8 +18,8 @@ module.exports = function(app)
 
             
             // signin 
-            router.get('/signin', user.getSigninPage ) 
-
+            router.get('/signin', user.signinPageHandler ) 
+            router.post('/signin', user.signinHandler ) 
 
 
             app.use('/api/v1', router )

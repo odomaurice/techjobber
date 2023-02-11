@@ -50,25 +50,30 @@
 
     <!-- SIGN UP ERROR DISPLAYED AT TOP OF PAGE IF ANY -->
     <% if( error ) { %>
+
         <p id="error">  <%= error %> </p>
+
+               <!-- TEMPORARY STYLING FOR ABOVE ERROR -->
+              <style>
+                #error 
+                {
+                    position: absolute;
+                    top: 0; 
+                    left: 0;
+                    z-index: 20;
+                    width: 100%; 
+                    height: auto;
+                    padding: 20px;
+                    background-color: crimson;
+                    color: white; 
+                }
+            </style>
     <% } %> 
 
 
-    <!-- TEMPORARY STYLING FOR ABOVE ERROR -->
-    <style>
-        #error 
-        {
-            position: absolute;
-            top: 0; 
-            left: 0;
-            z-index: 20;
-            width: 100%; 
-            height: auto;
-            padding: 20px;
-            background-color: crimson;
-            color: white;
-        }
-    </style>
+
+
+
 
 <!----///////////////////////TEMPLATING//////////////////////////////////////////////////-->
 
@@ -80,26 +85,26 @@
   
   
       <!-- Signup Section -->
-  
+      
       <div class="form signup">
         <div class="form-content">
           <div class="header mt-20 text-green-700">
             <i class="bx bx-log-in-circle"></i>Signup as Tech Talent
           </div>
-          <form action="#">
+          <form action="/api/v1/signup" method="post">
             <div class="field input-field">
-              <input type="text" placeholder="Firstname" class="input text-black" />
+              <input name="firstname" type="text" placeholder="Firstname" class="input text-black" />
             </div>
             <div class="field input-field">
-              <input type="text" placeholder="Lastname" class="input text-black" />
-            </div>
-  
-            <div class="field input-field">
-              <input type="email" placeholder="Email" class="input text-black" />
+              <input name="lastname" type="text" placeholder="Lastname" class="input text-black" />
             </div>
   
             <div class="field input-field">
-              <input type="password" placeholder="Create password" class="password text-black" />
+              <input  name="email" type="email" placeholder="Email" class="input text-black" />
+            </div>
+  
+            <div class="field input-field">
+              <input name="password" type="password" placeholder="Create password" class="password text-black" />
             </div>
   
             <div class="field input-field">
@@ -116,6 +121,9 @@
               <input type="number" placeholder="Service Charge(USD)" class="input text-black" />
             </div>
   
+            <!-- Added a Hidden Form Value Here to denote User Type -->
+            <input type="hidden" name="userType" value="talent">
+
             <div class="field button-field">
               <button>Signup</button>
             </div>
