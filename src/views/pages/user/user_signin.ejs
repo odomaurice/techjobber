@@ -72,6 +72,20 @@
 
     <!-- Navigation ends -->
 
+
+
+
+<!-- Signin  Error Template -->
+    <% if(errors){ %>
+    <% for( var i = 0; i < errors.length; i++ ){ %> 
+    <p> <%= errors[i] %> </p>
+    <% } %> 
+    <% } %> 
+<!-- /Signin Error Template -->
+
+
+
+
     <!-- Login section -->
     <section class="container_3 forms mt-6 bg-white dark:bg-black sm:mt-6">
 
@@ -81,13 +95,13 @@
                 <div class="header mt-3 text-green-700">
                     <i class="bx bx-log-out-circle"></i> Login As Tech Talent
                 </div>
-                <form action="#">
+                <form action="/api/v1/signin" method="post">
                     <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input text-black" />
+                        <input name="email" type="email" placeholder="Email" class="input text-black" />
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password text-black" />
+                        <input name="password" type="password" placeholder="Password" class="password text-black" />
                         <i class="bx bx-hide eye-icon"></i>
                     </div>
 

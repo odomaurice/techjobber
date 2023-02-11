@@ -1,5 +1,4 @@
-const SignupSchema = require('../../validation_schema/user/signup')
-
+const SignupSchema = require('../../validation_schema/user/signup') 
 
 async function validateSignupSchema( schema )
 {

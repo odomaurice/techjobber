@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const Schema  = mongoose.Schema 
 const crypto = require('crypto') 
+const { string } = require('joi')
 
 
 const UserSchema = new Schema 
@@ -34,10 +35,15 @@ const UserSchema = new Schema
                 required: true, 
                 trim: true 
             },
+            userType:
+            {
+                type: String, 
+                required: true,
+                trim: true
+            },
             cohort:
             {
-                type: Number,
-                required: true
+                type: Number
             },
             emailVerificationCode:
             {

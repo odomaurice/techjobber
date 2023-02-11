@@ -1,5 +1,5 @@
-const User = require('../../../models/User.model')
-
+const User = require('../../models/User.model')
+const bcrypt = require('bcrypt') 
 
 // Functions 
 const { sendMail } = require('../../Utils/mail/sendMail') 
@@ -54,5 +54,38 @@ async function signupUser( userDoc )
 }
 
 
+async function findUserWithEmail(email)
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
 
-module.exports = { checkEmailExists, signupUser  }
+            const user = await User.findOne({ email },{ _id: 1, password: 1, userType: 1, firstname: 1, lastname: 1 })
+
+            console.log( user ) 
+            if( user )
+            {
+                resolve(user)
+            }
+            else 
+            {
+                console.log(' User with this email does not exist ') 
+                const inputError = new Error(' please enter valid signin details ')
+                inputError.type = 'USER_INPUT' 
+                reject(inputError)
+            }
+        }
+        catch(e)
+        {
+            console.log(' Server encountered error while finding user with email ')
+            console.log(e) 
+            e.type = 'SERVER'
+            e.message = ' Server encountered error during usersignin '
+            reject(e) 
+        }
+    })
+}
+
+
+
+module.exports = { checkEmailExists, signupUser, findUserWithEmail, findUserWithEmail}
