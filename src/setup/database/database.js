@@ -5,20 +5,24 @@ const config = require('config')
 mongoose.set('strictQuery', true)
 
 
+var MONGOOSE_DEFAULT_CONNECTION_OPTIONS 
+var DB_URI 
+var MONGOOSE_CONNECTION_OPTIONS 
+
 if( process.env.ENVIRONMENT === 'development' )
 {
   console.log('SERVER RUNNING IN DEVELOPMENT ')
     // Vars 
-    const MONGOOSE_DEFAULT_CONNECTION_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true}
-    const DB_URI = process.env.DB_URI_DEVELOPMENT 
-    const MONGOOSE_CONNECTION_OPTIONS = config.get('MONGOOSE_CONNECTION_OPTIONS') || MONGOOSE_DEFAULT_CONNECTION_OPTIONS
+    MONGOOSE_DEFAULT_CONNECTION_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true}
+    DB_URI = process.env.DB_URI_DEVELOPMENT 
+    MONGOOSE_CONNECTION_OPTIONS = config.get('MONGOOSE_CONNECTION_OPTIONS') || MONGOOSE_DEFAULT_CONNECTION_OPTIONS
 }else if( process.env.ENVIRONMENT === 'production' )
 {
       console.log(' SERVER RUNNING IN PRODUCTION ')
         // Vars 
-        const MONGOOSE_DEFAULT_CONNECTION_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true}
-        const DB_URI = process.env.DB_URI_PRODUCTION
-        const MONGOOSE_CONNECTION_OPTIONS = config.get('MONGOOSE_CONNECTION_OPTIONS') || MONGOOSE_DEFAULT_CONNECTION_OPTIONS
+         MONGOOSE_DEFAULT_CONNECTION_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true}
+         DB_URI = process.env.DB_URI_PRODUCTION
+         MONGOOSE_CONNECTION_OPTIONS = config.get('MONGOOSE_CONNECTION_OPTIONS') || MONGOOSE_DEFAULT_CONNECTION_OPTIONS
 }
 else 
 {
