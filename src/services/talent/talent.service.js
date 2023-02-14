@@ -1,6 +1,6 @@
 const TalentDashboard = require('../../models/TalentDashboard') 
 
-module.exports = function createTalentDashboard(email)
+function createTalentDashboard(email)
 {
     return new Promise(async(resolve, reject)=>{
         try 
@@ -22,3 +22,6 @@ module.exports = function createTalentDashboard(email)
         }
     })
 }
+
+
+module.exports = { createTalentDashboard } 
