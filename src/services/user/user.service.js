@@ -65,6 +65,7 @@ async function findUserWithEmail(email)
             console.log( user ) 
             if( user )
             {
+                console.log(' User Found ')
                 resolve(user)
             }
             else 

@@ -31,8 +31,14 @@ const initApp = () => {
     hamburgerBtn.classList.toggle('toggle-btn')
   }
 
-  hamburgerBtn.addEventListener('click', toggleMenu)
-  mobileMenu.addEventListener('click', toggleMenu)
+  // NOTE: HAMBURGER BUTTON SEEMS TO BE DEFINED IN SOME PAGES, LIKE SIGNUP 
+  if( hamburgerBtn )
+  {
+    hamburgerBtn.addEventListener('click', toggleMenu)
+  }
+
+  if( mobileMenu ) 
+  {mobileMenu.addEventListener('click', toggleMenu)}
 }
 
 document.addEventListener('DOMContentLoaded', initApp)

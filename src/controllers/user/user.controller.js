@@ -5,7 +5,7 @@ const validateSignupSchema = require('../../services/user/validateSignupSchema')
 
 // Services 
 const { checkEmailExists, signupUser, findUserWithEmail } = require('../../services/user/user.service') 
-const createTalentDashboard = require('../../services/talent/talent.service')
+const {createTalentDashboard}= require('../../services/talent/talent.service')
 
 // Functions 
 const { sendMail }  = require('../../Utils/mail/sendMail')
@@ -71,7 +71,7 @@ const SignupHandler = async function(req, res, next)
            
            console.log(' New User signup successfull ') 
            res.status(201)
-           return res.send('good') // should redirect to a signup successfull page 
+           return res.render('pages/success_msg') // should redirect to a signup successfull page 
         }
         catch(e)
         {
@@ -146,10 +146,6 @@ const signinHandler = async function(req, res, next)
         console.log(' Signing in User ')
         const { email, password } = req.body
 
-        console.log(' -----------')
-        console.log(email) 
-        console.log(password) 
-
         
         // Find User 
         const user = await findUserWithEmail(email) 
@@ -163,10 +159,12 @@ const signinHandler = async function(req, res, next)
             return res.redirect('pages/user_signin',{ error: 'check login details '})
         } 
 
+        console.log(' User Password Valid ') 
 
         // CREATE USER JWT TOKEN 
         const token = await jwt.sign({ email }, process.env.JWT_SECRET,{ 'expiresIn': '5m' })
         res.cookie('AUTH_TOKEN', token ) 
+
 
         // Set user to request 
         const userType = user.userType 
@@ -174,6 +172,7 @@ const signinHandler = async function(req, res, next)
         req.user = { email, userType, _id }
 
 
+        console.log(' USer type is ' + userType ) 
         switch(userType)
         {
             case 'talent': // redirect user to talent dashboard;
