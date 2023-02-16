@@ -109,6 +109,10 @@ async function getExperiences( user_id )
 }
 
 
+// get Experience 
+
+
+// update Experience 
 async function updateExperience(user_id, experience_id,  doc)
 {
     return new Promise(async(resolve, reject)=>{
@@ -143,14 +147,17 @@ async function updateExperience(user_id, experience_id,  doc)
     })
 }
 
-
-
-async function removeExperience()
+// remove Experience 
+async function removeExperience(user_id, experience_id)
 {
     return new Promise(async(resolve, reject)=>{
         try 
         {
 
+            const update = { $pull:{ "experience":  { _id: experience_id }}}
+            await UserProfile.updateOne({ user_id },update)
+            console.log('Done')
+            resolve() 
         }
         catch(e)
         {
@@ -164,7 +171,9 @@ async function removeExperience()
 }
 
 
-// PORTFOLIO 
+// PORTFOLIO  ///////////////////
+
+
 async function addPortfolio(user_id, doc) 
 {
     return new Promise(async(resolve, reject)=>{
@@ -209,23 +218,23 @@ async function getExperiences( user_id )
 }
 
 
-async function removeExperience()
-{
-    return new Promise(async(resolve, reject)=>{
-        try 
-        {
+// async function removeExperience()
+// {
+//     return new Promise(async(resolve, reject)=>{
+//         try 
+//         {
 
-        }
-        catch(e)
-        {
-            console.log(' Error occured while removing experience ')
-            console.log(e)
-            e.type = 'SERVER'
-            e.message = 'SERVER ENCOUNTERED ERROR WHILE REMOVING EXPERIENCE'
-            reject(e) 
-        }
-    })
-}
+//         }
+//         catch(e)
+//         {
+//             console.log(' Error occured while removing experience ')
+//             console.log(e)
+//             e.type = 'SERVER'
+//             e.message = 'SERVER ENCOUNTERED ERROR WHILE REMOVING EXPERIENCE'
+//             reject(e) 
+//         }
+//     })
+// }
 
 
-module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience } 
+module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience, removeExperience } 

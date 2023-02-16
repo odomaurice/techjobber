@@ -3,7 +3,7 @@
 const UserProfile = require('../../models/UserProfiles') 
 
 // Service 
-const { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience } = require('../../services/user/profile.service') 
+const { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience, removeExperience } = require('../../services/user/profile.service') 
 
 
 async function getProfile(req, res, next)
@@ -108,5 +108,25 @@ async function updateExperienceHandler(req, res, next)
     }
 }
 
+
+async function removeExperienceHandler(req, res, next)
+{
+    try 
+    {
+        
+        console.log(' removing experience ') 
+        const user_id = '63e729574396b20fad91f78c'
+        const experience_id = "63ee6ef6b78cbef1ba2aec53"
+
+        await removeExperience(user_id, experience_id)
+        return res.send('Ok') 
+    }
+    catch(e)
+    {
+        console.log(e) 
+        return res.render('pages/serverError',{ error:['server encountered error while updating experience ']})
+    }
+}
+
 module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler,
-         updateExperienceHandler } 
+         updateExperienceHandler, removeExperienceHandler  } 
