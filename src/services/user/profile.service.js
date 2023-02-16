@@ -216,8 +216,38 @@ async function getPortfolio( user_id )
     })
 }
 
+// Update Portfolio 
+async function updatePortfolioItem(user_id, item_id, doc )
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+            
+            const updateKeys = Object.keys( doc ) 
+            console.log( updateKeys ) 
+            const update = { $set:{ }}
+
+            for( var i = 0;  i < updateKeys.length ; i++ )
+            {
+                update.$set[`portfolio.$.${updateKeys[i]}`] = doc[updateKeys[i]]
+            }
+
+            console.log( update ) 
+
+            const updated = await UserProfile.updateOne({ user_id, "portfolio._id": item_id  }, update)
+            resolve(updated) 
+        }
+        catch(e)
+        {
+            console.log(' Error occured while getting updating portfolio item ')
+            console.log(e) 
+            reject(e) 
+        }
+    })
+}
+
 
 
 module.exports = { createUserProfile, updateBioDetails,
      addExperience, getExperiences, updateExperience,
-      removeExperience, addToPortfolio, getPortfolio } 
+      removeExperience, addToPortfolio, getPortfolio, updatePortfolioItem  } 

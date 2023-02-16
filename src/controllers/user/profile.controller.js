@@ -5,7 +5,7 @@ const UserProfile = require('../../models/UserProfiles')
 // Service 
 const { createUserProfile, updateBioDetails, addExperience, 
     getExperiences, updateExperience, removeExperience ,
-    getPortfolio,  addToPortfolio} = require('../../services/user/profile.service') 
+    getPortfolio,  addToPortfolio, updatePortfolioItem } = require('../../services/user/profile.service') 
 
 
 async function getProfile(req, res, next)
@@ -166,6 +166,24 @@ async function getPortfolioHandler(req, res, next)
 }
 
 
+async function updatePortfolioItemHandler(req, res, next)
+{
+    try 
+    {
+        const user_id = '63e729574396b20fad91f78c' 
+        const item_id = '63eea6ab2a7ecf1c8faf5eba'
+        const updatedItem = await updatePortfolioItem( user_id,item_id, req.body )
+        return res.send(updatedItem) 
+    }
+    catch(e)
+    {
+        console.log(' Error occured while updating Portfolio Item ')
+        console.log('here')
+        console.log(e) 
+        return res.send(e) 
+    }
+}
+
 module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler,
          updateExperienceHandler, removeExperienceHandler, addItemToPortfolioHandler, 
-        getPortfolioHandler } 
+        getPortfolioHandler, updatePortfolioItemHandler } 
