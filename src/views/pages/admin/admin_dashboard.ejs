@@ -6,8 +6,8 @@
     <title>Admin Dashboard||TechJobber </title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./images/TechJobber Icon@300x.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="/images/TechJobber Icon@300x.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/style.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet" />
 
-    <script src="js/dashboard.js" defer></script>
+    <script src="/js/dashboard.js" defer></script>
 </head>
 
 <body class="font-Default bg-white dark:bg-black">
@@ -39,7 +39,7 @@
                 <span class="tooltip">Search</span>
             </li>
             <li>
-                <a href="index.ejs">
+                <a href="/api/v1/index.ejs">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Home</span>
                 </a>
@@ -69,6 +69,14 @@
                 <span class="tooltip">Analytics</span>
             </li>
 
+            <li>
+                <a href="jobs.ejs">
+                    <i class='bx bx-accessibility'></i>
+                    <span class="links_name">Apply to Jobs</span>
+                </a>
+                <span class="tooltip">Apply to Jobs</span>
+            </li>
+
             <!-- <li>
                 <a href="#">
                     <i class='bx bx-cart-alt'></i>
@@ -94,9 +102,9 @@
             </li>
             <li class="profile bg-white dark:bg-slate-100">
                 <div class="profile-details">
-                    <img class="rounded-full" src="./images/profile.png" alt="profileImg">
+                    <img class="rounded-full" src="/images/profile.png" alt="profileImg">
                     <div class="name_job">
-                        <div class="name text-black">Maurice</div>
+                        <div class="name text-black"></div>
                         <div class="job">Admin</div>
                     </div>
                 </div>
@@ -106,7 +114,7 @@
     </div>
 
     <main class="home-section min-h-screen bg-white text-black dark:bg-black dark:text-white">
-        <div class="text"><img src="./images/TechJobber Horizontal@300x.png" alt="" width="200px"></div>
+        <div class="text"><img src="/images/TechJobber Horizontal@300x.png" alt="" width="200px"></div>
 
         <section class="my-12 scroll-mt-10 p-3 ">
             <ul class="flex list-none w-full flex-col items-center gap-8 sm:flex-row">

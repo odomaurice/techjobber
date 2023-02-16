@@ -10,12 +10,12 @@
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="./images/TechJobber Icon@300x.png"
+      href="/images/TechJobber Icon@300x.png"
       type="image/x-icon"
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 
     <!-- Font Awesome -->
     <link
@@ -42,7 +42,7 @@
 
 
      <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
   </head>
 
   <body class="bg-white font-Default text-black dark:bg-black dark:text-white">
@@ -54,7 +54,7 @@
       <section class="mx-auto flex max-w-full items-center justify-between p-4">
         <a class="navbar-brand" href="#"
           ><img
-            src="./images/TechJobber Horizontal@300x.png"
+            src="/images/TechJobber Horizontal@300x.png"
             alt=""
             class=""
             width="200px"
@@ -71,13 +71,13 @@
           </button>
           <nav class="hidden space-x-8 text-base md:block" aria-label="main">
             <a
-              href="index.html"
+              href="/api/v1/index.ejs"
               class="w-full py-6 text-center font-Default hover:opacity-90"
               >HOME <i class="fas fa-arrow-right text-green-600"></i>
             </a>
 
             <a
-              href="landing.html"
+              href="/api/v1/landing.ejs"
               class="w-full py-6 text-center hover:opacity-90"
               >REGISTER <i class="fas fa-arrow-right text-green-600"></i>
             </a>
@@ -95,12 +95,12 @@
           class="flex min-h-screen flex-col items-center py-8"
           aria-label="mobile"
         >
-          <a href="index.html" class="w-full py-6 text-center hover:opacity-90"
+          <a href="/api/v1/index.ejs" class="w-full py-6 text-center hover:opacity-90"
             ><i class="fas fa-home text-green-600"></i> HOME</a
           >
 
           <a
-            href="landing.html"
+            href="/api/v1/landing.ejs"
             class="w-full py-6 text-center hover:opacity-90"
             ><i class="fas fa-sign-out-alt text-green-600"></i> REGISTER</a
           >
@@ -111,59 +111,7 @@
     <!-- Navigation ends -->
     <section class="container_3 forms mt-36 bg-white dark:bg-black sm:mt-28">
       <!-- Login section starts -->
-      <div class="form login">
-        <div class="form-content">
-          <div class="header mt-3 text-green-700">
-            <i class="bx bx-log-out-circle"></i> Login as Tech Recruiter
-          </div>
-          <form action="#">
-            <div class="field input-field">
-              <input type="email" placeholder="Email" class="input text-black" />
-            </div>
-
-            <div class="field input-field">
-              <input type="password" placeholder="Password" class="password text-black" />
-              <i class="bx bx-hide eye-icon"></i>
-            </div>
-
-            <div class="form-link">
-              <a href="#" class="forgot-pass text-black dark:text-white"
-                >Forgot password?</a
-              >
-            </div>
-
-            <div class="field button-field">
-              <button>Login</button>
-            </div>
-          </form>
-
-          <div class="form-link text-white">
-            <span class="text-black dark:text-white"
-              >New Membership?
-              <a href="#" class="link signup-link">Signup</a></span
-            >
-          </div>
-        </div>
-
-        <div class="line"></div>
-
-        <div class="media-options">
-          <a href="#" class="field facebook">
-            <i class="bx bxl-facebook facebook-icon"></i>
-            <span>Login with Facebook</span>
-          </a>
-        </div>
-
-        <div class="media-options">
-          <a href="#" class="field google">
-            <img src="./images/google.png" alt="" class="google-img" />
-
-            <span class="text-black dark:text-white">Login with Google</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Login section ends -->
+      
 
       <!-- Signup Section -->
 
@@ -172,7 +120,7 @@
           <div class="header mt-32 text-green-700">
             <i class="bx bx-log-in-circle"></i>Signup as Tech Recruiter
           </div>
-          <form action="#">
+          <form action="/api/v1/recruiter_signup.ejs">
             <div class="field input-field">
               <input type="text" placeholder="Firstname" class="input text-black" />
             </div>
@@ -238,7 +186,7 @@
 
         <div class="media-options">
           <a href="#" class="field google">
-            <img src="./images/google.png" alt="" class="google-img" />
+            <img src="/images/google.png" alt="" class="google-img" />
             <span class="text-black dark:text-white">Login with Google</span>
           </a>
         </div>

@@ -12,6 +12,10 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/TechJobber Icon@300x.png" type="image/x-icon" />
 
+    <!-- BOOTSTRAP CDN -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -23,12 +27,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet" />
 
     <script src="/js/dashboard.js" defer></script>
+
+
 </head>
 
 <body class="font-Default bg-white dark:bg-black">
+
+
     <div class="sidebar bg-papayawhip">
         <div class="logo-details">
-            
+
             <div class="logo_name flex "><img src="/images/TechJobber Horizontal@300x.png" alt="" width="150px"></div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
@@ -39,13 +47,21 @@
                 <span class="tooltip">Search</span>
             </li>
             <li>
-                <a href="index.html">
+                <a href="/api/v1/index.ejs">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Home</span>
                 </a>
                 <span class="tooltip">Home</span>
             </li>
-            
+
+            <li>
+                <a href="/api/v1/profile.ejs">
+                    <i class='bx bxs-user-plus'></i>
+                    <span class="links_name">My Profile</span>
+                </a>
+                <span class="tooltip">My Profile</span>
+            </li>
+
             <li>
                 <a href="#">
                     <i class='bx bx-pie-chart-alt-2'></i>
@@ -53,15 +69,19 @@
                 </a>
                 <span class="tooltip">Analytics</span>
             </li>
-           
-            <!-- <li>
-                <a href="#">
-                    <i class='bx bx-cart-alt'></i>
-                    <span class="links_name">Order</span>
+
+            <li>
+                <a href="jobs.ejs">
+                    <i class='bx bx-accessibility'></i>
+                    <span class="links_name">Apply to Jobs</span>
                 </a>
-                <span class="tooltip">Order</span>
-            </li> -->
-           
+                <span class="tooltip">Apply to Jobs</span>
+            </li>
+
+
+
+
+
             <li>
                 <a href="#">
                     <i class='bx bx-cog'></i>
@@ -79,108 +99,118 @@
             </li>
             <li class="profile bg-white dark:bg-slate-100">
                 <div class="profile-details">
-                    <img class="rounded-full" src="/images/profile.png" alt="profileImg">
+                    <img class="rounded-full" src="" alt="profileImg">
                     <div class="name_job">
-                        <div class="name">Maurice</div>
-                        <div class="job">Odo</div>
+                        <div class="name">name</div>
+                        <div class="job">Title</div>
                     </div>
                 </div>
-               
+
             </li>
         </ul>
-    </div>
-    <div class="text w-full mt-0 z-10 "><img src="/images/TechJobber Horizontal@300x.png" class="ml-12" alt="" width="200px"></div>
-    <main class="home-section min-h-screen bg-white text-black dark:bg-black dark:text-white">
-       
 
-<section  class="my-12 scroll-mt-10 p-3 ">
-   
-    <ul class="flex list-none w-full flex-col items-center gap-8 sm:flex-row">
-        <li
-            class="flex w-full flex-col items-center  py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid  dark:border-white dark:bg-black sm:w-5/6">
-            <i class="fas fa-piggy-bank text-4xl text-green-600"></i>
-            <h3 class="mt-2 text-center text-2xl text-slate-900 p-3 dark:text-white">
-                CURRENT BALANCE
-            </h3>
-            <p class="text-center text-xl text-slate-900 dark:text-white">₦60,000</p>
-        </li>
-    
-        <li
-            class="flex w-full flex-col items-center py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid dark:border-white dark:bg-black sm:w-5/6">
-            <i class="bx bxs-arrow-to-left text-4xl text-green-600"></i>
-            <h3 class="mt-2 text-center text-2xl text-slate-900 dark:text-white">
-                CONTRACTS RESOLVED
-            </h3>
-            <p class="text-center text-xl text-slate-900 dark:text-white">2000</p>
-        </li>
-    
-        <li
-            class="flex w-full flex-col items-center py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid dark:border-white dark:bg-black sm:w-5/6">
-            <i class="bx bx-arrow-to-right text-4xl text-green-600"></i>
-            <h3 class="mt-2 text-center text-2xl text-slate-900 dark:text-white">
-                PENDING CONTRACTS
-            </h3>
-            <p class="text-center text-xl text-slate-900 dark:text-white">10</p>
-        </li>
-    </ul>
-    
-    </section>
-    <section class="p-3">
-    
-        <article id="menu" class="main__article menu ml-0">
-            <h2 class="menu__h2 text-2xl">Transactions</h2>
-            <table class="menu__container">
-    
-                <thead>
-                    <tr>
-                        <th class="menu__header" scope="col">ID</th>
-                        <th class="menu__header" scope="col">Amount</th>
-                        <th class="menu__header" scope="col">Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-    
-                        <td class="menu__item">1</td>
-                        <td class="menu__item">₦25,000</td>
-                        <td class="menu__item">22/11/2021</td>
-                    </tr>
-                    <tr>
-                        <td class="menu__item">2</td>
-                        <td class="menu__item">₦15,000</td>
-                        <td class="menu__item">30/12/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="menu__item">3</td>
-                        <td class="menu__item">₦33,000</td>
-                        <td class="menu__item">01/01/2023</td>
-    
-                    </tr>
-    
-                </tbody>
-    
-                </tfoot>
-            </table>
-    
-    
-            <p class="center">
-                <a href="#"> <i
-                        class="fas fa-arrow-circle-up text-3xl shadow-2xl sticky bottom-0 z-10 shadow-black text-green-700"></i></a>
-            </p>
-        </article>
-    
-    
-    
-    </section>
-        </main>
-        <footer class="footer-section z-10 left-78">
-            <p>
-                <span class="nowrap"> Copyright &copy; <time id="year"></time></span>
-                <span class="nowrap">TechJobber</span>
-            </p>
-        </footer>
-        
-   
+    </div>
+
+    <div class="text w-full mt-0 z-10 "><img src="/images/TechJobber Horizontal@300x.png" class="ml-14" alt=""
+            width="200px"></div>
+    <main class="home-section min-h-screen bg-white text-black dark:bg-black dark:text-white">
+
+
+        <section class="my-12 scroll-mt-10 p-3 ">
+
+            <ul class="flex list-none w-full flex-col items-center gap-8 sm:flex-row">
+                <li
+                    class="flex w-full flex-col items-center  py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid  dark:border-white dark:bg-black sm:w-5/6">
+                    <i class="fas fa-piggy-bank text-4xl text-green-600"></i>
+                    <h3 class="mt-2 text-center text-2xl text-slate-900 p-3 dark:text-white">
+                        CURRENT BALANCE
+                    </h3>
+                    <p class="text-center text-xl text-slate-900 dark:text-white"></p>
+                </li>
+
+                <li
+                    class="flex w-full flex-col items-center py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid dark:border-white dark:bg-black sm:w-5/6">
+                    <i class="bx bxs-arrow-to-left text-4xl text-green-600"></i>
+                    <h3 class="mt-2 text-center text-2xl text-slate-900 dark:text-white">
+                        CONTRACTS RESOLVED
+                    </h3>
+                    <p class="text-center text-xl text-slate-900 dark:text-white"></p>
+                </li>
+
+                <li
+                    class="flex w-full flex-col items-center py-6 px-2 bg-white rounded-xl shadow-xl border-white border border-solid dark:border-white dark:bg-black sm:w-5/6">
+                    <i class="bx bx-arrow-to-right text-4xl text-green-600"></i>
+                    <h3 class="mt-2 text-center text-2xl text-slate-900 dark:text-white">
+                        PENDING CONTRACTS
+                    </h3>
+                    <p class="text-center text-xl text-slate-900 dark:text-white"></p>
+                </li>
+            </ul>
+
+        </section>
+        <section class="p-3">
+
+            <article id="menu" class="main__article menu ml-0">
+                <h2 class="menu__h2 text-2xl">Transactions</h2>
+                <table class="menu__container">
+
+                    <thead>
+                        <tr>
+                            <th class="menu__header" scope="col">ID</th>
+                            <th class="menu__header" scope="col">Amount</th>
+                            <th class="menu__header" scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td class="menu__item">1</td>
+                            <td class="menu__item"></td>
+                            <td class="menu__item"></td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item">2</td>
+                            <td class="menu__item"></td>
+                            <td class="menu__item"></td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item">3</td>
+                            <td class="menu__item"></td>
+                            <td class="menu__item"></td>
+
+                        </tr>
+
+                    </tbody>
+
+                    </tfoot>
+                </table>
+
+
+                <p class="center">
+                    <a href="#"> <i
+                            class="fas fa-arrow-circle-up text-3xl shadow-2xl sticky bottom-0 z-10 shadow-black text-green-700"></i></a>
+                </p>
+            </article>
+
+
+
+        </section>
+    </main>
+    <footer class="footer-section z-10 left-78 bg-white dark:bg-black text-papayawhip">
+        <p>
+            <span class="nowrap"> Copyright &copy; <time id="year"></time></span>
+            <span class="nowrap">TechJobber</span>
+        </p>
+    </footer>
+
+
+
+
+
+
+
+
+
 
 </body>
 
