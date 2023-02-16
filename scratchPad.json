@@ -1,0 +1,36 @@
+{
+    "bioDetails":
+    {
+        "profilePicture": "string", 
+        "firstname": "string", 
+        "lastname": "string", 
+        "JobTitle": "string", 
+        "technologies": ["string"],
+        "bio": "string"
+    },
+    "experiences":
+    [
+        {
+            "jobTitle":"string",
+            "organizationName":"string",
+            "employmentType":"string",
+            "startDate":"Date",
+            "endDate":"Date",
+            "numberOfMonthsWorked":"Number",
+            "location":"string",
+            "description":"string",
+            "skills":["string"]
+        }
+    ],
+    "portfolio":
+    [
+        {
+            "title":"string",
+            "pictures":["string"],
+            "description":"string",
+            "link":"string",
+            "skills":["string"]
+        }
+    ]
+
+}

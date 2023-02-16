@@ -3,12 +3,13 @@ const router = express.Router()
 
 // Controllers 
 const user = require('../../controllers/user/user.controller')
-
+const { getProfile, updateBioDetailsHandler } = require('../../controllers/user/profile.controller')
 
 module.exports = function(app)
     {
         try 
         {
+
             console.log(' Building User routes ') 
 
 
@@ -22,6 +23,11 @@ module.exports = function(app)
             router.post('/signin', user.signinHandler ) 
 
 
+            // profile 
+            router.get('/dashboard/profile', getProfile )
+            router.patch('/dashboard/profile', updateBioDetailsHandler )
+            
+            // ASSIGN ROUTES TO APP 
             app.use('/api/v1', router )
             console.log(' User Routes Built ')
         }
