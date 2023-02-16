@@ -174,67 +174,48 @@ async function removeExperience(user_id, experience_id)
 // PORTFOLIO  ///////////////////
 
 
-async function addPortfolio(user_id, doc) 
+// Add To Portfolio 
+async function addToPortfolio(user_id, doc) 
 {
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ experience: doc }})
-            console.log( update ) 
+            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ portfolio: doc }})
+            console.log( updated ) 
             resolve() 
         }
         catch(e)
         {
 
-            console.log(' Server Encountered Error while adding User Experience ') 
+            console.log(' Server Encountered Error while adding item to portfolio ') 
             console.log(e) 
             e.type = 'SERVER' 
-            e.message = ' Server Encountered Error while adding User experience ' 
+            e.message = ' Server Encountered Error while adding item to portfolio ' 
             reject(e) 
+        }
+    })
+}
+
+// Get portfolio 
+async function getPortfolio()
+{
+    return new Promise(async(resolve, reject)=>{
+        try
+        {
+            console.log(' Getting User Porfolio ') 
+            
+            resolve() 
+        }
+        catch(e)
+        {
+            console.log(' Error occured while getting user Portfolio ')
+            console.log(e) 
+            reject() 
         }
     })
 }
 
 
 
-async function getExperiences( user_id )
-{
-    return new Promise(async(resolve, reject)=>{
-        try 
-        {
-            const fields = { experience: 1 , _id: 0 }
-            const experiences = await UserProfile.findOne({ user_id},fields)
-            resolve(experiences) 
-        }
-        catch(e)
-        {
-            console.log(' Error occured while getting user experiences ')
-            console.log(e) 
-            e.type = 'SERVER' 
-            e.message = 'Server encountered error while getting user experiences' 
-            reject(e) 
-        }
-    })   
-}
-
-
-// async function removeExperience()
-// {
-//     return new Promise(async(resolve, reject)=>{
-//         try 
-//         {
-
-//         }
-//         catch(e)
-//         {
-//             console.log(' Error occured while removing experience ')
-//             console.log(e)
-//             e.type = 'SERVER'
-//             e.message = 'SERVER ENCOUNTERED ERROR WHILE REMOVING EXPERIENCE'
-//             reject(e) 
-//         }
-//     })
-// }
-
-
-module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience, removeExperience } 
+module.exports = { createUserProfile, updateBioDetails,
+     addExperience, getExperiences, updateExperience, removeExperience, addToPortfolio } 

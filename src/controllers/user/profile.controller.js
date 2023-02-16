@@ -3,7 +3,8 @@
 const UserProfile = require('../../models/UserProfiles') 
 
 // Service 
-const { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience, removeExperience } = require('../../services/user/profile.service') 
+const { createUserProfile, updateBioDetails, addExperience, 
+    getExperiences, updateExperience, removeExperience , addToPortfolio} = require('../../services/user/profile.service') 
 
 
 async function getProfile(req, res, next)
@@ -128,5 +129,24 @@ async function removeExperienceHandler(req, res, next)
     }
 }
 
+async function addItemToPortfolioHandler(req, res, next)
+{
+    try 
+    {
+        console.log(' Add Item to portfolio Handler ')
+        const user_id = '63e729574396b20fad91f78c'
+        const addedItem = await addToPortfolio( user_id, req.body ) 
+        console.log( addedItem ) 
+        return res.send('Ok')
+    }
+    catch(e)
+    {
+        console.log(e) 
+        return res.render('pages/serverError',{ error:['error occured while adding experience ']})
+    }
+}
+
+
+
 module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler,
-         updateExperienceHandler, removeExperienceHandler  } 
+         updateExperienceHandler, removeExperienceHandler, addItemToPortfolioHandler  } 
