@@ -5,7 +5,7 @@ const router = express.Router()
 const user = require('../../controllers/user/user.controller')
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
     getExperiencesHandler, updateExperienceHandler, removeExperienceHandler,
- addItemToPortfolioHandler } = require('../../controllers/user/profile.controller')
+ addItemToPortfolioHandler, getPortfolioHandler } = require('../../controllers/user/profile.controller')
 
 module.exports = function(app)
     {
@@ -36,8 +36,9 @@ module.exports = function(app)
 
             // Portfolio 
             router.post('/dashboard/profile/portfolio', addItemToPortfolioHandler ) 
+            router.get('/dashboard/profile/portfolio', getPortfolioHandler ) 
 
-            
+
             // ASSIGN ROUTES TO APP 
             app.use('/api/v1', router )
             console.log(' User Routes Built ')

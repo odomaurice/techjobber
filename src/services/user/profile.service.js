@@ -70,7 +70,7 @@ async function addExperience(user_id, doc)
         try 
         {
             console.log(' Adding User Experience ')
-            const updated = await UserProfile.updateOne({ user_id },{ $push:{ experience: doc }},{ returnOriginal: true })
+            const updated = await UserProfile.updateOne({ user_id },{ $push:{ experience: doc }},{ returnDocument: true })
             console.log( updated ) 
             resolve() 
         }
@@ -180,7 +180,7 @@ async function addToPortfolio(user_id, doc)
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ portfolio: doc }})
+            const updated = await UserProfile.updateOne({ user_id },{ $push:{ portfolio: doc }},{ returnDocument: true })
             console.log( updated ) 
             resolve() 
         }
@@ -197,20 +197,21 @@ async function addToPortfolio(user_id, doc)
 }
 
 // Get portfolio 
-async function getPortfolio()
+async function getPortfolio( user_id )
 {
     return new Promise(async(resolve, reject)=>{
         try
         {
             console.log(' Getting User Porfolio ') 
-            
-            resolve() 
+            const portfolio = await UserProfile.findOne({ user_id },{ portfolio: 1, _id: 0 })
+            console.log( portfolio ) 
+            resolve(portfolio) 
         }
         catch(e)
         {
             console.log(' Error occured while getting user Portfolio ')
             console.log(e) 
-            reject() 
+            reject(e) 
         }
     })
 }
@@ -218,4 +219,5 @@ async function getPortfolio()
 
 
 module.exports = { createUserProfile, updateBioDetails,
-     addExperience, getExperiences, updateExperience, removeExperience, addToPortfolio } 
+     addExperience, getExperiences, updateExperience,
+      removeExperience, addToPortfolio, getPortfolio } 
