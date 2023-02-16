@@ -3,7 +3,7 @@
 const UserProfile = require('../../models/UserProfiles') 
 
 // Service 
-const { createUserProfile, updateBioDetails, addExperience } = require('../../services/user/profile.service') 
+const { createUserProfile, updateBioDetails, addExperience, getExperiences } = require('../../services/user/profile.service') 
 
 
 async function getProfile(req, res, next)
@@ -75,4 +75,19 @@ async function addExperienceHandler(req, res, next)
 }
 
 
-module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler } 
+async function getExperiencesHandler(req, res, next)
+{
+    try 
+    {
+        const user_id = '63e729574396b20fad91f78c'
+        const experiences = await getExperiences( user_id ) 
+        return res.json( experiences ) 
+    }
+    catch(e)
+    {
+        return res.render('pages/serverError',{ error:['server encountered error while fetchning experiences']})
+    }
+}
+
+
+module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler } 

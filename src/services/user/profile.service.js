@@ -198,4 +198,4 @@ async function removeExperience()
 }
 
 
-module.exports = { createUserProfile, updateBioDetails, addExperience } 
+module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences } 
