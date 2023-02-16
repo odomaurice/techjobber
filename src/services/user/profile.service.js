@@ -246,8 +246,30 @@ async function updatePortfolioItem(user_id, item_id, doc )
     })
 }
 
+// remove Experience 
+async function removePortfolioItem(user_id, item_id)
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
 
+            const update = { $pull:{ "portfolio":  { _id: item_id }}}
+            await UserProfile.updateOne({ user_id },update)
+            console.log('Done')
+            resolve() 
+        }
+        catch(e)
+        {
+            console.log(' Error occured while removing portfolio item  ')
+            console.log(e)
+            e.type = 'SERVER'
+            e.message = 'SERVER ENCOUNTERED ERROR WHILE REMOVING PORTFOLIO ITEM '
+            reject(e) 
+        }
+    })
+}
 
 module.exports = { createUserProfile, updateBioDetails,
      addExperience, getExperiences, updateExperience,
-      removeExperience, addToPortfolio, getPortfolio, updatePortfolioItem  } 
+      removeExperience, addToPortfolio, getPortfolio, updatePortfolioItem,
+    removePortfolioItem } 

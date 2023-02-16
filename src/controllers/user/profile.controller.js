@@ -5,7 +5,8 @@ const UserProfile = require('../../models/UserProfiles')
 // Service 
 const { createUserProfile, updateBioDetails, addExperience, 
     getExperiences, updateExperience, removeExperience ,
-    getPortfolio,  addToPortfolio, updatePortfolioItem } = require('../../services/user/profile.service') 
+    getPortfolio,  addToPortfolio, updatePortfolioItem, 
+removePortfolioItem } = require('../../services/user/profile.service') 
 
 
 async function getProfile(req, res, next)
@@ -184,6 +185,28 @@ async function updatePortfolioItemHandler(req, res, next)
     }
 }
 
+
+async function removePortfolioItemHandler(req, res, next)
+{
+    try 
+    {
+        
+        console.log(' removing Portfolio Item ') 
+        const user_id = '63e729574396b20fad91f78c'
+        const item_id = "63eea6ab2a7ecf1c8faf5eba"
+
+        await removePortfolioItem(user_id, item_id)
+        return res.send('Ok') 
+    }
+    catch(e)
+    {
+        console.log(e) 
+        return res.render('pages/serverError',{ error:['server encountered error while removing portfolio item  ']})
+    }
+}
+
+
+
 module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler,
          updateExperienceHandler, removeExperienceHandler, addItemToPortfolioHandler, 
-        getPortfolioHandler, updatePortfolioItemHandler } 
+        getPortfolioHandler, updatePortfolioItemHandler, removePortfolioItemHandler  } 
