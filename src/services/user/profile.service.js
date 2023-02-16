@@ -61,15 +61,16 @@ async function updateBioDetails( user_id, doc )
 }
 
 
-
 // EXPERIENCE 
+
+// Add Experience 
 async function addExperience(user_id, doc) 
 {
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ experience: doc }})
-            console.log( update ) 
+            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ experience: doc }},{new: true })
+            console.log( updated ) 
             resolve() 
         }
         catch(e)
@@ -197,4 +198,4 @@ async function removeExperience()
 }
 
 
-module.exports = { createUserProfile, updateBioDetails  } 
+module.exports = { createUserProfile, updateBioDetails, addExperience } 

@@ -3,7 +3,7 @@ const router = express.Router()
 
 // Controllers 
 const user = require('../../controllers/user/user.controller')
-const { getProfile, updateBioDetailsHandler } = require('../../controllers/user/profile.controller')
+const { getProfile, updateBioDetailsHandler, addExperienceHandler } = require('../../controllers/user/profile.controller')
 
 module.exports = function(app)
     {
@@ -26,6 +26,7 @@ module.exports = function(app)
             // profile 
             router.get('/dashboard/profile', getProfile )
             router.patch('/dashboard/profile', updateBioDetailsHandler )
+            router.post('/dashboard/profile/experience', addExperienceHandler )
             
             // ASSIGN ROUTES TO APP 
             app.use('/api/v1', router )
