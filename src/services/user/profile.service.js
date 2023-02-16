@@ -69,7 +69,8 @@ async function addExperience(user_id, doc)
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const updated = await UserProfile.findOneAndUpdate({ user_id },{ $push:{ experience: doc }},{new: true })
+            console.log(' Adding User Experience ')
+            const updated = await UserProfile.updateOne({ user_id },{ $push:{ experience: doc }},{ returnOriginal: true })
             console.log( updated ) 
             resolve() 
         }
@@ -86,6 +87,7 @@ async function addExperience(user_id, doc)
 }
 
 
+// get Experiences 
 async function getExperiences( user_id )
 {
     return new Promise(async(resolve, reject)=>{
@@ -106,10 +108,42 @@ async function getExperiences( user_id )
     })   
 }
 
-async function updateExperience()
-{
 
+async function updateExperience(user_id, experience_id,  doc)
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+
+            // Get fields to update 
+            const updateKeys = Object.keys( doc ) 
+
+            // set update query 
+            const update = {$set: { }}
+            
+            // set new field values  to update query 
+            for( var i = 0;  i < updateKeys.length; i++ )
+            {
+                update.$set[`experience.$.${updateKeys[i]}`] = doc[updateKeys[i]]
+            }
+
+            // update 
+            const updateStatus = await UserProfile.updateOne({ user_id, "experience._id": experience_id  }, update,{ returnDocument: true } )
+            console.log( updateStatus ) 
+            resolve() 
+        }
+        catch(e)
+        {
+            console.log(' Error occured while updating experience ')
+            console.log(e) 
+            e.type = 'SERVER'
+            e.message = 'Error occured while updating experience'
+            reject(e) 
+        }
+    })
 }
+
+
 
 async function removeExperience()
 {
@@ -174,10 +208,6 @@ async function getExperiences( user_id )
     })   
 }
 
-async function updateExperience()
-{
-
-}
 
 async function removeExperience()
 {
@@ -198,4 +228,4 @@ async function removeExperience()
 }
 
 
-module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences } 
+module.exports = { createUserProfile, updateBioDetails, addExperience, getExperiences, updateExperience } 
