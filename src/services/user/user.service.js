@@ -40,7 +40,7 @@ async function signupUser( userDoc )
     {
         const newUser = new User(userDoc)
         const savedUser = await newUser.save() 
-        return savedUser
+        return savedUser._id 
     }
     catch(e)
     {

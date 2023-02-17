@@ -4,8 +4,9 @@ const router = express.Router()
 // Controllers 
 const user = require('../../controllers/user/user.controller')
 const  { getDashboard  } = require('../../controllers/user/userDashboard.controller')
+const { fetchUserNotificationsHandler, deleteNotificationHandler } = require('../../controllers/user/userNotification')
 
-
+// User Profile Handlers 
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
     getExperiencesHandler, updateExperienceHandler, removeExperienceHandler,
  addItemToPortfolioHandler, getPortfolioHandler, updatePortfolioItemHandler,
@@ -32,6 +33,10 @@ module.exports = function(app)
             // Dashboard 
             router.get('/dashboard', getDashboard )
 
+
+            // Notifications 
+            router.get('/dashboard/notifications', fetchUserNotificationsHandler )
+            router.patch('/dashboard/notifications', deleteNotificationHandler ) 
 
             // profile 
             router.get('/dashboard/profile', getProfile )

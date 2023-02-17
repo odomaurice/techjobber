@@ -5,10 +5,11 @@ const validateSignupSchema = require('../../services/user/validateSignupSchema')
 
 // Services 
 const { checkEmailExists, signupUser, findUserWithEmail } = require('../../services/user/user.service') 
-const {createTalentDashboard}= require('../../services/talent/talent.service')
+const { createUserDashboard } = require('../../services/user/dashboard.service') 
 
 // Functions 
 const { sendMail }  = require('../../Utils/mail/sendMail')
+const {sendNotificationToUser } = require('../../Utils/notification/sendNotification')
 
 // Modules 
 const crypto = require('crypto')
@@ -18,6 +19,7 @@ const bcrypt = require('bcrypt')
 
 // Models 
 const User = require('../../models/User.model') 
+
 
 
 const SignupHandler = async function(req, res, next)
@@ -46,10 +48,15 @@ const SignupHandler = async function(req, res, next)
            req.body.emailVerificationCode = emailVerificationCode 
 
            // signup new user 
-           await signupUser( req.body ) 
+            const user_id =   await signupUser( req.body ) 
 
             // create new user dashboard 
-            await createTalentDashboard( req.body.email ) 
+            await createUserDashboard( user_id)
+
+            // send notification to user 
+            const notification = { "title":"title", "date": Date.now() , "message":"message", "type":"system", "actionLink":"www.google.com"}
+
+            await sendNotificationToUser( user_id,notification)
             
            // Send Signup mail 
            const mailDoc = 
@@ -64,7 +71,7 @@ const SignupHandler = async function(req, res, next)
 
            const mailVariables = 
            { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/api/v1/verifyEmail/${emailVerificationCode}`}
-           await sendMail('verifyEmail', mailDoc,mailVariables)
+          // await sendMail('verifyEmail', mailDoc,mailVariables)
 
 
            // Signup successfull 

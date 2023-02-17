@@ -27,6 +27,10 @@ const NotificationSchema = new Schema
             {
                 type: String,
                 required: true 
+            },
+            actionLink:
+            {
+                type: string 
             }
         }
     )
