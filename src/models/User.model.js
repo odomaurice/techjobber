@@ -51,6 +51,12 @@ const UserSchema = new Schema
                 trim: true,
                 required: true
             },
+            emailVerified: 
+            {
+                type: Boolean, 
+                required: true, 
+                default: true 
+            }, 
             isVerified:
             {
                 type: Boolean, 
@@ -63,9 +69,9 @@ const UserSchema = new Schema
                 required: true,
                 default: false 
             },
-            certificate_id:
+            certificateId:
             {
-                type: String, 
+                type: String,
                 required: true 
             }
         },
@@ -79,9 +85,14 @@ UserSchema.pre("save",async function(next){
 
     const user = this 
     var plainTextPassword = user.password 
-    const saltWorkFactor = await bcrypt.genSalt(config.get('BCRYPT_SALT_WORK_FACTOR') )
-    const hashPassword = await bcrypt.hash(plainTextPassword, saltWorkFactor)
-    user.password = hashPassword 
+
+    if( user.password )
+    {
+        const saltWorkFactor = await bcrypt.genSalt(config.get('BCRYPT_SALT_WORK_FACTOR') )
+        const hashPassword = await bcrypt.hash(plainTextPassword, saltWorkFactor)
+        user.password = hashPassword 
+    }
+    
     next() 
 })
 

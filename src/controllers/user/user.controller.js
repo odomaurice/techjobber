@@ -5,12 +5,12 @@ require('dotenv').config()
 const validateSignupSchema = require('../../services/user/validateSignupSchema')
 
 // Services 
-const { checkEmailExists, signupUser, findUserWithEmail } = require('../../services/user/user.service') 
+const { checkEmailExists, signupUser, findUserWithEmail, verifyEmail } = require('../../services/user/user.service') 
 const { createUserDashboard } = require('../../services/user/dashboard.service') 
+
 
 // Functions 
 const { sendMail }  = require('../../Utils/mail/sendMail')
-const {sendNotificationToUser } = require('../../Utils/notification/sendNotification')
 
 
 // Modules 
@@ -22,6 +22,46 @@ const bcrypt = require('bcrypt')
 // Models 
 const User = require('../../models/User.model') 
 
+
+const verifyEmailHandler = async function(req,res, next)
+{
+    try 
+    {
+        console.log(' Verify Email Handler ')
+        const verificationCodeValid = await verifyEmail( req.params.code ) 
+
+        if( verificationCodeValid )
+        {
+            return res.render('pages/email_verified')
+        }
+        else 
+        {
+            return res.render('pages/email_not_verified')
+        }
+ 
+    }
+    catch(e)
+    {
+        return res.render('pages/serverError',{ error: e.message })
+    }
+}
+
+
+
+const signupSuccessHanler = async function(req, res, next)
+{
+    try 
+    {
+        console.log(' Redirecting user to signup success page ')
+        return res.render('pages/success_msg')
+    }
+    catch(e)
+    {
+        console.log(' Error occured while serving signup success page')
+        console.log(e)
+        return res.send('Visit email to verify account')
+    }
+}
 
 
 const SignupHandler = async function(req, res, next)
@@ -61,15 +101,14 @@ const SignupHandler = async function(req, res, next)
 
 
            const mailVariables = 
-           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/api/v1/verifyEmail/${emailVerificationCode}`}
-          // await sendMail('verifyEmail', mailDoc,mailVariables)
-
+           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/api/v1/verify/email/${emailVerificationCode}`}
+           await sendMail('verifyEmail', mailDoc,mailVariables)
 
            // Signup successfull 
            
            console.log(' New User signup successfull ') 
            res.status(201)
-           return res.render('pages/success_msg') // should redirect to a signup successfull page 
+           return res.redirect('/api/v1/signup/success') // should redirect to a signup successfull page 
         }
         catch(e)
         {
@@ -91,7 +130,6 @@ const SignupHandler = async function(req, res, next)
                 case 'emailAlreadyRegistered':
 
                                 req.flash('signup_errors', errorMsg ) 
-                                req.flash('user','testuser') 
                                return res.redirect('/api/v1/signup')
 
                 default: 
@@ -213,4 +251,4 @@ const signinHandler = async function(req, res, next)
 
 
 
-module.exports = { SignupHandler, getSignupPage, signinPageHandler, signinHandler  }
+module.exports = { SignupHandler, getSignupPage, signinPageHandler, signinHandler, signupSuccessHanler, verifyEmailHandler   }

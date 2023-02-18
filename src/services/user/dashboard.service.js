@@ -9,8 +9,10 @@ async function createUserDashboard( user_id )
    return new Promise(async(resolve, reject)=>{
     try 
     {
+        console.log(' Creating new user dashboard ') 
         const newUserDashboard = new UserDashboard({ user_id })
         await newUserDashboard.save() 
+        console.log(' Created new user Dashboard ') 
         resolve() 
     }
     catch(e)
