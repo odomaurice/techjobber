@@ -61,7 +61,7 @@ module.exports = function(app)
 
             
             // ASSIGN ROUTES TO APP 
-            app.use('/api/v1', router )
+            app.use('/', router )
             console.log(' User Routes Built ')
         }
         catch(e)

@@ -9,19 +9,21 @@ const { createUserProfile, updateBioDetails, addExperience,
 removePortfolioItem, saveSkillsToUserDashboard  } = require('../../services/user/profile.service') 
 
 
-
 async function getProfile(req, res, next)
 {
     try 
     {
 
         console.log(' Getting User Profile ')
-        console.log( req.session.user ) 
+        console.log( req.user ) 
 
-        const {  firstname, lastname } = req.session.user 
-        const _id = '63e729574396b20fad91f78c'
+        const {  firstname, lastname } = req.user 
+        const _id = '63e729574396b20fad91f78c' // change to req.user 
 
+        console.log(` Firstname: ${ firstname }`)
+        console.log(` lastname: ${ lastname }`)
         
+
         const fields = { _id: 0, bioDetails: 1, experience: 1, portfolio: 1 } 
         const userProfile = await UserProfile.findOne({ user_id: _id }, fields ) 
 
@@ -33,6 +35,15 @@ async function getProfile(req, res, next)
             const { bioDetails, experience, portfolio } = userProfile 
             return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
         }
+
+        console.log('------------------')
+        console.log( userProfile.bioDetails )
+
+        console.log('------------------')
+        console.log( userProfile.experience )
+        
+        console.log('------------------')
+        console.log( userProfile.portfolio ) 
 
         const { bioDetails, experience, portfolio } = userProfile 
         return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
