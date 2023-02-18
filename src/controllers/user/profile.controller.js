@@ -18,7 +18,7 @@ async function getProfile(req, res, next)
         console.log( req.user ) 
 
         const {  firstname, lastname } = req.user 
-        const _id = '63e729574396b20fad91f78c' // change to req.user 
+        const _id = req.user 
 
         console.log(` Firstname: ${ firstname }`)
         console.log(` lastname: ${ lastname }`)
