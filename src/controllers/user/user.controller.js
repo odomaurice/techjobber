@@ -29,36 +29,25 @@ const SignupHandler = async function(req, res, next)
         try 
         {
          
-                     /////////////  Temp //////////////////////////
-           //create jwt 
-           const payload = { email: req.body.email } 
-           const token = jwt.sign( payload, 'secret', {expiresIn: '10m' })
-           res.cookie('session_token', token ) 
-           ////////////   Temp //////////////////////////
-
-
-          console.log(' Signing Up new User  ') 
-
+           console.log(' Signing Up new User  ') 
+           
            // Validate Signup Schema 
             await validateSignupSchema( req.body ) 
            
            // Check If Email Used Already 
             await checkEmailExists( req.body.email ) 
 
-            // create user email verification code 
+
+           // create user email verification code 
            const emailVerificationCode = crypto.randomBytes(16).toString('hex') 
            req.body.emailVerificationCode = emailVerificationCode 
+
 
            // signup new user 
             const user_id =   await signupUser( req.body ) 
 
             // create new user dashboard 
             await createUserDashboard( user_id)
-
-            // send notification to user 
-            const notification = { "title":"title", "date": Date.now() , "message":"message", "type":"system", "actionLink":"www.google.com"}
-
-            await sendNotificationToUser( user_id,notification)
             
            // Send Signup mail 
            const mailDoc = 
@@ -106,7 +95,7 @@ const SignupHandler = async function(req, res, next)
                                return res.redirect('/api/v1/signup')
 
                 default: 
-                        return res.status(500).json({success: false, msg:'unknown error type '})
+                        return res.ender('pages/serverError',{ error:'server error'})
            }
 
         }
