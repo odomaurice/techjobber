@@ -88,5 +88,36 @@ async function findUserWithEmail(email)
 }
 
 
+async function verifyEmail( code )
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+            const fields = { _id: 1, emailVerificationCode: 1, emailVerified: 1 } 
+            const user = await User.findOne({ emailVerificationCode: code }, fields)
 
-module.exports = { checkEmailExists, signupUser, findUserWithEmail, findUserWithEmail}
+            if( user._id )
+            { 
+
+                user.emailVerified = true 
+                await user.save() 
+                resolve(true)
+
+             }
+            else{ resolve(false) }
+
+        }
+        catch(e)
+        {
+            console.log('SERVICE_ERROR: Server encountered error while verifying signup email ')
+            console.log(e) 
+            e.type = 'SERVER'
+            e.message = 'server encountered error while verifying email '
+            reject(e) 
+        }
+    })
+}
+
+
+
+module.exports = { checkEmailExists, signupUser, findUserWithEmail, findUserWithEmail, verifyEmail}

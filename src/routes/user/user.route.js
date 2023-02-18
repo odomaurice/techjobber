@@ -6,6 +6,7 @@ const user = require('../../controllers/user/user.controller')
 const  { getDashboard  } = require('../../controllers/user/userDashboard.controller')
 const { fetchUserNotificationsHandler, deleteNotificationHandler } = require('../../controllers/user/userNotification')
 
+
 // User Profile Handlers 
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
     getExperiencesHandler, updateExperienceHandler, removeExperienceHandler,
@@ -23,12 +24,15 @@ module.exports = function(app)
             // signup 
             router.post('/signup', user.SignupHandler )
             router.get('/signup', user.getSignupPage )
-
+            router.get('/signup/success', user.signupSuccessHanler ) 
             
             // signin 
             router.get('/signin', user.signinPageHandler ) 
             router.post('/signin', user.signinHandler ) 
 
+
+            // Verify Email 
+            router.get('/verify/email/:code', user.verifyEmailHandler)
 
             // Dashboard 
             router.get('/dashboard', getDashboard )
