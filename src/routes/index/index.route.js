@@ -9,7 +9,7 @@ module.exports = function(app)
         {
 
             router.get('/', index.getIndexPage )
-            app.use('/api/v1', router )
+            app.use('/', router )
         }
         catch(e)
         {
