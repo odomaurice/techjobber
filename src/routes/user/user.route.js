@@ -6,6 +6,7 @@ const user = require('../../controllers/user/user.controller')
 const  { getDashboard  } = require('../../controllers/user/userDashboard.controller')
 const { fetchUserNotificationsHandler, deleteNotificationHandler } = require('../../controllers/user/userNotification')
 
+const { authenticateAccessToken } = require('../../middlewares/auth/authenticateAccessToken')
 
 // User Profile Handlers 
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
@@ -35,7 +36,7 @@ module.exports = function(app)
             router.get('/verify/email/:code', user.verifyEmailHandler)
 
             // Dashboard 
-            router.get('/dashboard', getDashboard )
+            router.get('/dashboard', authenticateAccessToken, getDashboard )
 
 
             // Notifications 

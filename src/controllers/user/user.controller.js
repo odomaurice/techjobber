@@ -211,8 +211,8 @@ const signinHandler = async function(req, res, next)
         console.log(' USer type is ' + userType ) 
         switch(userType)
         {
-            case 'talent': // redirect user to talent dashboard;
-                            return res.redirect('/api/v1/talent/dashboard')
+            case 'user': // redirect user to talent dashboard;
+                            return res.redirect('/api/v1/dashboard')
 
             case 'client': // redirect user to client dashboard;
                             return res.redirect('/api/v1/client/dashboard') 
