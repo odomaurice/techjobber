@@ -6,7 +6,8 @@ const UserProfile = require('../../models/UserProfiles')
 const { createUserProfile, updateBioDetails, addExperience, 
     getExperiences, updateExperience, removeExperience ,
     getPortfolio,  addToPortfolio, updatePortfolioItem, 
-removePortfolioItem } = require('../../services/user/profile.service') 
+removePortfolioItem, saveSkillsToUserDashboard  } = require('../../services/user/profile.service') 
+
 
 
 async function getProfile(req, res, next)
@@ -23,6 +24,7 @@ async function getProfile(req, res, next)
 
         const fields = { _id: 0, bioDetails: 1, experience: 1, portfolio: 1 } 
         const userProfile = await UserProfile.findOne({ user_id }, fields ) 
+
 
         if( !userProfile )
         {
@@ -48,9 +50,19 @@ async function updateBioDetailsHandler(req, res, next)
     try 
     {
         const user_id = '63e729574396b20fad91f78c'
-        const doc = { roleTitle: 'roleTitle', bio:'this is a short bio', technologies:['html','css','js'], profilePicture: 'url'}
+        const doc = { roleTitle: 'roleTitle', bio:'this is a short bio', skills:['html','css','js'], profilePicture: 'url'}
+
         // validate user input
         await updateBioDetails( user_id, doc ) 
+      
+        if( skills )
+        {
+            // save skills to user dashboard 
+            await saveSkillsToUserDashboard( user_id, skills )
+        }
+        
+
+
         return res.json({ good: true })
     }   
     catch(e)

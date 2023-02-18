@@ -2,7 +2,7 @@ const userRoutes = require('./user/user.route')
 const landingPageRoutes = require('./landingPage/index.route')
 const talentRoutes = require('./talent/talent.route') 
 const indexRoutes = require('./index/index.route') 
-
+const adminRoutes = require('./admin/admin.route')
 
 module.exports = function(app)
     {
@@ -13,6 +13,9 @@ module.exports = function(app)
 
             // Index Routes 
             indexRoutes(app) 
+
+            // Admin Routes 
+            adminRoutes(app) 
             
             // Building User Routes 
             userRoutes(app) 

@@ -62,6 +62,11 @@ const UserSchema = new Schema
                 type: Boolean, 
                 required: true,
                 default: false 
+            },
+            certificate_id:
+            {
+                type: String, 
+                required: true 
             }
         },
         {

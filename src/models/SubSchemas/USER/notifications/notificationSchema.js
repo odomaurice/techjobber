@@ -30,7 +30,7 @@ const NotificationSchema = new Schema
             },
             actionLink:
             {
-                type: string 
+                type: String 
             }
         }
     )

@@ -1,5 +1,6 @@
 require('dotenv').config() 
 
+
 // Validation Schemas 
 const validateSignupSchema = require('../../services/user/validateSignupSchema')
 
@@ -10,6 +11,7 @@ const { createUserDashboard } = require('../../services/user/dashboard.service')
 // Functions 
 const { sendMail }  = require('../../Utils/mail/sendMail')
 const {sendNotificationToUser } = require('../../Utils/notification/sendNotification')
+
 
 // Modules 
 const crypto = require('crypto')

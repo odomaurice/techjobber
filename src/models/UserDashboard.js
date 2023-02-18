@@ -24,6 +24,10 @@ const UserDashboardSchema = new Schema
                 type:[NotificationSchema],
                 required: true, 
                 default: [] 
+            },
+            skills:
+            {
+                type: [String] 
             }
         }
     )

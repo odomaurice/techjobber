@@ -13,7 +13,7 @@ const BioDetailsSchema = new Schema
         {
             type: String
         },
-        technologies:
+        skills:
         {
             type:[String]
         },

@@ -1,4 +1,27 @@
 const UserProfile = require('../../models/UserProfiles') 
+const UserDashboard = require('../../models/UserDashboard') 
+
+async function saveSkillsToUserDashboard( user_id, skills )
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+            const update = { $set:{ skills }}
+            await UserDashboard.updateOne({ user_id: user_id},update)
+           resolve()
+        }
+        catch(e)
+        {
+            console.log(' Error occured while Saving Skills to user Dashboard ')
+            console.log(e) 
+            e.type = 'SERVER' 
+            e.message = ' Server Encountered Error while daving skills to user dashboard ' 
+            reject(e) 
+        }
+    })
+}
+
+
 
 
 // Create User Profile 
@@ -272,4 +295,4 @@ async function removePortfolioItem(user_id, item_id)
 module.exports = { createUserProfile, updateBioDetails,
      addExperience, getExperiences, updateExperience,
       removeExperience, addToPortfolio, getPortfolio, updatePortfolioItem,
-    removePortfolioItem } 
+    removePortfolioItem, saveSkillsToUserDashboard } 
