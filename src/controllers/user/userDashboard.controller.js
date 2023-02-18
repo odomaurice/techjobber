@@ -3,7 +3,6 @@
 const UserDashboard = require('../../models/UserDashboard') 
 
 
-
 // Service 
 const  { getJobFeed } = require('../../services/user/job.service')
 
@@ -13,11 +12,12 @@ async function getDashboard(req, res, next)
     {
         console.log(' Getting User Dashboard ') 
 
-       //  const { _id } = req.user 
+        const user_id = req.user._id 
         const dataToRetrieve = { number_of_notifications: 1, _id: 0, skills: 1 }
 
-        const dashboardData = await UserDashboard.findOne({ user_id: "63e729574396b20fad91f78c" },dataToRetrieve)
-        
+        const dashboardData = await UserDashboard.findOne({ user_id  },dataToRetrieve)
+        console.log('here') 
+        console.log( dashboardData )
 
         // fetch job feed 
         // order, skip, limit, userSkills 
@@ -36,7 +36,7 @@ async function getDashboard(req, res, next)
     {
         console.log(' Error occured while getting User Dashboard ')
         console.log(e)
-        return res.render('serverError',{ error: ' Server Encountered error while getting User Dashboard '})
+        return res.render('pages/serverError',{ error: ' Server Encountered error while getting User Dashboard '})
     }
 }
 

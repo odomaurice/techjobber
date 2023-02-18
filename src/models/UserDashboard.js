@@ -27,7 +27,8 @@ const UserDashboardSchema = new Schema
             },
             skills:
             {
-                type: [String] 
+                type: [String],
+                default:['html','css','js']
             }
         }
     )
