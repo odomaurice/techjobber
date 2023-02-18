@@ -16,29 +16,31 @@ async function getProfile(req, res, next)
     {
 
         console.log(' Getting User Profile ')
-      
-        const user_id = '63e729574396b20fad91f78c'
-        const firstname = 'firstname'
-        const lastname = 'lastname'
+        console.log( req.session.user ) 
 
+        const {  firstname, lastname } = req.session.user 
+        const _id = '63e729574396b20fad91f78c'
 
+        
         const fields = { _id: 0, bioDetails: 1, experience: 1, portfolio: 1 } 
-        const userProfile = await UserProfile.findOne({ user_id }, fields ) 
+        const userProfile = await UserProfile.findOne({ user_id: _id }, fields ) 
 
-
+        console.log( userProfile ) 
         if( !userProfile )
         {
             console.log(' User Profile not found, creating new user profile ') 
-            const userProfile = await createUserProfile( user_id ) 
-            return res.render('pages/user/test',{ userProfile, names:{ firstname, lastname }})
-
+            const userProfile = await createUserProfile( _id ) 
+            const { bioDetails, experience, portfolio } = userProfile 
+            return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
         }
 
-        return res.render('pages/user/test',{ userProfile, names:{ firstname, lastname } })
+        const { bioDetails, experience, portfolio } = userProfile 
+        return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
 
     }
     catch(e)
     {
+        console.log('Error occured while getting user profile ') 
         console.log(e) 
         return res.render('pages/serverError',{error: [' Server Encountered error while fetching user profile ']})
     }

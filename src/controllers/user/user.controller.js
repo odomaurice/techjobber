@@ -192,7 +192,7 @@ const signinHandler = async function(req, res, next)
         if( !passwordValid )
         { 
             console.log('User password incorrect ')
-            return res.redirect('pages/user_signin',{ error: 'check login details '})
+            return res.status(200).redirect('pages/user_signin',{ error: 'check login details '})
         } 
 
         console.log(' User Password Valid ') 
@@ -205,26 +205,29 @@ const signinHandler = async function(req, res, next)
         // Set user to request 
         const userType = user.userType 
         const _id = user._id 
-        req.user = { email, userType, _id }
+        const firstname = user.firstname 
+        const lastname = user.lastname 
+
+        req.session.user = { email, userType, _id, firstname, lastname }
 
 
         console.log(' USer type is ' + userType ) 
         switch(userType)
         {
             case 'user': // redirect user to talent dashboard;
-                            return res.redirect('/api/v1/dashboard')
+                            return res.status(200).redirect('/api/v1/dashboard')
 
             case 'client': // redirect user to client dashboard;
-                            return res.redirect('/api/v1/client/dashboard') 
+                            return res.status(200).redirect('/api/v1/client/dashboard') 
                             
 
             case 'admin' : // redirect user to admin dashboard; 
-                            res.redirect('/api/v1/admin/dashboard') 
+                            res.status(200).redirect('/api/v1/admin/dashboard') 
                             return; 
 
             default: // Unknown User Type 
                     console.log(" Unknown User Type ") 
-                    res.redirect('/api/v1/signin',{errors: ' Unknown User'})
+                    res.redirect(200,'/api/v1/signin')
                     return; 
         }
 

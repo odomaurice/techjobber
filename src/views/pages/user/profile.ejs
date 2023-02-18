@@ -218,7 +218,7 @@
                 <span class="tooltip">Search</span>
             </li>
             <li>
-                <a href="/api/v1/index.ejs">
+                <a href="/">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Home</span>
                 </a>
@@ -292,15 +292,20 @@
                         <img src="images/profile.png" alt="">
                     </div>
                     <div class="details w-full">
-                        <div class="name">Name</div>
-                        <div class="job">Stack</div>
-                        <div class="technologies">Technologies</div>
+                        <div class="name"> <%= names.firstname%> <%= names.lastname %> </div>
+                        <div class="job"> <%= bioDetails.jobTitle %>  </div>
+                        
+                        <!-- <% for( var i = 0; i < bioDetails.technologies.length ; i++ ) %> 
+                        <% { %> 
+                            <div class="technologies"> <%= bioDetails.technologies[i] %> </div>
+                       <% } %>  -->
+
                         <div class="buttons">
-                            <h2 class="bio">About Me</h2>
-                            <p class="w-full bio">Lorem dolor sit amet, consectetur adipisicing elit. Ab officiis, harum
-                                minus aliquam atque
-                                aliquid enim commodi accusantium ut maiores dolorum nulla?</p>
+                            <h2 class="bio">  <%= bioDetails.shortBio %> </h2>
+                            <p class="w-full bio"> <%= bioDetails.longBio %> </p>
                             <div class="">
+
+                                
                                 <!-- Edit Experience Starts -->
                                 <ul>
                                     <li class="mt-3" onclick="dropdown()">

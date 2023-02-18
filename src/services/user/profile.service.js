@@ -22,8 +22,6 @@ async function saveSkillsToUserDashboard( user_id, skills )
 }
 
 
-
-
 // Create User Profile 
 async function createUserProfile(user_id)
 {

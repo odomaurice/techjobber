@@ -8,8 +8,8 @@ module.exports = function indexRoutes(app)
 {
     try 
     {
-        router.get('/', landingPageHandler.serveLandingPage )
-        app.use('/api/v1/landing', router) 
+        router.get('/landing', landingPageHandler.serveLandingPage )
+        app.use('/', router) 
     }
     catch(e)
     {
