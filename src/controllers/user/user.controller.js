@@ -101,14 +101,14 @@ const SignupHandler = async function(req, res, next)
 
 
            const mailVariables = 
-           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/api/v1/verify/email/${emailVerificationCode}`}
+           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/verify/email/${emailVerificationCode}`}
            await sendMail('verifyEmail', mailDoc,mailVariables)
 
            // Signup successfull 
            
            console.log(' New User signup successfull ') 
            res.status(201)
-           return res.redirect('/api/v1/signup/success') // should redirect to a signup successfull page 
+           return res.redirect('/signup/success') // should redirect to a signup successfull page 
         }
         catch(e)
         {
@@ -130,7 +130,7 @@ const SignupHandler = async function(req, res, next)
                 case 'emailAlreadyRegistered':
 
                                 req.flash('signup_errors', errorMsg ) 
-                               return res.redirect('/api/v1/signup')
+                               return res.redirect('/signup')
 
                 default: 
                         return res.ender('pages/serverError',{ error:'server error'})
@@ -197,8 +197,10 @@ const signinHandler = async function(req, res, next)
 
         console.log(' User Password Valid ') 
 
+
         // CREATE USER JWT TOKEN 
-        const token = await jwt.sign({ email }, process.env.JWT_SECRET,{ 'expiresIn': '5m' })
+        const saveFields = { email, firstname: user.firstname, lastname: user.lastname, userType: user.userType, _id: user._id  }
+        const token = await jwt.sign(saveFields, process.env.JWT_SECRET,{ 'expiresIn': '50m' })
         res.cookie('AUTH_TOKEN', token ) 
 
 
@@ -208,6 +210,7 @@ const signinHandler = async function(req, res, next)
         const firstname = user.firstname 
         const lastname = user.lastname 
 
+        req.user = { email, userType, _id, firstname, lastname }
         req.session.user = { email, userType, _id, firstname, lastname }
 
 
@@ -215,19 +218,19 @@ const signinHandler = async function(req, res, next)
         switch(userType)
         {
             case 'user': // redirect user to talent dashboard;
-                            return res.status(200).redirect('/api/v1/dashboard')
+                            return res.status(200).redirect('/dashboard')
 
             case 'client': // redirect user to client dashboard;
-                            return res.status(200).redirect('/api/v1/client/dashboard') 
+                            return res.status(200).redirect('/client/dashboard') 
                             
 
             case 'admin' : // redirect user to admin dashboard; 
-                            res.status(200).redirect('/api/v1/admin/dashboard') 
+                            res.status(200).redirect('/admin/dashboard') 
                             return; 
 
             default: // Unknown User Type 
                     console.log(" Unknown User Type ") 
-                    res.redirect(200,'/api/v1/signin')
+                    res.redirect(200,'/signin')
                     return; 
         }
 
@@ -245,7 +248,7 @@ const signinHandler = async function(req, res, next)
             case 'SERVER': return res.render('serverError', { error: errorMsg })
 
             case 'USER_INPUT':  req.flash('errors', errorMsg ) 
-                                return res.redirect('/api/v1/signin')
+                                return res.redirect('/signin')
 
         }
 

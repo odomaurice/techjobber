@@ -1,6 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
+
+<!-- 
+
+DATA RETURNED TO PAGE 
+
+// object 
+bioData:
+{
+        profilePicture,
+        jobTitle,
+        technologies, // array of strings 
+        shortBio,
+        fullBio,
+}
+
+// object 
+names:{ firstname, lastname }
+
+// array of objects 
+experience:[
+            { 
+                roleTitle,
+                organization, 
+                employmentType,
+                startDate,
+                endDate,
+                numberOfMonthsWorked,
+                description,
+                skills // array of strings 
+            } 
+        ]
+
+
+// array of objects 
+portfolio:[
+            {
+                title,
+                pictures,// array of strings 
+                description,
+                link,
+                skills // array of strings 
+            }
+        ]
+-->
+
 <head>
     <meta charset="UTF-8">
     <title>User Profile||TechJobber </title>
@@ -218,7 +263,7 @@
                 <span class="tooltip">Search</span>
             </li>
             <li>
-                <a href="/">
+                <a href="/api/v1/index.ejs">
                     <i class='bx bx-home'></i>
                     <span class="links_name">Home</span>
                 </a>
@@ -292,20 +337,17 @@
                         <img src="images/profile.png" alt="">
                     </div>
                     <div class="details w-full">
-                        <div class="name"> <%= names.firstname%> <%= names.lastname %> </div>
-                        <div class="job"> <%= bioDetails.jobTitle %>  </div>
+                        <div class="name"> <%= names.firstname %> <%= names.lastname %> </div>
+                        <div class="job"> <%= bioDetails.jobTitle %> </div>
                         
-                        <!-- <% for( var i = 0; i < bioDetails.technologies.length ; i++ ) %> 
-                        <% { %> 
+                        <% for( var i = 0; i < bioDetails.technologies.length; i++ ){ %> 
                             <div class="technologies"> <%= bioDetails.technologies[i] %> </div>
-                       <% } %>  -->
+                        <% } %> 
 
                         <div class="buttons">
-                            <h2 class="bio">  <%= bioDetails.shortBio %> </h2>
-                            <p class="w-full bio"> <%= bioDetails.longBio %> </p>
+                            <h2 class="bio"> <%= bioDetails.shortBio %></h2>
+                            <p class="w-full bio"> <%= bioDetails.fullBio %>  </p>
                             <div class="">
-
-                                
                                 <!-- Edit Experience Starts -->
                                 <ul>
                                     <li class="mt-3" onclick="dropdown()">
@@ -321,6 +363,7 @@
                                         </a>
                                     </li>
 
+                                    <!--- Start -->
                                     <li class="text-md mt-1 flex w-4/5 flex-col justify-start px-8 py-1 text-justify font-thin text-green-600"
                                         id="submenu">
                                         <div class=" sm:rounded-xl flex justify-between align-middle items-center">
@@ -395,7 +438,8 @@
                                                 Skills
                                             </p>
                                         </div>
-
+                                    </li>
+                                    <!-- Stop -->
                                 </ul>
 
 
