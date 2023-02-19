@@ -9,15 +9,19 @@ const BioDetailsSchema = new Schema
         {
             type: String,
         }, 
-        roleTitle:
+        jobTitle:
         {
             type: String
         },
-        skills:
+        technologies:
         {
             type:[String]
         },
-        bio: 
+        shortBio: 
+        {
+            type: String 
+        },
+        fullBio: 
         {
             type: String 
         }

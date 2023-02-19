@@ -12,7 +12,7 @@ async function getDashboard(req, res, next)
     {
         console.log(' Getting User Dashboard ') 
 
-        const user_id = req.user._id 
+        const user_id = req.session.user._id 
         const dataToRetrieve = { number_of_notifications: 1, _id: 0, skills: 1 }
 
         const dashboardData = await UserDashboard.findOne({ user_id  },dataToRetrieve)
