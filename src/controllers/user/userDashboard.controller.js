@@ -17,7 +17,10 @@ async function getDashboard(req, res, next)
         const successMessages = req.flash('success') 
 
 
-        var userType = req.session.user.userType 
+        if( req.session.user.userType )
+        {
+            var userType = req.session.user.userType 
+        }
 
         if( !userType )
         {
