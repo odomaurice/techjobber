@@ -13,7 +13,8 @@ const { authenticateAccessToken } = require('../../middlewares/auth/authenticate
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
     getExperiencesHandler, updateExperienceHandler, removeExperienceHandler,
  addItemToPortfolioHandler, getPortfolioHandler, updatePortfolioItemHandler,
-removePortfolioItemHandler } = require('../../controllers/user/profile.controller')
+removePortfolioItemHandler, getAddExperiencePageHandler, getAddPortfolioPageHandler} = require('../../controllers/user/profile.controller')
+
 
 module.exports = function(app)
     {
@@ -46,18 +47,20 @@ module.exports = function(app)
 
             // profile 
             router.get('/dashboard/profile',authenticateAccessToken, getProfile )
-            router.patch('/dashboard/profile', updateBioDetailsHandler )
-            router.post('/dashboard/profile/experience', addExperienceHandler )
-            router.get('/dashboard/profile/experience', getExperiencesHandler )
-            router.patch('/dashboard/profile/experience', updateExperienceHandler )
-            router.delete('/dashboard/profile/experience', removeExperienceHandler )
+            router.patch('/dashboard/profile', authenticateAccessToken, updateBioDetailsHandler )
+            router.post('/dashboard/profile/experience', authenticateAccessToken,  addExperienceHandler )
+            router.get('/dashboard/profile/experience', authenticateAccessToken, getExperiencesHandler )
+            router.get('/dashboard/profile/experience/add',    authenticateAccessToken,    getAddExperiencePageHandler ) // add experience page 
+            router.get('/dashboard/profile/portfolio/add', authenticateAccessToken,  getAddPortfolioPageHandler )
+            router.patch('/dashboard/profile/experience', authenticateAccessToken, updateExperienceHandler )
+            router.delete('/dashboard/profile/experience', authenticateAccessToken, removeExperienceHandler )
 
        
             // Portfolio 
-            router.post('/dashboard/profile/portfolio', addItemToPortfolioHandler ) 
-            router.get('/dashboard/profile/portfolio', getPortfolioHandler ) 
-            router.patch('/dashboard/profile/portfolio', updatePortfolioItemHandler ) 
-            router.delete('/dashboard/profile/portfolio', removePortfolioItemHandler ) 
+            router.post('/dashboard/profile/portfolio', authenticateAccessToken,  addItemToPortfolioHandler ) 
+            router.get('/dashboard/profile/portfolio',  authenticateAccessToken,getPortfolioHandler ) 
+            router.patch('/dashboard/profile/portfolio', authenticateAccessToken, updatePortfolioItemHandler ) 
+            router.delete('/dashboard/profile/portfolio', authenticateAccessToken, removePortfolioItemHandler ) 
 
             
             // ASSIGN ROUTES TO APP 

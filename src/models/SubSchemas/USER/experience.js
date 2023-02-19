@@ -5,11 +5,11 @@ const Schema = mongoose.Schema
 const ExperienceSchema = new Schema 
         (
             {
-                roleTitle:
+                jobTitle:
                 {
                     type: String 
                 },
-                organization: 
+                company: 
                 {
                     type: String 
                 },
@@ -20,6 +20,10 @@ const ExperienceSchema = new Schema
                 startDate: 
                 {
                     type: Date
+                },
+                location:
+                {
+                    type: String 
                 },
                 endDate: 
                 {

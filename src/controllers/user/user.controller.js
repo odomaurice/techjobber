@@ -192,7 +192,7 @@ const signinHandler = async function(req, res, next)
         if( !passwordValid )
         { 
             console.log('User password incorrect ')
-            return res.status(200).redirect('pages/user_signin',{ error: 'check login details '})
+            return res.status(200).redirect('pages/user_signin')
         } 
 
         console.log(' User Password Valid ') 
@@ -227,6 +227,9 @@ const signinHandler = async function(req, res, next)
             case 'admin' : // redirect user to admin dashboard; 
                             res.status(200).redirect('/admin/dashboard') 
                             return; 
+
+            case 'superAdmin': 
+                            res.status(200).redirect('/dashboard')
 
             default: // Unknown User Type 
                     console.log(" Unknown User Type ") 

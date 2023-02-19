@@ -2,11 +2,43 @@
 // Models 
 const UserProfile = require('../../models/UserProfiles') 
 
+
 // Service 
 const { createUserProfile, updateBioDetails, addExperience, 
     getExperiences, updateExperience, removeExperience ,
     getPortfolio,  addToPortfolio, updatePortfolioItem, 
 removePortfolioItem, saveSkillsToUserDashboard  } = require('../../services/user/profile.service') 
+
+
+
+async function getAddExperiencePageHandler(req, res, next)
+{
+    try 
+    {
+        return res.render('pages/user/editExperience')
+    }
+    catch(e)
+    {
+       console.log(' Error occured while getting add experience page handler ')
+       console.log(e) 
+       return res.render('pages/serverError',{ error:'Server encountered error while getting edit profile page'})
+    }
+}
+
+
+async function getAddPortfolioPageHandler(req, res, next)
+{
+    try 
+    {
+        return res.render('pages/user/editPortfolio')
+    }
+    catch(e)
+    {
+       console.log(' Error occured while getting add experience page handler ')
+       console.log(e) 
+       return res.render('pages/serverError',{ error:'Server encountered error while getting edit profile page'})
+    }
+}
 
 
 async function getProfile(req, res, next)
@@ -17,8 +49,19 @@ async function getProfile(req, res, next)
         console.log(' Getting User Profile ')
         console.log( req.user ) 
 
+
+        const errorMessages = req.flash('error')
+        const successMessages = req.flash('success') 
+
+        console.log( req.flash.error )
+        console.log( req.flash.success ) 
+
+        console.log('here')
+        console.log( errorMessages )
+        console.log( successMessages ) 
+
         const {  firstname, lastname } = req.user 
-        const _id = req.user 
+        const _id = req.user._id 
 
         console.log(` Firstname: ${ firstname }`)
         console.log(` lastname: ${ lastname }`)
@@ -33,20 +76,12 @@ async function getProfile(req, res, next)
             console.log(' User Profile not found, creating new user profile ') 
             const userProfile = await createUserProfile( _id ) 
             const { bioDetails, experience, portfolio } = userProfile 
-            return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
+            return res.render('pages/user/profile',{errorMessages, successMessages,  bioDetails, experience, portfolio, names:{ firstname, lastname }})
         }
 
-        console.log('------------------')
-        console.log( userProfile.bioDetails )
-
-        console.log('------------------')
-        console.log( userProfile.experience )
-        
-        console.log('------------------')
-        console.log( userProfile.portfolio ) 
 
         const { bioDetails, experience, portfolio } = userProfile 
-        return res.render('pages/user/profile',{ bioDetails, experience, portfolio, names:{ firstname, lastname }})
+        return res.render('pages/user/profile',{errorMessages, successMessages, bioDetails, experience, portfolio, names:{ firstname, lastname }})
 
     }
     catch(e)
@@ -58,15 +93,14 @@ async function getProfile(req, res, next)
 }
 
 
+
 async function updateBioDetailsHandler(req, res, next)
 {
     try 
     {
-        const user_id = '63e729574396b20fad91f78c'
-        const doc = { roleTitle: 'roleTitle', bio:'this is a short bio', skills:['html','css','js'], profilePicture: 'url'}
-
+        const user_id = req.user._id 
         // validate user input
-        await updateBioDetails( user_id, doc ) 
+        await updateBioDetails( user_id, req.body ) 
       
         if( skills )
         {
@@ -90,15 +124,24 @@ async function addExperienceHandler(req, res, next)
 {
     try 
     {
-        const user_id = '63e729574396b20fad91f78c'
+        console.log(req.body.skills) 
+        // Turn Skills to array 
+        var skills = req.body.skills 
+        var temp = skills.split(",")
+        req.body.skills = temp 
+
+
+        const user_id = req.user._id 
         const addedExperience = await addExperience( user_id, req.body ) 
-        console.log( addedExperience ) 
-        return res.send('Ok')
+        console.log(' Experience added ') 
+        req.flash('success','Successfully Added Experience')
+        return res.redirect('/dashboard/profile')
     }
     catch(e)
     {
         console.log(e) 
-        return res.render('pages/serverError',{ error:['error occured while adding experience ']})
+        req.flash('error','Error occured while adding Experience')
+        return res.redirect('/dashboard/profile')
     }
 }
 
@@ -107,7 +150,7 @@ async function getExperiencesHandler(req, res, next)
 {
     try 
     {
-        const user_id = '63e729574396b20fad91f78c'
+        const user_id = req.user._id 
         const experiences = await getExperiences( user_id ) 
         return res.json( experiences ) 
     }
@@ -161,18 +204,19 @@ async function addItemToPortfolioHandler(req, res, next)
     try 
     {
         console.log(' Add Item to portfolio Handler ')
-        const user_id = '63e729574396b20fad91f78c'
-        const addedItem = await addToPortfolio( user_id, req.body ) 
-        console.log( addedItem ) 
-        return res.send('Ok')
+        const user_id = req.user._id 
+        await addToPortfolio( user_id, req.body ) 
+        req.flash('success','Item added to portfolio successfully') 
+        return res.redirect('/dashboard/profile')
     }
     catch(e)
     {
+        console.log(' Error occured while adding error to portfolio ')
         console.log(e) 
-        return res.render('pages/serverError',{ error:['error occured while adding experience ']})
+        req.flash('error','Server error occured while adding item to portfolio ')
+        return res.redirect('/dashboard/profile') 
     }
 }
-
 
 async function getPortfolioHandler(req, res, next)
 {
@@ -234,4 +278,4 @@ async function removePortfolioItemHandler(req, res, next)
 
 module.exports = { getProfile, updateBioDetailsHandler, addExperienceHandler, getExperiencesHandler,
          updateExperienceHandler, removeExperienceHandler, addItemToPortfolioHandler, 
-        getPortfolioHandler, updatePortfolioItemHandler, removePortfolioItemHandler  } 
+        getPortfolioHandler, updatePortfolioItemHandler, removePortfolioItemHandler, getAddExperiencePageHandler , getAddPortfolioPageHandler} 
