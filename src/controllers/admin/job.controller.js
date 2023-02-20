@@ -42,6 +42,26 @@ async function getJobsHandler(req, res, next)
     }
 }
 
+async function getCreateJobPageHandler(req, res, next)
+{
+    try 
+    {
+        return res.render('pages/post')
+    }
+    catch(e)
+    {
+        
+        if( e.type = 'SERVER' )
+        { 
+            return res.render('pages/serverError',{ error:' server encountered error while getting job posts '})
+        }
+        else 
+        {
+            return res.render('pages/serverError',{ error:'unknown server error '})
+        }
+    }
+}
+
 
 async function getJobHandler(req, res, next)
 {
@@ -105,4 +125,4 @@ async function deleteJobPostHandler(req, res, next)
 
 
 
-module.exports = { postJobHandler, getJobsHandler, getJobHandler, updateJobHandler, deleteJobPostHandler } 
+module.exports = { getCreateJobPageHandler, postJobHandler, getJobsHandler, getJobHandler, updateJobHandler, deleteJobPostHandler } 

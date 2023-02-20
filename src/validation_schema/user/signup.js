@@ -11,7 +11,7 @@ const SignupSchema = JOI.object
             password: JOI.string().min(5).max(30).message('check password').required(),
             repeatPassword: JOI.ref('password'),
             certificateId: JOI.string().min(1).required(), 
-            userType: JOI.string().required()
+            userType: JOI.string().required() // SV
         }
     )
 
