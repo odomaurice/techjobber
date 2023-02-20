@@ -52,6 +52,10 @@ const JobPostSchema = new Schema
             discriptionSections:
             {
                 type:[JobDescriptionSection]
+            },
+            discription:
+            {
+                type: text 
             }
         },
         {

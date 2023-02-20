@@ -12,7 +12,7 @@ module.exports = function(app)
         {
 
             // Jobs 
-            router.get('/dashboard/job/', getCreateJobPageHandler)
+            router.get('/dashboard/job/add', getCreateJobPageHandler)
             router.post('/admin/job', postJobHandler )
             router.get('/admin/job', getJobsHandler ) 
             router.get('/admin/job/:id', getJobHandler ) 
