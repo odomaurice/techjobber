@@ -109,7 +109,7 @@ function sendMail( mailName, mailBodyDoc, mailVariables )
             .catch((e)=>{
                 console.log(' Failed to send mail, ensure previous actions acid ')
                 console.log(e) 
-                e.type = 'server'
+                e.type = 'email'
                 e.message = 'server encountered error while sending mail' 
                 reject(e) 
             })
@@ -120,7 +120,7 @@ function sendMail( mailName, mailBodyDoc, mailVariables )
         {
             console.log(' Error occured while sending mail ') 
             console.log(e)
-            e.type = 'server'
+            e.type = 'serveer'
             e.message = 'server encountered error while registering user'  
             reject(e)
         }
