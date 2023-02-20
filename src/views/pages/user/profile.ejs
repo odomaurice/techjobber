@@ -283,14 +283,15 @@ portfolio:[
 
         .backend-success-message 
         {
-            position: absolute;
+            position: fixed;
             top: 0; 
             left: 0; 
-            width: 100%;
+            width: 100vw;
             height: 60px;
             font-size: 20px; 
             background-color: green;
             color: white; 
+            z-index: 1000; 
         }
 
         .backend-error-message 
@@ -303,22 +304,20 @@ portfolio:[
             font-size: 20px; 
             background-color: crimson;
             color: white; 
+            z-index: fixed; 
         }
 
     </style>
 
 
-        <% if( errorMessages ){ %> 
-            <% for( var i = 0; i < errorMessages.length; i++ ){ %> 
-                <div class="backend-error-message"> <%= errorMessages[i] %> </div>
-            <% } %> 
-        <% } %> 
+        <% errorMessages.forEach((item)=>{ %> 
+            <div class="backend-error-message"> <%= item %>  </div>
+        <% }) %> 
+        <% successMessages.forEach((item)=>{ %> 
+            <div class="backend-success-message"> <%= item %> </div>
+        <% }) %> 
 
-        <% if( successMessages ){ %> 
-            <% for( var i = 0; i < successMessages.length; i++ ){ %> 
-                <div class="backend-success-message"> <%= successMessages[i] %> </div>
-            <% } %> 
-        <% } %> 
+
 
     <!--- /BACKEND BASED CODE   -->
 
@@ -430,82 +429,96 @@ portfolio:[
                                     </li>
 
                                     <!--- Start -->
+
+
+
+                                    <% if( experience ){ %> 
+                                        <% experience.forEach((item)=>{ %> 
+                                             <!-- Experience Template -->
+                                   <!-- TO BE LOOPED THROUGH FOR ALL EXPERIENCE ITEMS -->
                                     <li class="text-md mt-1 flex w-4/5 flex-col justify-start px-3 py-1 text-justify font-thin text-green-600"
-                                        id="submenu">
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                    id="submenu">
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
 
-                                                Job Title
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                            <%= item.jobTitle %> 
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Name Of Company
-
-
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
+                                            <%= item.company %> 
 
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
-
-                                                Employment Type
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
-
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Start Date
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
+
+                                            <%= item.employmentType %> 
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
+                                            <%= item.startDate %> 
 
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
-
-                                                End Date
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
-
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Number Of Months Worked
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
+
+                                            <%= item.endDate %> 
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
+                                            <%= item.numberOfMonthsWorked  %> 
 
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
-
-                                                Location
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
-
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Description
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
+
+                                            <%= item.location %> 
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
+
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
+                                            <%= item.description %> 
+
+                                        </p>
+                                    </div>
+                                    <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
+                                        <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
 
-                                                Skills
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <!-- Stop -->
+                                            <% item.skills.forEach((item)=>{ %> 
+                                                <%= item %> 
+                                            <% }) %> 
+
+                                        </p>
+                                    </div>
+                                </li>
+                                <!-- Stop -->
+                                            <% }) %>
+                                    <% } %> 
+                                    
+
+                                  
                                 </ul>
 
 
@@ -528,22 +541,18 @@ portfolio:[
                                         </a>
                                     </li>
 
-                                    <li class="text-md mt-1 flex w-4/5 flex-col justify-start px-3 py-1 text-justify font-thin text-green-600"
+
+                                    <!-- Start here -->
+                                    
+                                    <% portfolio.forEach(( item )=>{ %> 
+                                        <li class="text-md mt-1 flex w-4/5 flex-col justify-start px-3 py-1 text-justify font-thin text-green-600"
                                         id="submenu2">
                                         <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
 
                                             <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
 
-                                                Title
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
-
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Pictures
-
-
+                                                <%= item.title %> 
                                             </p>
                                         </div>
                                         <div class=" sm:rounded-xl flex justify-between align-middle items-center">
@@ -551,15 +560,7 @@ portfolio:[
 
                                             <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
 
-                                                Description
-                                            </p>
-                                        </div>
-                                        <div class=" sm:rounded-xl flex justify-between align-middle items-center">
-
-                                            <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Start Date
-
-
+                                               <%= item.description %> 
                                             </p>
                                         </div>
                                         <div class=" sm:rounded-xl flex justify-between align-middle items-center">
@@ -567,19 +568,23 @@ portfolio:[
 
                                             <p class=" cursor-pointer text-base p-1 text-green-600 jobTitle">
 
-                                                Link
+                                                <%= item.link %> 
                                             </p>
                                         </div>
                                         <div class=" sm:rounded-xl flex justify-between align-middle items-center">
 
                                             <p class=" cursor-pointer text-base p-1 text-green-600 nameOfCompany">
-                                                Skills
-
+                                                
+                                                
+                                            <% item.technologies.forEach((item)=>{ %> 
+                                                <%= item %> 
+                                            <% }) %> 
 
                                             </p>
                                         </div>
-
-
+                                        </li>
+                                    <% }) %> 
+                                    <!-- End here -->
                                 </ul>
 
 

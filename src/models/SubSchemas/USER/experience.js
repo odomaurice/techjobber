@@ -19,7 +19,7 @@ const ExperienceSchema = new Schema
                 },
                 startDate: 
                 {
-                    type: Date
+                    type: String
                 },
                 location:
                 {
@@ -27,7 +27,7 @@ const ExperienceSchema = new Schema
                 },
                 endDate: 
                 {
-                    type: Date 
+                    type: String 
                 },
                 numberOfMonthsWorked: 
                 {
