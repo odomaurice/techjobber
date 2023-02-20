@@ -47,14 +47,9 @@ async function getProfile(req, res, next)
     {
 
         console.log(' Getting User Profile ')
-        console.log( req.user ) 
-
 
         const errorMessages = req.flash('error')
         const successMessages = req.flash('success') 
-
-        console.log( req.flash.error )
-        console.log( req.flash.success ) 
 
         console.log('here')
         console.log( errorMessages )
@@ -70,7 +65,7 @@ async function getProfile(req, res, next)
         const fields = { _id: 0, bioDetails: 1, experience: 1, portfolio: 1 } 
         const userProfile = await UserProfile.findOne({ user_id: _id }, fields ) 
 
-        console.log( userProfile ) 
+
         if( !userProfile )
         {
             console.log(' User Profile not found, creating new user profile ') 

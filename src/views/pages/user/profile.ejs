@@ -283,14 +283,15 @@ portfolio:[
 
         .backend-success-message 
         {
-            position: absolute;
+            position: fixed;
             top: 0; 
             left: 0; 
-            width: 100%;
+            width: 100vw;
             height: 60px;
             font-size: 20px; 
             background-color: green;
             color: white; 
+            z-index: 1000; 
         }
 
         .backend-error-message 
@@ -303,22 +304,20 @@ portfolio:[
             font-size: 20px; 
             background-color: crimson;
             color: white; 
+            z-index: fixed; 
         }
 
     </style>
 
 
-        <% if( errorMessages ){ %> 
-            <% for( var i = 0; i < errorMessages.length; i++ ){ %> 
-                <div class="backend-error-message"> <%= errorMessages[i] %> </div>
-            <% } %> 
-        <% } %> 
+        <% errorMessages.forEach((item)=>{ %> 
+            <div class="backend-error-message"> <%= item %>  </div>
+        <% }) %> 
+        <% successMessages.forEach((item)=>{ %> 
+            <div class="backend-success-message"> <%= item %> </div>
+        <% }) %> 
 
-        <% if( successMessages ){ %> 
-            <% for( var i = 0; i < successMessages.length; i++ ){ %> 
-                <div class="backend-success-message"> <%= successMessages[i] %> </div>
-            <% } %> 
-        <% } %> 
+
 
     <!--- /BACKEND BASED CODE   -->
 
