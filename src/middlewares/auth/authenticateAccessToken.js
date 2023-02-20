@@ -11,7 +11,7 @@ async function authenticateAccessToken(req, res, next)
 
         // Validate AUTO_TOKEN 
         jwt.verify(AUTH_TOKEN, process.env.JWT_SECRET,(err, decoded)=>{
-
+            console.log(' Token Valid')
             req.user = decoded 
             return next() 
         } )
