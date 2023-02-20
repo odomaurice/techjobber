@@ -6,11 +6,30 @@ const UserDashboard = require('../../models/UserDashboard')
 // Service 
 const  { getJobFeed } = require('../../services/user/job.service')
 
+
+
 async function getDashboard(req, res, next)
 {
     try 
     {
         console.log(' Getting User Dashboard ') 
+        const errorMessages = req.flash('error')
+        const successMessages = req.flash('success') 
+
+
+        var userType = req.session.user.userType 
+
+        if( !userType )
+        {
+            userType = req.user.userType 
+        }
+
+        if( userType === 'superAdmin' ) 
+        {
+            // RETURN SUPER ADMIN DASHBOARD 
+            return res.render('pages/admin/admin_dashboard',{ errorMessages, successMessages })
+        }
+
 
         const user_id = req.session.user._id 
         const dataToRetrieve = { number_of_notifications: 1, _id: 0, skills: 1 }
@@ -30,7 +49,8 @@ async function getDashboard(req, res, next)
         console.log( dashboardData ) 
         
         
-        return res.render('pages/user/user_dashboard',{ dashboardData, jobFeed })
+
+        return res.render('pages/user/user_dashboard',{ dashboardData, jobFeed, errorMessages, successMessages  })
     }
     catch(e)    
     {
