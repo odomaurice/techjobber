@@ -63,6 +63,84 @@ discription:
        <!-- IMPROVISED BUTTON STYLINGS -->
        <style>
 
+
+        #delete-modal-container 
+        {   
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: red;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            
+        }
+
+
+        #delete-modal 
+        {
+            width: 80%;
+            height: 80%; 
+            background-color: blue;
+            padding: 10px; 
+            box-sizing: border-box;
+        }
+
+
+
+        #delete-modal-header 
+        {
+            position: relative;
+            width: 100%;
+            height: 70%; 
+            padding: 12px; 
+            display: flex;
+            justify-content: space-between;
+            background-color: midnightblue;
+            color: green; 
+            box-sizing: border-box;
+            color: white; 
+            text-align: center;
+            font-size: 30px;
+        }
+
+
+        #delete-modal-buttons-container 
+        {
+            position: relative; 
+            width: 100%;
+            height: 30%; 
+            display: flex;
+            justify-content: space-around;
+            background-color: brown; 
+            box-sizing: border-box;
+            font-size: 16px; 
+        }
+
+
+        #cancel-delete-button 
+        {
+            padding: 10px; 
+            color: white;
+            background-color: red;
+            box-sizing: border-box;
+        }
+
+
+        #delete-button 
+        {
+            padding: 10px; 
+            color: white;
+            box-sizing: border-box;
+            background-color: grey;
+        }
+
+
+
+
         .delete-and-edit-post-container 
         {
             width: 100%;
@@ -89,6 +167,62 @@ discription:
 
     </style>
     <!-- IMPROVISED BUTTON STYLINGS -->
+
+    <!-- IMPROVISED DELETE ALERT -->
+        <script>
+
+                const deleteModalContainer = document.createElement('div') 
+                const deleteModal = document.createElement('div')
+                const deleteModalHeader = document.createElement('div')
+                const deleteModalButtonsContainer = document.createElement('div') 
+                const cancelButton = document.createElement('span')
+                const deleteButton = document.createElement('a') 
+
+
+                // Id 
+                deleteModalContainer.id = 'delete-modal-container'
+                deleteModal.id = 'delete-modal'
+                deleteModalHeader.id = 'delete-modal-header'
+                deleteModalButtonsContainer.id = 'delete-modal-buttons-container' 
+                cancelButton.id = 'cancel-delete-button'
+                deleteButton.id = 'delete-button' 
+
+                // Urls 
+                deleteButton.href= '' 
+
+                // Inner Texts 
+                deleteModalHeader.innerText = ' Delete Job Posting ' 
+                cancelButton.innerText = ' Cancel '
+                deleteButton.innerText = ' Delete ' 
+
+
+                // event listeners 
+                cancelButton.addEventListener("click",()=>{ removeModal() })
+                // Append Elements 
+                deleteModalButtonsContainer.appendChild( cancelButton )
+                deleteModalButtonsContainer.appendChild( deleteButton ) 
+                deleteModal.appendChild( deleteModalHeader )
+                deleteModal.appendChild( deleteModalButtonsContainer )
+              
+                deleteModalContainer.appendChild( deleteModal ) 
+
+
+            function showDeleteJobModal( )
+            {
+                console.log
+                document.body.append( deleteModalContainer ) 
+                console.log(' Done ')
+            }
+
+            function removeModal()
+            {
+                deleteModalContainer.remove() 
+            }
+
+        </script>
+
+
+    <!-- IMPROVISED DELETE ALERT -->
 
 
 
@@ -199,7 +333,7 @@ discription:
                     <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
                     <div class="delete-and-edit-post-container">
                         <a href="/dashboard/jobs/<%= item._id %>" class="edit-button"> Edit </a>
-                        <a class="delete-button">Delete  </a>
+                        <span class="delete-button" specialId="<%= item._id %>" onclick="showDeleteJobModal()"> Delete </span>
                     </div>
                 </li>
 
