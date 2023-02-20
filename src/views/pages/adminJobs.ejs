@@ -176,7 +176,7 @@ discription:
                 const deleteModalHeader = document.createElement('div')
                 const deleteModalButtonsContainer = document.createElement('div') 
                 const cancelButton = document.createElement('span')
-                const deleteButton = document.createElement('a') 
+                const deleteButton = document.createElement('span') 
 
 
                 // Id 
@@ -198,6 +198,8 @@ discription:
 
                 // event listeners 
                 cancelButton.addEventListener("click",()=>{ removeModal() })
+                deleteButton.addEventListener("click",()=>{ sendDeleteRequest() })
+
                 // Append Elements 
                 deleteModalButtonsContainer.appendChild( cancelButton )
                 deleteModalButtonsContainer.appendChild( deleteButton ) 
@@ -207,9 +209,15 @@ discription:
                 deleteModalContainer.appendChild( deleteModal ) 
 
 
-            function showDeleteJobModal( )
+                function sendDeleteRequest()
+                {
+                    // send delete equest with fetch and await result 
+                }
+
+            function showDeleteJobModal( element)
             {
-                console.log
+                console.log( element ) 
+                deleteButton.href = "/dashboard/jobs/"+element.specialid
                 document.body.append( deleteModalContainer ) 
                 console.log(' Done ')
             }
@@ -333,7 +341,7 @@ discription:
                     <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
                     <div class="delete-and-edit-post-container">
                         <a href="/dashboard/jobs/<%= item._id %>" class="edit-button"> Edit </a>
-                        <span class="delete-button" specialId="<%= item._id %>" onclick="showDeleteJobModal()"> Delete </span>
+                        <span class="delete-button" specialId="<%= item._id %>" onclick="showDeleteJobModal(this)"> Delete </span>
                     </div>
                 </li>
 

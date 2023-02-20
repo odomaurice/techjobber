@@ -48,8 +48,7 @@ const UserSchema = new Schema
             emailVerificationCode:
             {
                 type: String, 
-                trim: true,
-                required: true
+                trim: true
             },
             emailVerified: 
             {
@@ -71,8 +70,7 @@ const UserSchema = new Schema
             },
             certificateId:
             {
-                type: String,
-                required: true 
+                type: String
             }
         },
         {

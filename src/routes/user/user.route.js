@@ -13,7 +13,7 @@ const { authenticateAccessToken } = require('../../middlewares/auth/authenticate
 const { getProfile, updateBioDetailsHandler, addExperienceHandler, 
     getExperiencesHandler, updateExperienceHandler, removeExperienceHandler,
  addItemToPortfolioHandler, getPortfolioHandler, updatePortfolioItemHandler,
-removePortfolioItemHandler, getAddExperiencePageHandler, getAddPortfolioPageHandler} = require('../../controllers/user/profile.controller')
+removePortfolioItemHandler, getAddExperiencePageHandler, getAddPortfolioPageHandler } = require('../../controllers/user/profile.controller')
 
 
 module.exports = function(app)
@@ -33,6 +33,9 @@ module.exports = function(app)
             router.get('/signin', user.signinPageHandler ) 
             router.post('/signin', user.signinHandler ) 
 
+            // signout 
+            router.get('/signout', authenticateAccessToken, user.signoutHandler ) 
+            
 
             // Verify Email 
             router.get('/verify/email/:code', user.verifyEmailHandler)

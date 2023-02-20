@@ -5,10 +5,9 @@ require('dotenv').config()
 const AdminSignupSchema = require('../../validation_schema/user/validateAdminSignupSchema') 
 
 
-
 // Services 
 const { checkEmailExists, signupUser  } = require('../../services/user/user.service') 
-const { createUserDashboard } = require('../../services/user/dashboard.service') 
+const { createUserDashboard, createAdminDashboard } = require('../../services/user/dashboard.service') 
 
 
 // Functions 
@@ -23,7 +22,7 @@ const bcrypt = require('bcrypt')
 
 // Models 
 const User = require('../../models/User.model') 
-
+const AdminVerification = require('../../models/AdminVerification') 
 
 
 const getSignupAdminPage = async function(req, res, next )
@@ -40,6 +39,19 @@ const getSignupAdminPage = async function(req, res, next )
 }
 
 
+const getAdminSignupPage = async function(req, res, next )
+{
+    try 
+    {
+        const error = req.flash('error') 
+        return res.render('pages/admin/adminSignup',{ error })
+    }
+    catch(e)
+    {
+        return res.render('pages/serverError',{ error:'error occured while signing up new admin '})
+    }
+}
+
 
 const SignupAdminHandler = async function( req, res, next  )
     {
@@ -48,50 +60,40 @@ const SignupAdminHandler = async function( req, res, next  )
          
            console.log(' Signing New Admin  ') 
 
+           // find admin verification doc 
+           const validSignup = await AdminVerification.findOne({ admin_email: req.body.email }) 
+
+           if( !validSignup )
+           {
+                 return res.redirect('/')
+           }
+
 
            // Validate Signup Schema 
-            await AdminSignupSchema.validateAsync(req.body)  
+           await AdminSignupSchema.validateAsync(req.body)  
+
+
            console.log(' Admin signup schema validated ')
 
             // Set required fields 
-            req.body.password = 'password'
-            req.body.certificateId = 'certificatedId'
-            req.body.userType = 'admin'
+           req.body.userType = 'admin' 
 
            // Check If Email Used Already 
             await checkEmailExists( req.body.email ) 
 
-
            // create user email verification code 
-           const emailVerificationCode = crypto.randomBytes(16).toString('hex') 
-           req.body.emailVerificationCode = emailVerificationCode 
+           req.body.emailVerificationCode = '' 
 
 
            // signup new user 
             const user_id =   await signupUser( req.body ) 
 
-            // create new user dashboard 
-            await createUserDashboard( user_id)
+            // create Admin Dashboard 
+            await createAdminDashboard( user_id)
             
-           // Send Signup mail 
-           const mailDoc = 
-           {
-               from:'fibrelearn@gmail.com',
-               to: req.body.email, 
-               subject:'Verify Email',
-               text:' Welcome to tech Jobber, please verify your email to continue ',
-               html: null 
-           }
-
-
-           const mailVariables = 
-           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/verify/email/${emailVerificationCode}`}
-           await sendMail('verifyEmail', mailDoc,mailVariables)
-
-           // Signup successfull 
-           
            console.log(' Admin Signed up successfully ') 
-           return res.render('pages/adminSignupSuccess')
+           req.flash('success','Signup successfull')
+           return res.redirect('/signin') 
         }
         catch(e)
         {
@@ -107,7 +109,8 @@ const SignupAdminHandler = async function( req, res, next  )
                 case 'server': 
                                 console.log(' Server encountered error while adding new admin ')
                                 console.log(e) 
-                                return res.render('pages/adminSignupError')
+                                req.flash('error',errorMsg)
+                                return res.redirect('/admin/signup/abc')
                                 
                 
 
@@ -116,14 +119,14 @@ const SignupAdminHandler = async function( req, res, next  )
 
                                 console.log(' Error occured while adding new admin ')
                                 console.log(e) 
-                                req.flash('signup_errors', errorMsg ) 
-                                return res.render('pages/adminSignupError')
+                                req.flash('error', errorMsg ) 
+                                return req.redirect('/admin/signup/abc')
                               
 
                 default: 
                         console.log(' Server error occured while adding new admin ')
                         console.log(e) 
-                        return res.render('pages/adminSignupError')
+                        return res.render('/admin/signup/abc')
                         
            }
 
@@ -136,6 +139,79 @@ const SignupAdminHandler = async function( req, res, next  )
 
 
 
+    const sendAdminSignupEmail = async function( req, res, next  )
+    {
+        try 
+        {
+         
+         
+          const emailVerificationCode =   crypto.randomBytes(16).toString('hex') 
+
+          const doc = { admin_email: req.body.email, emailVerificationCode }
+          const newAdminVerificationDoc = new AdminVerification(doc) 
+          const createdDoc =  await newAdminVerificationDoc.save() 
+          console.log( createdDoc )
+           
+
+          // Send Signup mail 
+           const mailDoc = 
+           {
+               from:'techjobber@gmail.com',
+               to: req.body.email, 
+               subject:'Admin Signup email',
+               text:' Welcome to tech Jobber, please verify your email to continue ',
+               html: null 
+           }
 
 
-module.exports = { SignupAdminHandler, getSignupAdminPage }
+           const mailVariables = 
+           { firstname: req.body.firstname, emailVerificationLink: `http://${req.headers.host}/admin/signup/${emailVerificationCode}`}
+           await sendMail('adminSignup', mailDoc,mailVariables)
+
+           // Signup successfull 
+        
+           console.log(' Signup mail sent to email successfully ') 
+           req.flash('success','Successfully sent signup email to admin')
+           
+           return res.redirect('/dashboard')
+        }
+        catch(e)
+        {
+
+           // Error Variables 
+           const errorType = e.type 
+           const errorMsg = e.message 
+
+           console.log(errorType)
+           // Send Error response 
+           switch( errorType )
+           {
+                case 'server': 
+                                console.log(' Server encountered error while adding new admin ')
+                                console.log(e) 
+                                req.flash('error','could not send signup mail to admin')
+                                return res.render('pages/adminSignupError')
+                                
+                
+
+                case 'schema':
+                case 'emailAlreadyRegistered':
+
+                                console.log(' Error occured while adding new admin ')
+                                console.log(e) 
+                                req.flash('error', errorMsg ) 
+                                return res.redirect('/dashboard')
+                              
+                default: 
+                        console.log(' Server error occured while adding new admin ')
+                        console.log(e) 
+                        return res.render('pages/adminSignupError')
+                        
+           }
+
+        }
+    }
+
+
+
+module.exports = { SignupAdminHandler, getSignupAdminPage,  getAdminSignupPage,  sendAdminSignupEmail }
