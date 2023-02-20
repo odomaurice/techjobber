@@ -125,6 +125,13 @@ async function addExperienceHandler(req, res, next)
         var temp = skills.split(",")
         req.body.skills = temp 
 
+        const startDate = req.body.startDate 
+        const endDate = req.body.endDate 
+
+        console.log(' Debug ') 
+        console.log( startDate ) 
+        console.log( endDate ) 
+
 
         const user_id = req.user._id 
         const addedExperience = await addExperience( user_id, req.body ) 
