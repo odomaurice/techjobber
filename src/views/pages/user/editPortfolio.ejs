@@ -11,7 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/TechJobber Icon@300x.png" type="image/x-icon" />
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <!-- <link rel="stylesheet" href="/css/style.css" /> -->
     <style>
         /* Import Google font - Poppins */
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
@@ -164,16 +164,17 @@
 </head>
 
 <body>
+
+      
     <section class="wrapper my-12">
         <div class="form signup my-12">
             <header>Edit Portfolio</header>
             <form action="/dashboard/profile/portfolio" method="post">
-                <input type="text" placeholder="Title" required />
-                <input type="file" placeholder="Pictures" required />
-                <input type="text" placeholder="Description" required />
-                <input type="date" placeholder="Start Date" required />
-                <input type="url" placeholder="Link" required />
-                <input type="text" placeholder="Technologies Used" required />
+                <input name="title" type="text" placeholder="Title" required />
+                <input name="pictures" type="file" placeholder="Pictures" required />
+                <input name="description" type="text" placeholder="Description" required />
+                <input name="link" type="url" placeholder="Link" required />
+                <input name="technologies" type="text" placeholder="Technologies Used" required />
                 <div class="checkbox">
                     <input type="checkbox" id="signupCheck" />
                     <label for="signupCheck">I accept that all details are correct and True</label>
@@ -181,6 +182,8 @@
                 <input type="submit" class="hover:bg-green-600 " value="Edit" />
             </form>
         </div>
+
+
 
 
 

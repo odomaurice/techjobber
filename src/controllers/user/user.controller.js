@@ -192,7 +192,7 @@ const signinHandler = async function(req, res, next)
         if( !passwordValid )
         { 
             console.log('User password incorrect ')
-            return res.status(200).redirect('pages/user_signin',{ error: 'check login details '})
+            return res.redirect('/signin')
         } 
 
         console.log(' User Password Valid ') 
@@ -218,19 +218,24 @@ const signinHandler = async function(req, res, next)
         switch(userType)
         {
             case 'user': // redirect user to talent dashboard;
-                            return res.status(200).redirect('/dashboard')
+                            return res.redirect('/dashboard')
+                            break; 
 
             case 'client': // redirect user to client dashboard;
-                            return res.status(200).redirect('/client/dashboard') 
-                            
+                            return res.redirect('/client/dashboard') 
+                            break; 
 
             case 'admin' : // redirect user to admin dashboard; 
-                            res.status(200).redirect('/admin/dashboard') 
+                            res.redirect('/admin/dashboard') 
                             return; 
+                            break; 
+
+            case 'superAdmin': 
+                            res.redirect('/dashboard')
 
             default: // Unknown User Type 
                     console.log(" Unknown User Type ") 
-                    res.redirect(200,'/signin')
+                    res.redirect('/signin')
                     return; 
         }
 

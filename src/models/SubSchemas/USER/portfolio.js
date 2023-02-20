@@ -24,7 +24,7 @@ const PortfolioSchema = new Schema
             {
                 type: String 
             },
-            skills: 
+            technologies: 
             {
                 type: [String], 
                 required: true 
