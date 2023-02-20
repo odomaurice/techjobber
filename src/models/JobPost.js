@@ -55,7 +55,7 @@ const JobPostSchema = new Schema
             },
             discription:
             {
-                type: text 
+                type: String 
             }
         },
         {
