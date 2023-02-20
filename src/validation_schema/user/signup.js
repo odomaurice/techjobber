@@ -1,7 +1,6 @@
 const JOI = require('joi') 
 
 
-
 const SignupSchema = JOI.object
     (
         {
@@ -14,6 +13,7 @@ const SignupSchema = JOI.object
             userType: JOI.string().required() // SV
         }
     )
+
 
 
 module.exports = SignupSchema 

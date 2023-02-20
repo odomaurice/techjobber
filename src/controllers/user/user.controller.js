@@ -226,7 +226,7 @@ const signinHandler = async function(req, res, next)
                             break; 
 
             case 'admin' : // redirect user to admin dashboard; 
-                            res.redirect('/admin/dashboard') 
+                            res.redirect('/dashboard') 
                             return; 
                             break; 
 
