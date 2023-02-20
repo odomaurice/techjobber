@@ -3,6 +3,8 @@
 const JobPost = require('../../models/JobPost') 
 
 
+
+
 async function postJob( doc )
 {
     return new Promise(async(resolve, reject)=>{
@@ -24,13 +26,35 @@ async function postJob( doc )
 }
 
 
-async function getJobs( admin_id, skip,limit)
+async function getJobsCreatedByAdmin( admin_id )
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+
+            const returnFields = { _id: 1, title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1, skills: 1 }
+            const jobs = await JobPost.find({ createdBy: admin_id },returnFields)
+            resolve(jobs) 
+        }
+        catch(e)
+        {
+            console.log('SERVICE_ERROR: Error occured while fetching Jobs From Database ') 
+            console.log(e) 
+            e.type = 'SERVER'
+            e.message = 'Could fetch all jobs from database' 
+            reject(e) 
+        }
+    })
+}
+
+
+async function getJobs( skip,limit)
 {
     return new Promise(async(resolve, reject)=>{
         try 
         {
             const returnFields = { title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1, skills: 1 }
-            const jobs = await JobPost.find({ postedBy: admin_id },returnFields).skip(skip).limit(limit) 
+            const jobs = await JobPost.find({},returnFields).skip(skip).limit(limit) 
             resolve(jobs) 
         }
         catch(e)
@@ -71,17 +95,19 @@ async function updateJobPost( post_id, admin_id, doc )
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            console.log(' Updating Job ')
-            const updateKeys = Object.keys( doc ) 
-            const update = { $set: { } } 
+            // console.log(' Updating Job ')
+            // const updateKeys = Object.keys( doc ) 
+            // const update = { $set: { } } 
 
-            for( var i = 0; i < updateKeys.length; i++ )
-            {
-                update.$set[`${updateKeys[i]}`] = doc[`${updateKeys[i]}`]
-            }
+            // for( var i = 0; i < updateKeys.length; i++ )
+            // {
+            //     update.$set[`${updateKeys[i]}`] = doc[`${updateKeys[i]}`]
+            // }
 
-            const filters = {  _id: post_id, postedBy: admin_id }
-            const result =  await JobPost.findOneAndUpdate(filters, update)
+            const update = doc 
+             const filters = {  _id: post_id, postedBy: admin_id }
+
+            const result =  await JobPost.updateOne(filters, update,{ upsert: true })
             resolve() 
         }
         catch(e)
@@ -127,4 +153,4 @@ async function deleteJobPost( post_id, admin_id )
     })
 }
 
-module.exports = { postJob, getJobs, getJobPost, updateJobPost, deleteJobPost } 
+module.exports = { postJob, getJobs, getJobPost, updateJobPost, deleteJobPost, getJobsCreatedByAdmin } 
