@@ -59,6 +59,39 @@ discription:
 </head>
 
 <body class="min-h-screen bg-slate-200 font-Default text-black dark:bg-black dark:text-white">
+
+       <!-- IMPROVISED BUTTON STYLINGS -->
+       <style>
+
+        .delete-and-edit-post-container 
+        {
+            width: 100%;
+            height: auto;
+            padding: 10px; 
+            background-color: transparent;
+            display: flex; 
+            justify-content: space-between;
+        }
+
+        .edit-button
+        {
+            padding: 10px; 
+            background-color: lightgreen; 
+            color: white; 
+        }
+
+        .delete-button 
+        {
+            padding: 10px; 
+            background-color: red; 
+            color: white; 
+        }
+
+    </style>
+    <!-- IMPROVISED BUTTON STYLINGS -->
+
+
+
     <!-- Navigaton starts -->
 
     <div class="container">
@@ -164,10 +197,17 @@ discription:
                      </script>
 
                     <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
-
+                    <div class="delete-and-edit-post-container">
+                        <a href="/dashboard/jobs/<%= item._id %>" class="edit-button"> Edit </a>
+                        <a class="delete-button">Delete  </a>
+                    </div>
                 </li>
+
+
                 <% }) %> 
                 
+
+             
 
             </ul>
         </section>

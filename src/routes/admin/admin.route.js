@@ -3,8 +3,8 @@ const router = express.Router()
 
 
 // Handlers 
-const { postJobHandler, getJobsHandler, getJobHandler, updateJobHandler, deleteJobPostHandler, getCreateJobPageHandler } = require('../../controllers/admin/job.controller')
-
+const { postJobHandler, returnJobsCreatedByAdminHandler, getJobUpdatePage, getJobsHandler, getJobHandler, updateJobHandler, deleteJobPostHandler, getCreateJobPageHandler } = require('../../controllers/admin/job.controller')
+const { authenticateAccessToken } = require('../../middlewares/auth/authenticateAccessToken')
 
 module.exports = function(app)
     {
@@ -12,11 +12,18 @@ module.exports = function(app)
         {
 
             // Jobs 
-            router.get('/dashboard/job/add', getCreateJobPageHandler)
-            router.post('/admin/job', postJobHandler )
+            router.get('/dashboard/job/add', authenticateAccessToken, getCreateJobPageHandler)
+            router.post('/dashboard/jobs/:id', authenticateAccessToken, updateJobHandler)
+            router.post('/jobs', authenticateAccessToken, postJobHandler )
+            router.get('/dashboard/jobs', authenticateAccessToken, returnJobsCreatedByAdminHandler )
+
+
             router.get('/admin/job', getJobsHandler ) 
             router.get('/admin/job/:id', getJobHandler ) 
-            router.patch('/admin/job/:id', updateJobHandler)
+           
+            router.get('/dashboard/jobs/:id', authenticateAccessToken, getJobUpdatePage )
+
+          
             router.delete('/admin/job/:id', deleteJobPostHandler )
 
             app.use('/', router)

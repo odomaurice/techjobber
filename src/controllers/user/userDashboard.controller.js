@@ -7,7 +7,6 @@ const UserDashboard = require('../../models/UserDashboard')
 const  { getJobFeed } = require('../../services/user/job.service')
 
 
-
 async function getDashboard(req, res, next)
 {
     try 
@@ -17,24 +16,35 @@ async function getDashboard(req, res, next)
         const successMessages = req.flash('success') 
 
 
-        if( req.session.user.userType )
+        console.log('-------DEBUG----------')
+        console.log( req.session )
+        console.log( req.user ) 
+        console.log('-----------------------')
+
+        var user  
+
+        if( req.session.user !== undefined  )
         {
-            var userType = req.session.user.userType 
+            console.log(' Session')
+            var user = req.session.user 
+        }else 
+        if( req.user )
+        {
+            console.log(' req.user ')
+           var  user = req.user
+           
         }
 
-        if( !userType )
-        {
-            userType = req.user.userType 
-        }
 
-        if( userType === 'superAdmin' ) 
+        if( user.userType === 'superAdmin' ) 
         {
             // RETURN SUPER ADMIN DASHBOARD 
+            console.log(' super admin ')
             return res.render('pages/admin/admin_dashboard',{ errorMessages, successMessages })
-        }
+        } 
 
 
-        const user_id = req.session.user._id 
+        const user_id = user._id 
         const dataToRetrieve = { number_of_notifications: 1, _id: 0, skills: 1 }
 
         const dashboardData = await UserDashboard.findOne({ user_id  },dataToRetrieve)
