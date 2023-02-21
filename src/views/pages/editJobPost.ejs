@@ -191,16 +191,16 @@
         <div class="form signup my-12">
             <header>Add Job Post </header>
             <form action="/dashboard/jobs/<%=job._id%>" method="post">
-                <input name="title" type="text" placeholder="<%= job.title %> " required />
+                <input name="title" type="text" placeholder="<%= job.title %>" value="<%=job.title%>" required />
                
                 <input name="employmentType" type="text"
-                    placeholder="<%= job.employmentType %>" required />
-                <input name="experienceLevel" type="text" placeholder="<%=job.experienceLevel%>" required />
-                <input name="companyName" type="text" placeholder="<%= job.companyName %>" />
-                <input name="jobLocation" type="text" placeholder="<%= job.jobLocation %>" required />
-                <input name="jobLink" type="text" placeholder="<%= job.jobLink %>" required />
-                <input name="skills" type="text" placeholder="<%= job.skills %>" required />
-                <input name="description" type="text" placeholder="<%= job.description %>" required />
+                    placeholder="<%= job.employmentType %>" value="<%=job.employmentType%>" required />
+                <input name="experienceLevel" value="<%=job.experienceLevel%>" type="text" placeholder="<%=job.experienceLevel%>" required />
+                <input name="companyName" value="<%= job.companyName %>" type="text" placeholder="<%= job.companyName %>" />
+                <input name="jobLocation" value="<%= job.companyName %>" type="text" placeholder="<%= job.jobLocation %>" required />
+                <input name="jobLink"  value="<%= job.jobLink %>"  type="text" placeholder="<%= job.jobLink %>" required />
+                <input name="skills" value="<%= job.skills %>"  type="text" placeholder="<%= job.skills %>" required />
+                <input name="description"  value="<%= job.description %>" type="text" placeholder="<%= job.description %>" required />
                
                 <div class="checkbox">
                     <input type="checkbox" id="signupCheck" />

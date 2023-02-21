@@ -9,6 +9,7 @@ const JOI = require('joi')
             lastname: JOI.string().min(2).max(30).required(), 
             password: JOI.string().min(5).max(30).message('check password').required(),
             repeatPassword: JOI.ref('password'),
+            code: JOI.string() 
         }
     )
 

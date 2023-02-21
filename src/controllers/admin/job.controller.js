@@ -135,13 +135,13 @@ async function updateJobHandler(req, res, next)
 {
     try 
     {
-        const job_id = req.params.id 
-        const admin_id  = req.user._id 
         
-        console.log(" Debug ")
-        console.log( job_id )
-        await deleteJobPost(job_id, admin_id)
-        await updateJobPost( job_id, admin_id, req.body )
+        req.body.job_id = req.params.id 
+        req.body.postedBy = req.user._id 
+
+        await deleteJobPost( req.body.job_id, req.body.admin_id)
+        await updateJobPost( req.body )
+
         req.flash('success','job updated successfully')
         return res.redirect('/dashboard')
     }
