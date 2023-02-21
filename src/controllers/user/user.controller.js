@@ -5,7 +5,7 @@ require('dotenv').config()
 const validateSignupSchema = require('../../services/user/validateSignupSchema')
 
 // Services 
-const { checkEmailExists, signupUser, findUserWithEmail, verifyEmail } = require('../../services/user/user.service') 
+const { checkEmailExists, signupUser, findUserWithEmail, deleteUserWithEmail, verifyEmail } = require('../../services/user/user.service') 
 const { createUserDashboard } = require('../../services/user/dashboard.service') 
 
 
@@ -125,6 +125,14 @@ const SignupHandler = async function(req, res, next)
                                 res.status(500) 
                                 return res.render('pages/serverError',{error: errorMsg})
                 
+
+                case 'email': 
+                               req.flash('signup_errors', errorMsg ) 
+                               res.redirect('/signup')
+                               await deleteUserWithEmail(req.body.email) 
+                               return 
+
+
 
                 case 'schema':
                 case 'emailAlreadyRegistered':

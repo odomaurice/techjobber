@@ -87,6 +87,23 @@ async function findUserWithEmail(email)
     })
 }
 
+async function deleteUserWithEmail(email)
+{
+    return new Promise(async(resolve, reject)=>{
+        try 
+        {
+             await User.deleteOne({ email } )
+             resolve() 
+        }
+        catch(e)
+        {
+            console.log(' Error occured while deleting user, at signup failed  ')
+            console.log( e )
+            reject() 
+        }
+    })
+}
+
 
 async function verifyEmail( code )
 {
@@ -120,4 +137,4 @@ async function verifyEmail( code )
 
 
 
-module.exports = { checkEmailExists, signupUser, findUserWithEmail, findUserWithEmail, verifyEmail}
+module.exports = { checkEmailExists, signupUser, findUserWithEmail, findUserWithEmail, verifyEmail, deleteUserWithEmail }
