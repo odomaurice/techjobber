@@ -11,6 +11,11 @@ async function authenticateAccessToken(req, res, next)
 
         // Validate AUTO_TOKEN 
         jwt.verify(AUTH_TOKEN, process.env.JWT_SECRET,(err, decoded)=>{
+            if( err )
+            {
+                res.redirect('/signin') 
+            }
+            
             console.log(' Token Valid')
             req.user = decoded 
             return next() 
@@ -22,7 +27,7 @@ async function authenticateAccessToken(req, res, next)
         console.log(' Server encountered error while authenticating request token ') 
         console.log(e) 
         const errors = ['server encountered error while authenticating route access ']
-        res.render('pages/serverError',{ errors })
+        res.redirect('/signin')
     }
 } 
 

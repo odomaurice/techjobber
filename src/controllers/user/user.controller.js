@@ -270,4 +270,20 @@ const signinHandler = async function(req, res, next)
 
 
 
-module.exports = { SignupHandler, getSignupPage, signinPageHandler, signinHandler, signupSuccessHanler, verifyEmailHandler   }
+function signoutHandler(req, res, next) 
+{
+    try 
+    {
+        res.cookie('AUTH_TOKEN','null')
+        return res.redirect('/signin') 
+    }
+    catch(e)
+    {
+        console.log(' Error occured with signout handler')
+        console.log(e)
+        res.redirect('pages/serverError',{ error:'error occured while signing out'})
+    }
+}
+
+
+module.exports = { signoutHandler, SignupHandler, getSignupPage, signinPageHandler, signinHandler, signupSuccessHanler, verifyEmailHandler   }
