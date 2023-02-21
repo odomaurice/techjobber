@@ -19,7 +19,7 @@ module.exports = function(app)
             router.post('/dashboard/admin/add',authenticateAccessToken, sendAdminSignupEmail )
 
             // get pages for admin to signup 
-            router.post('/admin/signup', SignupAdminHandler)
+            router.post('/admin/signup/:code', SignupAdminHandler)
             router.get('/admin/signup/:code', getAdminSignupPage )
 
             // sign 'admin'

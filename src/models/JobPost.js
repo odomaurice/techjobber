@@ -49,11 +49,11 @@ const JobPostSchema = new Schema
                 type: [String],
                 required: true 
             },
-            discriptionSections:
+            descriptionSections:
             {
                 type:[JobDescriptionSection]
             },
-            discription:
+            description:
             {
                 type: String 
             }

@@ -33,6 +33,13 @@ module.exports = function(app)
             router.get('/signin', user.signinPageHandler ) 
             router.post('/signin', user.signinHandler ) 
 
+            // password reset 
+            router.get('/forgotpassword', user.forgotPasswordPageHandler )
+            router.post('/forgotpassword', user.forgotPasswordHandler )
+
+            router.get('/resetpassword/:code', user.getResetPasswordPage )
+            router.post('/resetpassword', user.resetPasswordHandler )
+
             // signout 
             router.get('/signout', authenticateAccessToken, user.signoutHandler ) 
             

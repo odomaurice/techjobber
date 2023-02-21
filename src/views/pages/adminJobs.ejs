@@ -69,7 +69,7 @@ discription:
             position: fixed;
             top: 0;
             left: 0;
-            background-color: red;
+            background-color: rgba(150, 176, 208, 0.4);
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -84,7 +84,7 @@ discription:
         {
             width: 80%;
             height: 80%; 
-            background-color: blue;
+            background-color: transparent;
             padding: 10px; 
             box-sizing: border-box;
         }
@@ -99,12 +99,13 @@ discription:
             padding: 12px; 
             display: flex;
             justify-content: space-between;
-            background-color: midnightblue;
-            color: green; 
+            background-color: transparent;
+            color: white; 
             box-sizing: border-box;
             color: white; 
             text-align: center;
             font-size: 30px;
+            font-weight: bold;
         }
 
 
@@ -114,8 +115,7 @@ discription:
             width: 100%;
             height: 30%; 
             display: flex;
-            justify-content: space-around;
-            background-color: brown; 
+            justify-content: space-around; 
             box-sizing: border-box;
             font-size: 16px; 
         }
@@ -125,7 +125,9 @@ discription:
         {
             padding: 10px; 
             color: white;
-            background-color: red;
+            height: auto;
+            width: auto;
+            background-color: grey;
             box-sizing: border-box;
         }
 
@@ -135,7 +137,9 @@ discription:
             padding: 10px; 
             color: white;
             box-sizing: border-box;
-            background-color: grey;
+            background-color: red;
+            height: auto;
+            width: auto;
         }
 
 
@@ -198,7 +202,7 @@ discription:
 
                 // event listeners 
                 cancelButton.addEventListener("click",()=>{ removeModal() })
-                deleteButton.addEventListener("click",()=>{ sendDeleteRequest() })
+                deleteButton.addEventListener("click",(e)=>{ sendDeleteRequest(e) })
 
                 // Append Elements 
                 deleteModalButtonsContainer.appendChild( cancelButton )
@@ -209,15 +213,40 @@ discription:
                 deleteModalContainer.appendChild( deleteModal ) 
 
 
-                function sendDeleteRequest()
+               async function sendDeleteRequest(e)
                 {
                     // send delete equest with fetch and await result 
+
+
+                    const url = e.target.href 
+                    const element_id = e.target.specialId 
+
+                    console.log( url )
+                    console.log( element_id ) 
+
+                    const res = await fetch(url,{ method: 'DELETE' })
+
+                    if( res.ok )
+                    {
+                        const deletedElement = document.getElementsByClassName(element_id)
+                        deletedElement[0].remove() 
+                        removeModal() 
+                        window.alert(' Element Deleted Successfully ')
+                    }
+                    else 
+                    {
+                        removeModal() 
+                        window.alert(' Element could not be deleted s')
+                    }
                 }
+
+
 
             function showDeleteJobModal( element)
             {
                 console.log( element ) 
-                deleteButton.href = "/dashboard/jobs/"+element.specialid
+                deleteButton.href = "/dashboard/jobs/"+element.id 
+                deleteButton.specialId = element.id 
                 document.body.append( deleteModalContainer ) 
                 console.log(' Done ')
             }
@@ -285,8 +314,8 @@ discription:
                 <!-- 1st card -->
 
                 <% jobPosts.forEach((item)=>{%>
-                    <li data-aos="flip-up" data-aos-delay="200"
-                    class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base">
+                    <li data-aos="flip-up" data-aos-delay="200"                                 
+                    class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base <%= item._id %>">
 
 
 
@@ -341,7 +370,7 @@ discription:
                     <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
                     <div class="delete-and-edit-post-container">
                         <a href="/dashboard/jobs/<%= item._id %>" class="edit-button"> Edit </a>
-                        <span class="delete-button" specialId="<%= item._id %>" onclick="showDeleteJobModal(this)"> Delete </span>
+                        <span class="delete-button" id="<%= item._id %>" onclick="showDeleteJobModal(this)"> Delete </span>
                     </div>
                 </li>
 

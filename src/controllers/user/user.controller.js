@@ -1,4 +1,8 @@
 require('dotenv').config() 
+const nodemailer = require('nodemailer') 
+const fs = require('fs/promises')
+const path = require('path')
+const ejs = require('ejs')
 
 
 // Validation Schemas 
@@ -21,6 +25,7 @@ const bcrypt = require('bcrypt')
 
 // Models 
 const User = require('../../models/User.model') 
+const PasswordResetTicket = require('../../models/PasswordResetTicket')
 
 
 const verifyEmailHandler = async function(req,res, next)
@@ -92,7 +97,7 @@ const SignupHandler = async function(req, res, next)
            // Send Signup mail 
            const mailDoc = 
            {
-               from:'fibrelearn@gmail.com',
+               from:'techjobberr@gmail.com',
                to: req.body.email, 
                subject:'Verify Email',
                text:' Welcome to tech Jobber, please verify your email to continue ',
@@ -286,4 +291,166 @@ function signoutHandler(req, res, next)
 }
 
 
-module.exports = { signoutHandler, SignupHandler, getSignupPage, signinPageHandler, signinHandler, signupSuccessHanler, verifyEmailHandler   }
+function forgotPasswordPageHandler(req, res, next) 
+{
+    try 
+    {
+        var error = req.flash('error')
+
+        if( error.length === 0 )
+        {
+            error = null 
+        }
+
+        return res.render('pages/forgotPassword',{ error })
+    }
+    catch(e)
+    {
+        console.log(' Retrieving forgot password page')
+        console.log(e)
+        res.send(' Server Error ')
+    }
+}
+
+
+
+async function forgotPasswordHandler(req, res, next) 
+{
+    try 
+    {
+    
+        const emailVerificationCode = crypto.randomBytes(16).toString('hex') 
+        const passdoc = { email: req.body.email, passwordResetCode: emailVerificationCode }
+        const newPasswordResetTicket = new PasswordResetTicket( passdoc ) 
+        await newPasswordResetTicket.save() 
+
+
+        // create Password reset ticket 
+
+        
+        const html = `<p> Follow the link to reset password <a href="http://${req.headers.host}/resetpassword/${emailVerificationCode}"> Reset </a> </p>`
+         const mailDoc = 
+         {
+             from:'techjobber@gmail.com',
+             to: req.body.email, 
+             subject:'Password Reset Email',
+             text:' Follow the link to reset password',
+             html: html
+         }
+
+        
+
+        const transport = nodemailer.createTransport(
+                    { 
+                        'service': 'gmail',
+                        'tls':
+                        {
+                            rejectUnauthorized: false 
+                        }, 
+                        'auth':
+                        { 
+                            'user': process.env.TEST_EMAIL,
+                            'pass': process.env.TEST_EMAIL_PASSWORD 
+                        }
+                    }
+                )
+
+
+                transport.sendMail(mailDoc)
+                .then((info)=>{
+                    console.log(' Mail Sent ! ') 
+                    res.render('pages/forgotPasswordMailSuccess')
+    
+                 })
+                .catch((e)=>{
+                    console.log(' Failed to send mail, ensure previous actions acid ')
+                    console.log(e) 
+                    
+                    req.flash('error','server encountered error while sending mail ')
+                    res.redirect('/forgotpassword')
+                })
+
+
+    }
+    catch(e)
+    {
+        console.log(' Error occured while sending reset password link to user ')
+        console.log(e) 
+        req.flash('error','Server encountered error ')
+        return res.redirect('/forgotpassword')
+    }
+}
+
+
+async function getResetPasswordPage(req, res, next)
+{
+    try 
+    {
+        var error = req.flash('error')
+
+        if( error.length == 0 )
+        {
+            error = null 
+        }
+
+        const passwordResetCode = req.params.code 
+        return res.render('pages/resetPasswordPage',{ error, passwordResetCode })
+
+    }
+    catch(e)
+    {
+        console.log(' Error occured while getting reset password page ')
+        console.log(e)
+        return res.send(' Server Error ')
+    }
+}
+
+
+async function resetPasswordHandler(req, res, next )
+{
+    try 
+    {
+
+        console.log(' Reseting user password ') 
+
+        const passwordResetCode = req.body.passwordResetCode 
+        const { password, repeatPassword }  = req.body 
+    
+        if( password !== repeatPassword )
+        {
+            console.log(' Passwords do not match ')
+            req.flash('error','passwords do not match')
+            return res.redirect(`/resetpassword/${passwordResetCode}`)
+        }
+    
+    
+        const passwordResetTicket = await PasswordResetTicket.findOne({ passwordResetCode })
+    
+        console.log(passwordResetTicket)
+        if( !passwordResetTicket  )
+        {
+            console.log(' User not authorized to reset password ') 
+            req.flash('error','cannot reset password ')
+            return res.redirect(`/resetpassword/${passwordResetCode}`)
+        }
+    
+    
+        const update = { password }
+        const key = { email: passwordResetTicket.email }
+        await User.updateOne(key,update)
+    
+        console.log(' User Password Updated successfully ')
+        req.flash('successMessages','password reset successfull ')
+        return res.redirect('/signin')
+    }
+    catch(e)
+    {
+        console.log(' Error occured while reseting user password ')
+        console.log(e) 
+        req.flash('error','server error')
+        return res.redirect(`/resetpassword/${passwordResetCode}`)
+    }
+}
+
+
+module.exports = { getResetPasswordPage, resetPasswordHandler,  forgotPasswordHandler, forgotPasswordPageHandler,signoutHandler, SignupHandler, getSignupPage, signinPageHandler, signinHandler, signupSuccessHanler, verifyEmailHandler   }

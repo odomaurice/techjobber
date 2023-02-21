@@ -90,7 +90,7 @@ async function getJobPost(_id)
 }
 
 
-async function updateJobPost( post_id, admin_id, doc )
+async function updateJobPost(  doc )
 {
     return new Promise(async(resolve, reject)=>{
         try 
@@ -104,11 +104,11 @@ async function updateJobPost( post_id, admin_id, doc )
             //     update.$set[`${updateKeys[i]}`] = doc[`${updateKeys[i]}`]
             // }
 
-            const update = doc 
-             const filters = {  _id: post_id, postedBy: admin_id }
 
-            const result =  await JobPost.updateOne(filters, update,{ upsert: true })
-            resolve() 
+            const newJobPost = new JobPost(doc) 
+            const result =  await newJobPost.save() 
+            console.log(' Job Post updated ')
+            resolve(result) 
         }
         catch(e)
         {
@@ -130,14 +130,14 @@ async function deleteJobPost( post_id, admin_id )
             const filter = { _id: post_id, postedBy: admin_id }
             const result = await JobPost.deleteOne(filter)
 
-            if( result.deletedCount === 1 )
+            if( result )
             {
                 console.log(' Job Post Deleted ')
                 return resolve('Post deleted') 
             }
             else 
             {
-                console.log(' Job Post not delete ') 
+                console.log(' Job Post not deleted ') 
                 return resolve('Post not deleted, not created by current user ')
             }
     
@@ -149,8 +149,10 @@ async function deleteJobPost( post_id, admin_id )
             console.log(e)
             e.type = 'SERVER'
             e.message = 'Error occured while deleting Job Post' 
+            reject(e) 
         }
     })
 }
+
 
 module.exports = { postJob, getJobs, getJobPost, updateJobPost, deleteJobPost, getJobsCreatedByAdmin } 

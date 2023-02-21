@@ -30,6 +30,9 @@ const getSignupAdminPage = async function(req, res, next )
     try 
     {
         const error = req.flash('error') 
+        const success = req.flash('success') 
+
+        console.log( error )
         return res.render('pages/admin/addAdmin',{ error })
     }
     catch(e)
@@ -43,14 +46,24 @@ const getAdminSignupPage = async function(req, res, next )
 {
     try 
     {
-        const error = req.flash('error') 
-        return res.render('pages/admin/adminSignup',{ error })
+        var error = req.flash('error') 
+        
+        if( error.length === 0 )
+        {
+            error = null 
+        }
+
+        const code = req.params.code 
+        console.log( code ) 
+        return res.render('pages/admin/adminSignup',{ error, code  })
     }
     catch(e)
     {
+        console.log(e) 
         return res.render('pages/serverError',{ error:'error occured while signing up new admin '})
     }
 }
+
 
 
 const SignupAdminHandler = async function( req, res, next  )
@@ -60,6 +73,7 @@ const SignupAdminHandler = async function( req, res, next  )
          
            console.log(' Signing New Admin  ') 
 
+
            // find admin verification doc 
            const validSignup = await AdminVerification.findOne({ admin_email: req.body.email }) 
 
@@ -68,6 +82,8 @@ const SignupAdminHandler = async function( req, res, next  )
                  return res.redirect('/')
            }
 
+           const code = req.body.code 
+           console.log( code ) 
 
            // Validate Signup Schema 
            await AdminSignupSchema.validateAsync(req.body)  
@@ -98,9 +114,11 @@ const SignupAdminHandler = async function( req, res, next  )
         catch(e)
         {
 
+            console.log(e) 
            // Error Variables 
            const errorType = e.type 
            const errorMsg = e.message 
+
 
            console.log(errorType)
            // Send Error response 
@@ -110,7 +128,7 @@ const SignupAdminHandler = async function( req, res, next  )
                                 console.log(' Server encountered error while adding new admin ')
                                 console.log(e) 
                                 req.flash('error',errorMsg)
-                                return res.redirect('/admin/signup/abc')
+                                return res.redirect(`/admin/signup/${ req.body.code }`)
                                 
                 
 
@@ -120,22 +138,27 @@ const SignupAdminHandler = async function( req, res, next  )
                                 console.log(' Error occured while adding new admin ')
                                 console.log(e) 
                                 req.flash('error', errorMsg ) 
-                                return req.redirect('/admin/signup/abc')
+                                return req.redirect(`/admin/signup/${ req.body.code  }`)
                               
 
                 default: 
+                        if( e.isJoi )
+                        {
+                            console.log('  User input Error ')
+                            console.log(e) 
+                            req.flash('error','input error ')
+                            return res.redirect(`/admin/signup/${ req.body.code  }`)
+                        }
+
                         console.log(' Server error occured while adding new admin ')
                         console.log(e) 
-                        return res.render('/admin/signup/abc')
+                        req.flash('error','server error ')
+                        return res.redirect(`/admin/signup/${ req.body.code  }`)
                         
            }
 
         }
     }
-
-
-
-
 
 
 
