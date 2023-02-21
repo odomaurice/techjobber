@@ -40,8 +40,15 @@ async function getDashboard(req, res, next)
         {
             // RETURN SUPER ADMIN DASHBOARD 
             console.log(' super admin ')
-            return res.render('pages/admin/admin_dashboard',{ errorMessages, successMessages })
+            return res.render('pages/admin/superAdminDashboard',{ errorMessages, successMessages })
         } 
+
+        if( user.userType === 'admin' )
+        {
+             // RETURN  ADMIN DASHBOARD 
+             console.log(' admin ')
+             return res.render('pages/admin/admin_dashboard',{ errorMessages, successMessages })
+        }
 
 
         const user_id = user._id 

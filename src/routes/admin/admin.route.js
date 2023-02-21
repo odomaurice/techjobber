@@ -3,6 +3,7 @@ const router = express.Router()
 
 
 // Handlers 
+const { SignupAdminHandler, getSignupAdminPage } = require('../../controllers/admin/createNewAdmin.controller')
 const { postJobHandler, returnJobsCreatedByAdminHandler, getJobUpdatePage, getJobsHandler, getJobHandler, updateJobHandler, deleteJobPostHandler, getCreateJobPageHandler } = require('../../controllers/admin/job.controller')
 const { authenticateAccessToken } = require('../../middlewares/auth/authenticateAccessToken')
 
@@ -10,6 +11,11 @@ module.exports = function(app)
     {
         try 
         {
+
+
+            // Signup Admin 
+            router.get('/admin/dashboard/signup', authenticateAccessToken, getSignupAdminPage ) 
+            router.post('/admin/dashboard/signup',authenticateAccessToken, SignupAdminHandler )
 
             // Jobs 
             router.get('/dashboard/job/add', authenticateAccessToken, getCreateJobPageHandler)
