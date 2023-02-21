@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var Session = require('express-session') 
 var flash = require('connect-flash') 
-
+var responseTime = require('response-time')
+var compression = require('compression') 
 
 // Routes 
 const BuildAppRoutes = require('./routes/routes')
@@ -26,6 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(Session({ secret:'mySecret', saveUninitialized: true, resave: true }))
 app.use(flash())
+app.use(responseTime())
+app.use(compression() )
 
 // Setup 
 database.start() 
