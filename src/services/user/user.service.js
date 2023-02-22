@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 // Functions 
 const { sendMail } = require('../../Utils/mail/sendMail') 
 
+
 // promisify 
 async function checkEmailExists(email)
 {
@@ -32,6 +33,7 @@ async function checkEmailExists(email)
         }
     }
 }
+
 
 // promisify 
 async function signupUser( userDoc )
@@ -105,15 +107,18 @@ async function deleteUserWithEmail(email)
 }
 
 
+
 async function verifyEmail( code )
 {
     return new Promise(async(resolve, reject)=>{
         try 
         {
+            
+            console.log( code ) 
             const fields = { _id: 1, emailVerificationCode: 1, emailVerified: 1 } 
             const user = await User.findOne({ emailVerificationCode: code }, fields)
 
-            if( user._id )
+            if( user )
             { 
 
                 user.emailVerified = true 
