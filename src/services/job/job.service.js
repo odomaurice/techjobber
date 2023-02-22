@@ -53,7 +53,7 @@ async function getJobs( skip,limit)
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const returnFields = { title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1, skills: 1 }
+            const returnFields = { title: 1, jobType: 1, salary: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1 }
             const jobs = await JobPost.find({},returnFields).skip(skip).limit(limit) 
             resolve(jobs) 
         }
@@ -74,7 +74,7 @@ async function getJobPost(_id)
     return new Promise(async(resolve, reject)=>{
         try 
         {
-            const returnFields = { discriptionSections: 1, title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1, skills: 1 }
+            const returnFields = {  title: 1, employmentType: 1, salary: 1, jobType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1 }
             const job = await JobPost.find({ _id },returnFields)
             resolve( job ) 
         }

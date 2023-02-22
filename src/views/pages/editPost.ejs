@@ -65,6 +65,7 @@
             box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
         }
 
+        
         .form header {
             font-size: 30px;
             text-align: center;
@@ -187,6 +188,16 @@
     -->
 
 
+    <style>
+
+        .white-p
+        {
+            color: white
+        }
+
+    </style>
+
+
     <section class="wrapper my-12">
         <div class="form signup my-12">
             <header>Add Job Post </header>
@@ -194,19 +205,44 @@
                 <input name="title" type="text" placeholder=" Title" required />
                
                 <div>
-                    <h3>Employment Type :</h3>
-                    <input type="checkbox" class="text-green-600 bg-green-600" name="" id=""> Full-time <br>
-                    <input type="checkbox" name="" id="">Part-time <br>
-                    <input type="checkbox" name="" id=""> Contract <br>
+                    <h3 class="white-p" >Employment Type :</h3>
+                    
+                    <select name="jobType" id="">
+                        <option value="fullTime"> Full Time </option>
+                        <option value="partTime"> Part Time </option>
+                        <option value="contract"> Contract </option>
+                        <option value="internship"> Internship </option>
+                    </select>
                 </div>
-                <input name="experienceLevel" type="text" placeholder="Experience Level" required />
+
+
+                <p class="white-p"> Experience Level </p>
+                <select name="experienceLevel" id="">
+                    <option value="junior"> junior </option>
+                    <option value="intermediate"> intermediate </option>
+                    <option value="expert"> Expert </option>
+                </select>
+
+                <p class="white-p"> Company Name </p>
                 <input name="companyName" type="text" placeholder="Company Name" />
-                <input name="jobLocation" type="text" placeholder="Job Location" required />
+
+                <p class="white-p"> Job Link  </p>
                 <input name="jobLink" type="text" placeholder="Job Link" required />
-                <input name="skills" type="text" placeholder="Enter skills required" required />
-                <input name="salary" type="text" placeholder="Salary"/>
-                <input name="description" type="text" placeholder="Description Of Work" required />
+
+                <p class="white-p"> Location </p>
+                <select name="jobLocation" id="">
+                    <option value="remote"> Remote </option>
+                    <option value="hybrid"> Hybrid </option>
+                    <option value="onsite"> On Site </option>
+                </select>
                
+                <p class="white-p"> salary </p>
+                <input name="salary" type="text" placeholder="Salary"/>
+
+                <p class="white-p"> Job Description </p>
+                <input name="description" type="text" placeholder="Description Of Work" required />
+
+                
                 <div class="checkbox">
                     <input type="checkbox" id="signupCheck" />
                     <label for="signupCheck">I accept that all details are correct and True</label>

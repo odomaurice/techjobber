@@ -20,11 +20,15 @@ const JobPostSchema = new Schema
                 required: true, 
                 trim: true 
             },
-            employmentType: 
+            jobType: 
             {
                 type: String, 
                 required: true 
             }, 
+            salary:
+            {
+                type: String 
+            },
             experienceLevel: 
             {
                 type: String 
