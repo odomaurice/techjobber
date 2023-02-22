@@ -104,7 +104,7 @@ discription:
             class="widescreen:section-min-height tallscreen:section-min-height my-4 scroll-mt-12 p-4 w-full sm:text-base"
             data-aos="fade-left" data-aos-delay="200">
             <h2 class="mb-6 text-center text-2xl my-12 font-bold text-green-600 sm:text-3xl">
-                RECENT JOBS
+                JOB
             </h2>
             <ul
                 class="mx-auto max-w-full my-12 flex list-none flex-col items-center justify-between align-middle gap-8 lg:flex-row lg:text-2xl sm:text-base">
@@ -112,7 +112,6 @@ discription:
                
                 <!-- 1st card -->
 
-                <% jobPosts.forEach((item)=>{%>
                     <li data-aos="flip-up" data-aos-delay="200"
                     class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base">
 
@@ -120,49 +119,49 @@ discription:
 
                     </div>
                     <h3 class="text-start mt-2 text-2xl text-slate-900 dark:text-white">
-                        <%= item.title %> 
+                        <%= job.title %> 
                     </h3>
                     <p
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
-                        <%= item.jobType %> 
+                        <%= job.jobType %> 
                     </p>
                     
                     <p
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
-                        <%= item.experienceLevel %> 
+                        <%= job.experienceLevel %> 
                     </p>
                     <p
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
-                        <%= item.companyName %> 
+                        <%= job.companyName %> 
                     </p>
                     <p
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
-                        <%= item.jobLocation %> 
+                        <%= job.jobLocation %> 
                     </p>
                     <!---- JOB LINK TO BE POSTED ON TELEGRAM GROUP --> 
                     <!-- EMMBED LINK TO ANY ELEMENT MEANT TO SERVE AS A COPY LINK BUTTON -->
                     
                     <p
                     class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
-                    <%= item.description %> 
+                    <%= job.description %> 
                      </p>
 
                     <button
                         class="mx-4 w-32 text-base my-4 border text-black dark:text-white border-solid border-green-600 p-2 rounded-md hover:bg-green-600"
-                        type="submit"> <a  id="<%= item.jobLink %>" target="_blank" > Apply</a></button>
+                        type="submit"> <a  id="<%= job.jobLink %>" target="_blank" > Apply</a></button>
 
                     
                     <!-- ADDED LINK TO JOB APPLICATION PAGE -->
                      <script>
-                        var link = document.getElementById("<%= item.jobLink %>")
+                        var link = document.getElementById("<%= job.jobLink %>")
                         console.log( link )
-                        link.href = "<%= item.jobLink %>" 
+                        link.href = "<%= job.jobLink %>" 
                      </script>
 
                     <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
 
                 </li>
-                <% }) %> 
+               
                 
 
             </ul>

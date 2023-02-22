@@ -284,7 +284,7 @@ discription:
                 <button
                     class="mx-6 w-32 rounded-md border border-solid border-green-600 bg-green-600 text-white  p-2 hover:bg-green-500"
                     type="submit">
-                    <a href="landing.html" target="_blank">Register</a>
+                    <a href="landing.html" >Register</a>
                 </button>
             </ul>
 
@@ -314,12 +314,49 @@ discription:
                 <!-- 1st card -->
 
                 <% jobPosts.forEach((item)=>{%>
+
+
+                    <!--- IMPORTANT -->
+
+                    <!--  THIS IS THE LINK OF EACH JOB POST ON TECHJOBBER 
+                    
+                        "https://www.techjobber.com/jobs/<%= item.jobLink %>"
+
+                    -->
+
+
                     <li data-aos="flip-up" data-aos-delay="200"                                 
                     class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base <%= item._id %>">
 
 
 
-                  
+
+                    <!-- COPY LINK MECHANICS -->
+                  <span id="<%= item.jobLink %>" class="my-6 p-3 shadow-xl"> Copy link <i class="fas fa-clipboard"></i></span>
+
+                     <script>
+
+                        var item = document.getElementById("<%= item.jobLink %>")
+                        item.addEventListener("click",(e)=>{ copyToClipBoard(e) })
+
+                        function copyToClipBoard(e)
+                        {
+                            try 
+                            {
+                                navigator.clipboard.writeText(e.target.id)
+                                window.alert('Copied !')
+                            }
+                            catch(e)
+                            {
+                                console.log(' Error occured while copying link ')
+                                console.log(e) 
+                            }
+                        }
+
+                    </script>
+                    
+                    <!-- COPY LINK MECHANICS -->
+
                     <h3 class="text-start mt-2 text-2xl text-slate-900 dark:text-white">
                         <%= item.title %> 
                     </h3>
@@ -332,18 +369,12 @@ discription:
                     </p>
                     <p
                         class="mt-2 w-full md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2"> Employment Type:
-                        <%= item.employmentType %> 
+                        <%= item.jobType %> 
                     </p>
 
                     <p class="mt-2 w-full md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2"> Experience
                         Level :
                         <%= item.experienceLevel %>
-                    </p>
-                    <p
-                        class="mt-2 w-full md:text-xl lg:text-base   text-start sm:text-base text-slate-500 dark:text-slate-400 px-2"> Requirements : 
-                       <% item.skills.forEach((item)=>{  %> 
-                        <%= item %> 
-                        <%  }) %> 
                     </p>
                    
                     
@@ -359,7 +390,7 @@ discription:
 
                     <!-- <button
                         class="mx-4 w-32 text-base my-4 border text-black dark:text-white border-solid border-green-600 p-2 rounded-md hover:bg-green-600"
-                        type="submit"><a  id="<%= item.jobLink %>"  target="_blank"> Apply</a></button> -->
+                        type="submit"><a  id="<%= item.jobLink %>"  > Apply</a></button> -->
 
                     
                     <!-- ADDED LINK TO JOB APPLICATION PAGE -->
@@ -388,6 +419,9 @@ discription:
     </main>
 
 
+
+    <!--- JOB POSTING LINK TO SHARE ON TELEGRAM --> 
+    <!-- <a href="">  </a> -->
  
 </body>
 </html>

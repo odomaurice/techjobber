@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechJobber||Edit Experience</title>
+    <title>TechJobber||Add Post</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/TechJobber Icon@300x.png" type="image/x-icon" />
 
@@ -65,6 +65,7 @@
             box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
         }
 
+        
         .form header {
             font-size: 30px;
             text-align: center;
@@ -187,27 +188,67 @@
     -->
 
 
+    <style>
+
+        .white-p
+        {
+            color: white
+        }
+
+    </style>
+
+
     <section class="wrapper my-12">
         <div class="form signup my-12">
-            <header>Add Job Post </header>
-            <form action="/dashboard/jobs/<%=job._id%>" method="post">
-                <input name="title" type="text" placeholder="<%= job.title %>" value="<%=job.title%>" required />
+            <header> Update Job Post  </header>
+            <form action="/dashboard/jobs/<%= job._id %>" method="post">
+
+                <input name="title" value="<%= job.title %>" type="text" placeholder=" Title" required />
                
-                <input name="employmentType" type="text"
-                    placeholder="<%= job.employmentType %>" value="<%=job.employmentType%>" required />
-                <input name="experienceLevel" value="<%=job.experienceLevel%>" type="text" placeholder="<%=job.experienceLevel%>" required />
-                <input name="companyName" value="<%= job.companyName %>" type="text" placeholder="<%= job.companyName %>" />
-                <input name="jobLocation" value="<%= job.companyName %>" type="text" placeholder="<%= job.jobLocation %>" required />
-                <input name="jobLink"  value="<%= job.jobLink %>"  type="text" placeholder="<%= job.jobLink %>" required />
-                <input name="skills" value="<%= job.skills %>"  type="text" placeholder="<%= job.skills %>" required />
-                <input name="salary" value="<%= job.salary %>" type="number" placeholder="<%= job.salary %>" />
-                <input name="description"  value="<%= job.description %>" type="text" placeholder="<%= job.description %>" required />
+                <div>
+                    <h3 class="white-p" >Employment Type :</h3>
+                    
+                    <select name="jobType" id="" >
+                        <option value="fullTime"> Full Time </option>
+                        <option value="partTime"> Part Time </option>
+                        <option value="contract"> Contract </option>
+                        <option value="internship"> Internship </option>
+                    </select>
+                </div>
+
+
+                <p class="white-p"> Experience Level </p>
+                <select name="experienceLevel" id="">
+                    <option value="junior"> junior </option>
+                    <option value="intermediate"> intermediate </option>
+                    <option value="expert"> Expert </option>
+                </select>
+
+                <p class="white-p"> Company Name </p>
+                <input name="companyName" type="text" value="<%= job.companyName %> " placeholder="Company Name" />
+
+                <p class="white-p"> Job Link  </p>
+                <input name="jobLink" type="text"  value="<%= job.jobLink %>" placeholder="Job Link" required />
+
+                <p class="white-p"> Location </p>
+                <select name="jobLocation" id="">
+                    <option value="remote"> Remote </option>
+                    <option value="hybrid"> Hybrid </option>
+                    <option value="onsite"> On Site </option>
+                </select>
                
+                <p class="white-p"> salary </p>
+                <input name="salary" type="text" value="<%= job.salary %>" placeholder="Salary"/>
+
+                <p class="white-p"> Job Description </p>
+                <input name="description" type="text"  value="<%= job.description %>" placeholder="Description Of Work" required />
+
+                
                 <div class="checkbox">
                     <input type="checkbox" id="signupCheck" />
                     <label for="signupCheck">I accept that all details are correct and True</label>
                 </div>
-                <input type="submit" class="hover:bg-green-600 " value="Edit" />
+                <input type="submit" class="hover:bg-green-600 " value="UPDATE" />
             </form>
         </div>
 
