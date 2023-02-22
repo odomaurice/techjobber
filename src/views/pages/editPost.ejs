@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechJobber||Edit Experience</title>
+    <title>TechJobber||Add Post</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/TechJobber Icon@300x.png" type="image/x-icon" />
 
@@ -193,20 +193,25 @@
             <form action="/jobs" method="post">
                 <input name="title" type="text" placeholder=" Title" required />
                
-                <input name="employmentType" type="text"
-                    placeholder="Employment Type(Full-time, Part-time, Contract, Internship etc)" required />
+                <div>
+                    <h3>Employment Type :</h3>
+                    <input type="checkbox" class="text-green-600 bg-green-600" name="" id=""> Full-time <br>
+                    <input type="checkbox" name="" id="">Part-time <br>
+                    <input type="checkbox" name="" id=""> Contract <br>
+                </div>
                 <input name="experienceLevel" type="text" placeholder="Experience Level" required />
                 <input name="companyName" type="text" placeholder="Company Name" />
                 <input name="jobLocation" type="text" placeholder="Job Location" required />
                 <input name="jobLink" type="text" placeholder="Job Link" required />
-                <input name="skills" type="text" placeholder="Enter skills required seperated by comma e.g html, css,..." required />
+                <input name="skills" type="text" placeholder="Enter skills required" required />
+                <input name="salary" type="text" placeholder="Salary"/>
                 <input name="description" type="text" placeholder="Description Of Work" required />
                
                 <div class="checkbox">
                     <input type="checkbox" id="signupCheck" />
                     <label for="signupCheck">I accept that all details are correct and True</label>
                 </div>
-                <input type="submit" class="hover:bg-green-600 " value="Edit" />
+                <input type="submit" class="hover:bg-green-600 " value="Publish" />
             </form>
         </div>
 
