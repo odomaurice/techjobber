@@ -75,7 +75,7 @@ async function getJobPost(_id)
         try 
         {
             const returnFields = {  title: 1, employmentType: 1, salary: 1, jobType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1 }
-            const job = await JobPost.find({ _id },returnFields)
+            const job = await JobPost.findOne({ _id },returnFields)
             resolve( job ) 
         }
         catch(e)

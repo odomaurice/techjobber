@@ -315,14 +315,48 @@ discription:
 
                 <% jobPosts.forEach((item)=>{%>
 
+
+                    <!--- IMPORTANT -->
+
+                    <!--  THIS IS THE LINK OF EACH JOB POST ON TECHJOBBER 
                     
+                        "https://www.techjobber.com/jobs/<%= item.jobLink %>"
+
+                    -->
+
 
                     <li data-aos="flip-up" data-aos-delay="200"                                 
                     class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base <%= item._id %>">
 
 
 
-                  
+
+                    <!-- COPY LINK MECHANICS -->
+                  <span id="<%= item.jobLink %>" class="my-6 p-3 shadow-xl"> Copy link <i class="fas fa-clipboard"></i></span>
+
+                     <script>
+
+                        var item = document.getElementById("<%= item.jobLink %>")
+                        item.addEventListener("click",(e)=>{ copyToClipBoard(e) })
+
+                        function copyToClipBoard(e)
+                        {
+                            try 
+                            {
+                                navigator.clipboard.writeText(e.target.id)
+                                window.alert('Copied !')
+                            }
+                            catch(e)
+                            {
+                                console.log(' Error occured while copying link ')
+                                console.log(e) 
+                            }
+                        }
+
+                    </script>
+                    
+                    <!-- COPY LINK MECHANICS -->
+
                     <h3 class="text-start mt-2 text-2xl text-slate-900 dark:text-white">
                         <%= item.title %> 
                     </h3>

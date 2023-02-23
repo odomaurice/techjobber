@@ -14,7 +14,9 @@ async function returnJobsCreatedByAdminHandler(req, res, next)
     }
     catch(e)
     {
-        
+        console.log(' Error occured while returning jobs created by an admin ')
+        console.log(e)
+        return res.render('pages/serverError',{ error:'server error'})         
     }
 }
 
@@ -107,9 +109,12 @@ async function getJobHandler(req, res, next)
 {
     try 
     {
+        console.log(' Getting Specific job post ')
+        console.log
         const job_id = req.params.id 
-        const jobPost = await getJobPost( job_id )
-        return res.send(jobPost) 
+        const job = await getJobPost( job_id )
+        console.log( job ) 
+        return res.render('pages/job',{ job })
     }
     catch(e)
     {

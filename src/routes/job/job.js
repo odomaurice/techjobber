@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 // Handlers 
-const {  getJobsHandler  } = require('../../controllers/admin/job.controller')
+const {  getJobsHandler, getJobHandler } = require('../../controllers/admin/job.controller')
 
 
 module.exports = function(app)
@@ -13,6 +13,7 @@ module.exports = function(app)
 
             // Jobs 
             router.get('/jobs', getJobsHandler )
+            router.get('/jobs/:id', getJobHandler)
 
             app.use('/', router)
         }

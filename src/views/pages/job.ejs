@@ -1,0 +1,175 @@
+
+
+
+<!-- postedBy:
+
+title: 
+
+employmentType: 
+
+experienceLevel: 
+
+companyName:
+
+jobLocation: 
+
+jobLink: 
+
+skills:
+
+discriptionSections:
+
+discription:
+
+} -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechJobber||Jobs</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/TechJobber Icon@300x.png" type="image/x-icon" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+        integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Unicons CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+    <!-- EXTERNAL FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins&display=swap" rel="stylesheet" />
+
+    <!-- Custom JS -->
+    <script src="/js/script.js" defer></script>
+</head>
+
+<body class="min-h-screen bg-slate-200 font-Default text-black dark:bg-black dark:text-white">
+    <!-- Navigaton starts -->
+
+    <div class="container">
+        <nav class="nav z-50 mx-auto  text-papayawhip bg-white dark:bg-black ">
+            <i class="uil uil-bars navOpenBtn"></i>
+            <a href="#" class="logo"><img src="./images/TechJobber Horizontal@300x.png" alt="" width="200px" /></a>
+
+            <ul class="nav-links mx-auto  bg-white dark:text-green-600 dark:bg-black">
+                <i class="uil uil-times navCloseBtn"></i>
+                <li class=""><a class="hover:text-green-600" href="index.html">Home</a></li>
+                <li><a class="hover:text-green-600" href="#">About</a></li>
+                <li><a class="hover:text-green-600" href="#"> Contact</a></li>
+
+
+                <li class="text-start">
+                    <a href="#"> Recent Tech Jobs </a>
+                </li>
+
+                <button
+                    class="mx-6 w-32 rounded-md border border-solid border-green-600 bg-green-600 text-white  p-2 hover:bg-green-500"
+                    type="submit">
+                    <a href="/signup" >Register</a>
+                </button>
+            </ul>
+
+            <i class="uil uil-search search-icon" id="searchIcon"></i>
+            <div class="search-box">
+                <i class="uil uil-search search-icon"></i>
+                <input type="text" class="text-black" placeholder="Search here..." />
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navigation ends -->
+
+    <!-- Main section starts -->
+
+    <main class=" absolute top-0 my-12 min-h-screen w-full">
+        <section
+            class="widescreen:section-min-height tallscreen:section-min-height my-4 scroll-mt-12 p-4 w-full sm:text-base"
+            data-aos="fade-left" data-aos-delay="200">
+            <h2 class="mb-6 text-center text-2xl my-12 font-bold text-green-600 sm:text-3xl">
+                JOB
+            </h2>
+            <ul
+                class="mx-auto max-w-full my-12 flex list-none flex-col items-center justify-between align-middle gap-8 lg:flex-row lg:text-2xl sm:text-base">
+               
+               
+                <!-- 1st card -->
+
+                    <li data-aos="flip-up" data-aos-delay="200"
+                    class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base">
+
+
+
+                    </div>
+                    <h3 class="text-start mt-2 text-2xl text-slate-900 dark:text-white">
+                        <%= job.title %> 
+                    </h3>
+                    <p
+                        class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                        <%= job.jobType %> 
+                    </p>
+                    
+                    <p
+                        class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                        <%= job.experienceLevel %> 
+                    </p>
+                    <p
+                        class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                        <%= job.companyName %> 
+                    </p>
+                    <p
+                        class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                        <%= job.jobLocation %> 
+                    </p>
+                    <!---- JOB LINK TO BE POSTED ON TELEGRAM GROUP --> 
+                    <!-- EMMBED LINK TO ANY ELEMENT MEANT TO SERVE AS A COPY LINK BUTTON -->
+                    
+                    <p
+                    class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                    <%= job.description %> 
+                     </p>
+
+                    <button
+                        class="mx-4 w-32 text-base my-4 border text-black dark:text-white border-solid border-green-600 p-2 rounded-md hover:bg-green-600"
+                        type="submit"> <a  id="<%= job.jobLink %>" target="_blank" > Apply</a></button>
+
+                    
+                    <!-- ADDED LINK TO JOB APPLICATION PAGE -->
+                     <script>
+                        var link = document.getElementById("<%= job.jobLink %>")
+                        console.log( link )
+                        link.href = "<%= job.jobLink %>" 
+                     </script>
+
+                    <hr class="mx-auto mt-3 w-full bg-black dark:bg-white" />
+
+                </li>
+               
+                
+
+            </ul>
+        </section>
+
+    </main>
+
+
+ 
+</body>
+</html>
