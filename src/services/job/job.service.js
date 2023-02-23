@@ -32,7 +32,7 @@ async function getJobsCreatedByAdmin( admin_id )
         try 
         {
 
-            const returnFields = { _id: 1, title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, jobLink: 1, skills: 1 }
+            const returnFields = { _id: 1, title: 1, employmentType: 1, experienceLevel: 1, companyName: 1, jobLocation: 1, salary: 1, jobLink: 1, skills: 1 }
             const jobs = await JobPost.find({ createdBy: admin_id },returnFields)
             resolve(jobs) 
         }

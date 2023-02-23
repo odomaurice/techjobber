@@ -113,6 +113,7 @@ discription:
                 <!-- 1st card -->
 
                 <% jobPosts.forEach((item)=>{%>
+
                     <li data-aos="flip-up" data-aos-delay="200"
                     class="flex w-full flex-col items-center  border border-solid border-slate-900 bg-white py-6 px-4 shadow-xl  dark:border-gray-100 dark:bg-black sm:w-1/2 sm:text-base">
 
@@ -131,6 +132,12 @@ discription:
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
                         <%= item.experienceLevel %> 
                     </p>
+
+                    <p
+                    class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
+                    <%= item.salary %> 
+                   </p>
+
                     <p
                         class="mt-2 md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
                         <%= item.companyName %> 

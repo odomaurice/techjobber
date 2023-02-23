@@ -60,6 +60,12 @@ discription:
 
 <body class="min-h-screen bg-slate-200 font-Default text-black dark:bg-black dark:text-white">
 
+
+    <script>
+        var linkObject = {} 
+    </script>
+
+
        <!-- IMPROVISED BUTTON STYLINGS -->
        <style>
 
@@ -335,16 +341,21 @@ discription:
                   <span id="<%= item.jobLink %>" class="my-6 p-3 shadow-xl"> Copy link <i class="fas fa-clipboard"></i></span>
 
                      <script>
+                        linkObject["<%= item.jobLink %>"] = document.getElementById("<%= item.jobLink %>")
+                        
+                        console.log(' Adding CLick Event Listener to click icon ')
+                        console.log( linkObject["<%= item.jobLink %>"]) 
 
-                        var item = document.getElementById("<%= item.jobLink %>")
-                        item.addEventListener("click",(e)=>{ copyToClipBoard(e) })
+                        linkObject["<%= item.jobLink %>"].addEventListener("click",(e)=>{ copyToClipBoard(e) })
 
                         function copyToClipBoard(e)
                         {
                             try 
                             {
-                                navigator.clipboard.writeText(e.target.id)
-                                window.alert('Copied !')
+                                console.log(" CLICKED ")
+                                var link = 'https://www.techjobber.com/jobs/<%= item._id %>'
+                                navigator.clipboard.writeText(link)
+                                window.alert('Copied !  :' + ' " ' + link + ' " ')
                             }
                             catch(e)
                             {
@@ -352,6 +363,7 @@ discription:
                                 console.log(e) 
                             }
                         }
+
 
                     </script>
                     
@@ -377,6 +389,10 @@ discription:
                         <%= item.experienceLevel %>
                     </p>
                    
+                    <p class="mt-2 w-full md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2"> Experience
+                       Salary :
+                        <%= item.salary %>
+                    </p>
                     
                     <p
                         class="mt-2 w-full md:text-xl lg:text-base  text-start sm:text-base text-slate-500 dark:text-slate-400 px-2">
@@ -395,7 +411,7 @@ discription:
                     
                     <!-- ADDED LINK TO JOB APPLICATION PAGE -->
                      <script>
-                        const link = document.getElementById("<%= item.jobLink %>")
+                        var link = document.getElementById("<%= item.jobLink %>")
                         console.log( link )
                         link.href = "<%= item.jobLink %>" 
                      </script>

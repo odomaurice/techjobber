@@ -29,6 +29,10 @@ const JobPostSchema = new Schema
             {
                 type: String 
             },
+            jobPay:
+            {
+                type: String 
+            }, 
             experienceLevel: 
             {
                 type: String 
