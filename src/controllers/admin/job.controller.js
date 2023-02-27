@@ -163,7 +163,7 @@ async function deleteJobPostHandler(req, res, next)
     try 
     {
         const post_id = req.params.id 
-        const admin_id = 'samle_id'  
+        const admin_id = req.user._id  
         const result = await deleteJobPost(post_id, admin_id)
         return res.send(result) 
     }
